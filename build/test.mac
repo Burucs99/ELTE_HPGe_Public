@@ -1,0 +1,30 @@
+
+/process/had/deex/correlatedGamma true
+/process/had/deex/maxTwoJ 20
+
+/run/initialize
+
+
+
+
+
+## Elő
+## Kell először izotóp név z a moláris tömeg:
+
+/HPGe/det/CreateIsotope Cs137 55 137 136.907
+/HPGe/det/CreateIsotope Cs135 55 135 134.9059719 
+
+
+/HPGe/det/CreateElement Random R Cs137:99.43 Cs135:0.57 
+
+
+/HPGe/det/CreateIsotope U235 92 235 235.04393
+/HPGe/det/CreateIsotope U238 92 238 238.05078
+
+/HPGe/det/CreateElement NaturalUranium U U235:0.72 U238:99.28
+/HPGe/det/CreateMaterial Granite 2.75 O:46 Si:32 Al:8 Na:3 K:5 Ca:2 Fe:3 Mg:0.98 NaturalUranium:0.02
+
+
+/det/setSourceBox GraniteBox Granite 10 10 10 0 0 -5 cm
+
+/run/reinitializeGeometry 
