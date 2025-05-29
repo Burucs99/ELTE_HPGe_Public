@@ -46,6 +46,8 @@ public:
     void SetSourceBox(const G4String& name,const G4String& matName, const G4ThreeVector& size, 
                 const G4ThreeVector& placement);
     void CreateSampleHolder();
+    void CreateKaliumContainer();
+
 private:
     
     YourDetectorMessenger* fDetMessenger;

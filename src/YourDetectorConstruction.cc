@@ -24,7 +24,8 @@
 #include "YourDetectorMessenger.hh"
 #include "G4RunManager.hh"
 #include "G4SubtractionSolid.hh"
-
+#include "G4UserLimits.hh"
+#include "G4Cons.hh"
 YourDetectorConstruction::YourDetectorConstruction()
 :   G4VUserDetectorConstruction()
      {
@@ -54,6 +55,8 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
 
     fworldLogical = worldLogical;
     // Testing 
+/*     CreateKaliumContainer();
+ */    
     CreateSampleHolder();
     if (fCreateBox || fCreateTub) {
         if (fCustomMats.find(fMaterialName) == fCustomMats.end()) {
@@ -98,7 +101,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     constexpr G4double crystalLength              = 54.5 *mm;
     constexpr G4double crystalHoleDiameter        = 7.5 *mm;
     constexpr G4double crystalHoleDepth           = 37.5*mm;
-
+    
     constexpr G4double endCapThickness            = 1.5 *mm;
     constexpr G4double endCapOuterDiameter        = 7.6 *cm;
     constexpr G4double endCapInnerDiameter        = endCapOuterDiameter - endCapThickness;
@@ -147,7 +150,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     constexpr G4double protrusionDiskShift     = START + windowDistance + crystalHolderLength + protrusionLength - protrusionThickness / 2;
     constexpr G4double teflonShift             = START + windowDistance + crystalHolderLength + teflonLength / 2;
 
-    G4bool fCheckOverlaps = false;
+    G4bool fCheckOverlaps = true;
 
     auto calorimeterSolid          = new G4Tubs ("Calorimeter", 0, endCapOuterDiameter/2, endCapLength/2, 0, 360*deg);
     auto calorimeterLogicalVolume  = new G4LogicalVolume (calorimeterSolid, vacuum, "Calorimeter");
@@ -185,22 +188,46 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     
     //------------------------
     //--------Crystal---------
-    auto crystalCylinderSolid = new G4Tubs ("CrystalBase", 0, crystalDiameter/2,     crystalLength/2,    0, 360*deg);
-    auto crystalHoleSolid     = new G4Tubs ("CrystalHole", 0, crystalHoleDiameter/2, crystalHoleDepth/2, 0, 360*deg);
-    auto crystalSolid         = new G4SubtractionSolid ("Crystal", crystalCylinderSolid, crystalHoleSolid, 0, G4ThreeVector(0, 0, crystalHoleRelShift));
-    
-    auto crystalLogicalVolume  = new G4LogicalVolume (crystalSolid, absorberMaterial, "Crystal");
-    auto crystalPhysicalVolume = new G4PVPlacement (0, G4ThreeVector(0, 0, crystalShift),//
-                                                    crystalLogicalVolume,
-                                                    "Crystal",
+
+    G4cout<<absorberMaterial->GetTemperature()<<G4endl;
+    constexpr G4double DeadLayerZ = 0.00001*mm;
+
+    constexpr G4double activeCrystalLength = crystalLength - DeadLayerZ;
+    constexpr G4double activeZShift = START + windowDistance + activeCrystalLength / 2;
+    constexpr G4double deadZShift   = activeZShift - activeCrystalLength / 2 + DeadLayerZ / 2;
+
+    auto crystalCylinderSolid = new G4Tubs("CrystalBase", 0, crystalDiameter/2, activeCrystalLength/2, 0, 360*deg);
+    auto crystalHoleSolid     = new G4Tubs("CrystalHole", 0, crystalHoleDiameter/2, crystalHoleDepth/2, 0, 360*deg);
+    auto crystalSolid         = new G4SubtractionSolid("Crystal", crystalCylinderSolid, crystalHoleSolid, 0,
+                                                    G4ThreeVector(0, 0, crystalHoleRelShift + DeadLayerZ));
+
+    auto crystalLogicalVolume  = new G4LogicalVolume(crystalSolid, absorberMaterial, "Crystal");
+    auto crystalPhysicalVolume = new G4PVPlacement(0, G4ThreeVector(0, 0, activeZShift+DeadLayerZ),
+                                                crystalLogicalVolume,
+                                                "Crystal",
+                                                calorimeterLogicalVolume,
+                                                false, 0, fCheckOverlaps);
+
+    auto DeadLayerCylinderSolid = new G4Tubs("DeadLayerZ", 0, crystalDiameter/2, DeadLayerZ/2, 0, 360*deg);
+    auto DeadLayerLogicalVolume = new G4LogicalVolume(DeadLayerCylinderSolid, absorberMaterial, "DeadLayer");
+    auto DeadLayerPhysicalVolume = new G4PVPlacement(0, G4ThreeVector(0, 0, deadZShift),
+                                                    DeadLayerLogicalVolume,
+                                                    "DeadLayer",
                                                     calorimeterLogicalVolume,
                                                     false, 0, fCheckOverlaps);
 
+    G4double maxStep = 0.0001*mm;
+
+    /* G4UserLimits* stepLimits = new G4UserLimits(maxStep);
+    DeadLayerLogicalVolume->SetUserLimits(stepLimits);
+    crystalLogicalVolume->SetUserLimits(stepLimits); */
     calorimeterLogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(1.0, 0.0, 0.0,0.1)));
     endCapDisk2LogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(1.0, 0.0, 0.0,0.1)));
     endCapDisk1LogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 0.0, 1.0,0.6)));
     endCapLogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 1.0, 1.0,0.2)));
-    G4VisAttributes* crystalVisAtt = new G4VisAttributes(G4Color(0.0, 1.0, 0.0));
+    DeadLayerLogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(1.0, 1.0, 1.0,0.9)));
+
+    G4VisAttributes* crystalVisAtt = new G4VisAttributes(G4Color(0.0, 1.0, 0.0,0.1));
     crystalVisAtt->SetForceSolid(true);
     crystalLogicalVolume->SetVisAttributes(crystalVisAtt);
     ftargetLogical=crystalLogicalVolume;
@@ -361,4 +388,45 @@ void YourDetectorConstruction::CreateSampleHolder(){
     G4Tubs* solidSource = new G4Tubs("SampleHolder",0,Radius/2,Height/2,0,360*deg);
     G4LogicalVolume* logicSource = new G4LogicalVolume(solidSource, PLA, "SampleHolderLogic");
     G4PVPlacement* physSource = new G4PVPlacement(0, Placement, logicSource, "SampleHolderPhys", fworldLogical, false, 0);
+}
+void YourDetectorConstruction::CreateKaliumContainer(){
+    G4double z, a, density;
+    G4String name, symbol;
+    G4int ncomponents, natoms;
+    G4NistManager* nistMGR =                  G4NistManager::Instance();
+
+    a = 39.0983 * g/mole;
+    G4Element* elK = new G4Element(name="Kalium", symbol="K", z=19., a);
+
+    a = 35.45 * g/mole;
+    G4Element* elCl = new G4Element(name="Chlorine", symbol="Cl", z=17., a);
+
+    G4Material* air = nistMGR->FindOrBuildMaterial("G4_AIR");
+
+    G4Material* KCl = new G4Material("KCl", 1.984*g/cm3, 2);
+    KCl->AddElement(elK, 1);
+    KCl->AddElement(elCl, 1);
+
+    G4Material* PorousKCl = new G4Material("PorousKCl", 1.38187*g/cm3, 2);
+    PorousKCl->AddMaterial(KCl, 99.9735 * perCent);
+    PorousKCl->AddMaterial(air, 0.0265 * perCent);
+    
+    G4cout<<"Here we are"<<G4endl;
+    G4double R_lower = 78.0 / 2 * mm;  // kisebbik sugár az alján
+    G4double R_upper = 73.0 / 2 * mm;  // nagyobbik sugár a tetején
+
+    G4double height = 45*mm;
+    G4ThreeVector Placement(0.0,0.0,-height/2-0.9*mm );
+    G4Cons* solidSource = new G4Cons("TejfolosDoboz",
+        0,
+        R_lower/2,
+        0,
+        R_upper/2,
+        height/2,
+        0,360*deg);
+    
+    G4LogicalVolume* logicSource = new G4LogicalVolume(solidSource, PorousKCl, "TejfolLogic");
+    G4PVPlacement* physSource = new G4PVPlacement(0, Placement, logicSource, "Tejfol", fworldLogical, false, 0);
+
+
 }

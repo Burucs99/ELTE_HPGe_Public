@@ -1,0 +1,10 @@
+/run/numberOfThreads 6
+
+/run/initialize
+
+
+/HPGe/run/EdepHist Edep Deposited-Energy 3000 0 3.0
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/ELTE_Public/ELTE_HPGe_Public/build/Corrected_Density_final_no_dz/ Dead_Layer
+
+
+/run/beamOn 2000000

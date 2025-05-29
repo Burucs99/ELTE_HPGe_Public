@@ -4,6 +4,8 @@
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include <G4GeneralParticleSource.hh>
 #include "G4GeneralParticleSource.hh"
+#include "G4ParticleGun.hh"
+
 class YourDetectorConstruction;
 class G4GeneralParticleSource;
 class YourPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction {
@@ -16,7 +18,7 @@ public:
     void UpdateGunPosition();
 private:
     YourDetectorConstruction* fDetector;
-    G4GeneralParticleSource* fGps;
+    G4ParticleGun* fGun;
     
 };
 
