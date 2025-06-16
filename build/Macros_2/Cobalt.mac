@@ -1,11 +1,9 @@
 
 
 /run/numberOfThreads 6
+/process/had/deex/correlatedGamma true
+/process/had/deex/maxTwoJ 20
 /HPGe/run/EdepHist Edep Deposited-Energy 3000 0 3.1
-/HPGe/run/EdepHist Edep_veto_3 Deposited-Energy 3000 0 3.1
-/HPGe/run/EdepHist Edep_veto_6 Deposited-Energy 3000 0 3.1
-/HPGe/run/EdepHist Edep_veto_9 Deposited-Energy 3000 0 3.1
-/HPGe/run/EdepHist Edep_veto_12 Deposited-Energy 3000 0 3.1
 
 /run/initialize
 
@@ -22,10 +20,52 @@
 /HPGe/det/CreateElement Cobalt Co Co60:100
 /HPGe/det/CreateMaterial Cobalt 8.9 Cobalt:100
 
-/gps/pos/centre 0 0 -1 cm
-/HPGe/det/setSourceBox CobaltBox Cobalt 0.1 0.1 0.1 0 0 -10
-/run/reinitializeGeometry
+/gps/pos/centre 0 0 -13.5 cm
+/HPGe/det/setSourceBox CobaltBox Cobalt 0.1 0.1 0.1 0 0 -135
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -13 
+/run/reinitializeGeometry true
+/run/initialize
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/ELTE_Public/ELTE_HPGe_Public/build/Efficiency_Test/Co/ Cobalt_13
+/run/beamOn 2500000
 
 
-/HPGe/run/OutputName /home/aburucs/G4/Geant4/ELTE_Gamma_HPGe/build/output_Cobalt_Veto/ test
-/run/beamOn 30
+/gps/pos/centre 0 0 -12.5 cm
+/HPGe/det/setSourceBox CobaltBox Cobalt 0.1 0.1 0.1 0 0 -125
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -12 
+/run/reinitializeGeometry true
+/run/initialize
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/ELTE_Public/ELTE_HPGe_Public/build/Efficiency_Test/Co/ Cobalt_12
+/run/beamOn 2500000
+
+/gps/pos/centre 0 0 -11.5 cm
+/HPGe/det/setSourceBox CobaltBox Cobalt 0.1 0.1 0.1 0 0 -115
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -11 
+/run/reinitializeGeometry true
+/run/initialize
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/ELTE_Public/ELTE_HPGe_Public/build/Efficiency_Test/Co/ Cobalt_11
+/run/beamOn 2500000
+
+/gps/pos/centre 0 0 -10.5 cm
+/HPGe/det/setSourceBox CobaltBox Cobalt 0.1 0.1 0.1 0 0 -105
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -10 
+/run/reinitializeGeometry true
+/run/initialize
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/ELTE_Public/ELTE_HPGe_Public/build/Efficiency_Test/Co/ Cobalt_10
+/run/beamOn 2500000
+
+
+/gps/pos/centre 0 0 -9.5 cm
+/HPGe/det/setSourceBox CobaltBox Cobalt 0.1 0.1 0.1 0 0 -95
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -9
+/run/reinitializeGeometry true
+/run/initialize
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/ELTE_Public/ELTE_HPGe_Public/build/Efficiency_Test/Co/ Cobalt_9
+/run/beamOn 2500000
+
+/gps/pos/centre 0 0 -8.5 cm
+/HPGe/det/setSourceBox CobaltBox Cobalt 0.1 0.1 0.1 0 0 -85
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -8
+/run/reinitializeGeometry true
+/run/initialize
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/ELTE_Public/ELTE_HPGe_Public/build/Efficiency_Test/Co/ Cobalt_8
+/run/beamOn 2500000
