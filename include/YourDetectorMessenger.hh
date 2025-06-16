@@ -30,8 +30,8 @@ private:
     G4UIcommand*  fElementCMD;
     G4UIcommand*  fMaterialCMD;
     G4UIcommand*  fBoxCmd;
-    G4UIcommand*  fTubCmd
-    ;
+    G4UIcommand*  fTubCmd;
+    G4UIcommand*  fSampleHolderCmd;
 
 };
 

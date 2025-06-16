@@ -46,6 +46,9 @@ public:
     void SetSourceBox(const G4String& name,const G4String& matName, const G4ThreeVector& size, 
                 const G4ThreeVector& placement);
     void CreateSampleHolder();
+    void SetSampleHolderPosition(G4ThreeVector placement){
+        fSampleHolderPlacement=placement;
+    };
 private:
     
     YourDetectorMessenger* fDetMessenger;
@@ -68,6 +71,7 @@ private:
     G4ThreeVector fPlacement;
     G4String fGeometryName;
     G4String fMaterialName;
+    G4ThreeVector fSampleHolderPlacement;
     virtual void ConstructSDandField();
 };
 #endif

@@ -21,7 +21,8 @@ YourDetectorMessenger::YourDetectorMessenger(YourDetectorConstruction* det)
     fElementCMD(nullptr),
     fMaterialCMD(nullptr),
     fBoxCmd(nullptr),
-    fTubCmd(nullptr){
+    fTubCmd(nullptr),
+    fSampleHolderCmd(nullptr){
 
     fDirCMD = new G4UIdirectory("/HPGe/det/");
     fDirCMD->SetGuidance("UI commands specific to the detector construction of this application"); 
@@ -118,6 +119,16 @@ YourDetectorMessenger::YourDetectorMessenger(YourDetectorConstruction* det)
     param = new G4UIparameter("posZ", 'd', false);
     fTubCmd->SetParameter(param);
 
+
+    fSampleHolderCmd = new G4UIcommand("/HPGe/det/setSampleHolderPosition", this);
+    param = new G4UIparameter("posX", 'd', false);
+    fSampleHolderCmd->SetParameter(param);
+    param = new G4UIparameter("posY", 'd', false);
+    fSampleHolderCmd->SetParameter(param);
+    param = new G4UIparameter("posZ", 'd', false);
+    fSampleHolderCmd->SetParameter(param);
+    fSampleHolderCmd->AvailableForStates(G4State_PreInit,G4State_Idle);
+    fSampleHolderCmd->SetToBeBroadcasted(false); 
 }
 
 YourDetectorMessenger::~YourDetectorMessenger() {
@@ -127,6 +138,7 @@ YourDetectorMessenger::~YourDetectorMessenger() {
     delete fBoxCmd;
     delete fTubCmd;
     delete fDirCMD;
+    delete fSampleHolderCmd;
   }
 
 void YourDetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
@@ -277,6 +289,16 @@ void YourDetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
             radius, 
             height, 
             G4ThreeVector(posX, posY, posZ)
+        );
+    }
+    if (command == fSampleHolderCmd) {
+        std::istringstream iss(newValue);
+        G4double  posX, posY, posZ;
+        
+        iss  >> posX >> posY >> posZ;
+        
+        fYourDetector->SetSampleHolderPosition(
+            G4ThreeVector(posX*CLHEP::cm, posY*CLHEP::cm, posZ*CLHEP::cm)
         );
     }
     
