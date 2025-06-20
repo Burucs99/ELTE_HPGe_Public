@@ -298,7 +298,7 @@ void YourDetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
         iss  >> posX >> posY >> posZ;
         
         fYourDetector->SetSampleHolderPosition(
-            G4ThreeVector(posX*CLHEP::cm, posY*CLHEP::cm, posZ*CLHEP::cm)
+            G4ThreeVector(posX*CLHEP::cm, posY*CLHEP::cm, posZ*CLHEP::cm+5.25*CLHEP::cm)
         );
     }
     

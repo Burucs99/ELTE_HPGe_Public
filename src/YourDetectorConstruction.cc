@@ -11,6 +11,7 @@
 #include <G4EventManager.hh>
 #include <G4Isotope.hh>
 #include <G4Material.hh>
+#include <G4RotationMatrix.hh>
 #include <G4String.hh>
 #include <G4ThreeVector.hh>
 #include <G4Tubs.hh>
@@ -26,6 +27,10 @@
 #include "G4SubtractionSolid.hh"
 #include "G4UserLimits.hh"
 #include "G4Cons.hh"
+#include "/home/aburucs/CadMesh/CADMesh/CADMesh.hh"
+
+
+
 YourDetectorConstruction::YourDetectorConstruction()
 :   G4VUserDetectorConstruction()
      {
@@ -57,6 +62,35 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     // Testing 
 /*     CreateKaliumContainer();
  */    
+       
+/*     auto logicalVolume = new G4LogicalVolume(solid, yourMaterial, "logicalName");
+ */ 
+
+    G4double z, a, density;
+    G4String name, symbol;
+    G4int ncomponents, natoms;
+    //(C3H4O2)
+    a = 1.01*g/mole;
+    G4Element* elH  = new G4Element(name="Hydrogen",symbol="H" , z= 1., a);
+
+    a = 16.00*g/mole;
+    G4Element* elO  = new G4Element(name="Oxygen"  ,symbol="O" , z= 8., a);
+    a = 12.011*g/mole;
+    G4Element* elC  = new G4Element(name="Carbon",symbol="C" , z= 6., a);
+
+    density = 0.6579*g/cm3;
+    G4Material*  PLA = new G4Material(name="Polylactic acid",density,ncomponents=3);
+    PLA->AddElement(elH, natoms=4);
+    PLA->AddElement(elO, natoms=2);
+    PLA->AddElement(elC,natoms=3);
+    auto bunny_mesh = CADMesh::TessellatedMesh::FromSTL("../geom/plate_ascii.stl");
+
+    auto bunny_logical = new G4LogicalVolume( bunny_mesh->GetSolid() 
+                                                 , PLA
+                                                 , "logical"
+                                                 , 0, 0, 0
+        );
+
     CreateSampleHolder();
     if (fCreateBox || fCreateTub) {
         if (fCustomMats.find(fMaterialName) == fCustomMats.end()) {
@@ -216,6 +250,18 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                                                     calorimeterLogicalVolume,
                                                     false, 0, fCheckOverlaps);
 
+    G4double endCapTopZ = calorimeterShift - endCapShift - endCapLength / 2;
+    G4double bunnyHalfHeight = 0*mm; // depends on your bunny volume
+    G4ThreeVector bunnyPosition(0, 0, endCapTopZ + bunnyHalfHeight);
+    auto bunnyRotation = new G4RotationMatrix();
+    bunnyRotation->rotateX(180.0 * deg);
+    new G4PVPlacement(bunnyRotation,
+                  bunnyPosition,
+                  bunny_logical,
+                  "physicalBunny",
+                  worldLogical,
+                  false, 0, fCheckOverlaps);
+
     G4double maxStep = 0.0001*mm;
 
     G4UserLimits* stepLimits = new G4UserLimits(maxStep);
@@ -365,6 +411,8 @@ void YourDetectorConstruction::SetSourceTube(
 }
 
 void YourDetectorConstruction::CreateSampleHolder(){
+    G4bool fCheckOverlaps = true;
+
     G4double z, a, density;
     G4String name, symbol;
     G4int ncomponents, natoms;
@@ -377,17 +425,27 @@ void YourDetectorConstruction::CreateSampleHolder(){
     a = 12.011*g/mole;
     G4Element* elC  = new G4Element(name="Carbon",symbol="C" , z= 6., a);
 
-    density = 1,210*g/cm3;
+    density = 0.7145*g/cm3;
     G4Material*  PLA = new G4Material(name="Polylactic acid",density,ncomponents=3);
     PLA->AddElement(elH, natoms=4);
     PLA->AddElement(elO, natoms=2);
     PLA->AddElement(elC,natoms=3);
-    G4double Height = 0.5*cm;
-    G4double Radius = 5*cm;
-    G4ThreeVector Placement = fSampleHolderPlacement;
-    G4Tubs* solidSource = new G4Tubs("SampleHolder",0,Radius/2,Height/2,0,360*deg);
-    G4LogicalVolume* logicSource = new G4LogicalVolume(solidSource, PLA, "SampleHolderLogic");
-    G4PVPlacement* physSource = new G4PVPlacement(0, Placement, logicSource, "SampleHolderPhys", fworldLogical, false, 0);
-    logicSource->SetVisAttributes(new G4VisAttributes(G4Color(1.0, 0.0, 0.0,0.9)));
+    auto bunny_mesh_2 = CADMesh::TessellatedMesh::FromSTL("../geom/detector_stand_ascii.stl");
 
+    auto bunny_logical_2 = new G4LogicalVolume( bunny_mesh_2->GetSolid() 
+                                                 , PLA
+                                                 , "logical_2"
+                                                 , 0, 0, 0
+        );
+ 
+    G4double endCapTopZ = 0.0*mm;
+    G4double bunnyHalfHeight = 0*mm;
+    auto bunnyRotation = new G4RotationMatrix();
+    bunnyRotation->rotateX(180.0 * deg);
+    new G4PVPlacement(bunnyRotation,
+                  fSampleHolderPlacement,
+                  bunny_logical_2,
+                  "physicalBunny_2",
+                  fworldLogical,
+                  false, 0, fCheckOverlaps);
 }
