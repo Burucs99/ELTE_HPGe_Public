@@ -1,0 +1,2 @@
+Angular Correlation W(0) via Simulation 
+# beta_index  efficiency_1.17  efficiency_1.33

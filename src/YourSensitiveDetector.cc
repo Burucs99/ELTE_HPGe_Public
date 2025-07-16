@@ -19,7 +19,7 @@
 
 
 YourSensitiveDetector::YourSensitiveDetector(G4String name) 
-:G4VSensitiveDetector(name),fHitsCollection(nullptr),fHCID(-1)
+:G4VSensitiveDetector(name),fHitsCollection(nullptr),fHCID(-1),fTotalEnergy(-1)
 {
     collectionName.insert("MyHitsCollection");
 
@@ -45,7 +45,7 @@ void YourSensitiveDetector::Initialize(G4HCofThisEvent * hce)
 void YourSensitiveDetector::EndOfEvent(G4HCofThisEvent*)
 {
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-    analysisManager->SetNtupleMerging(true);
+    /* analysisManager->SetNtupleMerging(true);
     const G4Event* event = G4RunManager::GetRunManager()->GetCurrentEvent();
     G4int eventID = event->GetEventID();
     const G4Run* run = G4RunManager::GetRunManager()->GetCurrentRun();
@@ -57,19 +57,20 @@ void YourSensitiveDetector::EndOfEvent(G4HCofThisEvent*)
     std::vector<G4ThreeVector> positions;
     std::vector<G4double> energies;
     positions.reserve(numberOfHits);
-    energies.reserve(numberOfHits);
-    for(size_t i = 0; i < numberOfHits; i++) {
+    energies.reserve(numberOfHits); */
+    /* for(size_t i = 0; i < numberOfHits; i++) {
         YourHit* hit = fHitsCollection->GetHit(i);
         hit->SetEventID(eventID);
         hit->SetRunID(runID);
         fTotalEnergy += hit->GetEnergy();
         positions.push_back(hit->GetPosition());
         energies.push_back(hit->GetEnergy());
+    } */
+    if(fTotalEnergy!=0){
+        analysisManager->FillH1(0, fTotalEnergy);
     }
     
-    analysisManager->FillH1(0, fTotalEnergy);
-    
-    for(size_t i = 0; i < positions.size(); i++) {
+    /* for(size_t i = 0; i < positions.size(); i++) {
         analysisManager->FillNtupleDColumn(0, 0, positions[i].x());
         analysisManager->FillNtupleDColumn(0, 1, positions[i].y());
         analysisManager->FillNtupleDColumn(0, 2, positions[i].z());
@@ -77,7 +78,8 @@ void YourSensitiveDetector::EndOfEvent(G4HCofThisEvent*)
         analysisManager->FillNtupleIColumn(0, 4, eventID);
         analysisManager->FillNtupleIColumn(0, 5, runID);
         analysisManager->AddNtupleRow(0);  
-    }
+    } */
+    fTotalEnergy = 0;
 }
 
 
@@ -86,19 +88,19 @@ G4bool YourSensitiveDetector::ProcessHits(G4Step* aStep,G4TouchableHistory* )
 
     
 
-    G4StepPoint* preStepPoint = aStep->GetPreStepPoint();
+    //G4StepPoint* preStepPoint = aStep->GetPreStepPoint();
 
     
-    const G4ThreeVector globalPos = aStep->GetPreStepPoint()->GetPosition();
-    const G4VTouchable* touchable = aStep->GetPreStepPoint()->GetTouchable();
-    G4ThreeVector localPos = touchable->GetHistory()->GetTopTransform().TransformPoint(globalPos);
+    //const G4ThreeVector globalPos = aStep->GetPreStepPoint()->GetPosition();
+    //const G4VTouchable* touchable = aStep->GetPreStepPoint()->GetTouchable();
+   // G4ThreeVector localPos = touchable->GetHistory()->GetTopTransform().TransformPoint(globalPos);
 
-    G4double EnergyDeposit = aStep->GetTotalEnergyDeposit();
+    fTotalEnergy+= aStep->GetTotalEnergyDeposit();
     
-    YourHit* newHit = new YourHit();
-    newHit->SetEnergy(EnergyDeposit);
-    newHit->SetPosition(localPos);
-    fHitsCollection->insert(newHit);
+    //YourHit* newHit = new YourHit();
+    //newHit->SetEnergy(EnergyDeposit);
+    //newHit->SetPosition(localPos);
+    //fHitsCollection->insert(newHit);
 
     return true;
 }

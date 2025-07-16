@@ -1,0 +1,33 @@
+/run/numberOfThreads 6
+## 0.5 cm is the top of dead layer
+/HPGe/run/EdepHist Edep Deposited-Energy 3000 0 1.2
+/run/initialize
+
+/gps/particle gamma
+/gps/pos/type Point
+/gps/direction 0 0 1
+
+/gps/energy 1.1732 MeV
+/gps/pos/centre 0 0 -0.5 cm
+
+/gps/direction 0 0 1
+/random/setSeeds 50000 50001
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/1.17/ Beta_0
+/run/beamOn 100
+
+/gps/direction 0 0 1
+/gps/energy 1.3325 MeV 
+/random/setSeeds 50002 50003
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/1.33/ Beta_0
+/run/beamOn 100
+
+/gps/direction 0 0 1  #calculate from distance the next $\beta bin and set direction to reflect that
+/random/setSeeds 50000 50001
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance1.0/1.17/ Beta_0
+/run/beamOn 100
+
+/gps/direction 0 0 1
+/gps/energy 1.3325 MeV 
+/random/setSeeds 50002 50003
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance1.0/1.33/ Beta_0
+/run/beamOn 100

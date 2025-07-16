@@ -83,15 +83,15 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     PLA->AddElement(elH, natoms=4);
     PLA->AddElement(elO, natoms=2);
     PLA->AddElement(elC,natoms=3);
-    auto bunny_mesh = CADMesh::TessellatedMesh::FromSTL("../geom/plate_ascii.stl");
+    /* auto bunny_mesh = CADMesh::TessellatedMesh::FromSTL("../geom/plate_ascii.stl");
 
     auto bunny_logical = new G4LogicalVolume( bunny_mesh->GetSolid() 
                                                  , PLA
                                                  , "logical"
                                                  , 0, 0, 0
-        );
+        ); */
 
-    CreateSampleHolder();
+    //CreateSampleHolder();
     if (fCreateBox || fCreateTub) {
         if (fCustomMats.find(fMaterialName) == fCustomMats.end()) {
             G4cerr << "ERROR: Material '" << fMaterialName 
@@ -251,7 +251,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                                                     false, 0, fCheckOverlaps);
 
     G4double endCapTopZ = calorimeterShift - endCapShift - endCapLength / 2;
-    G4double bunnyHalfHeight = 0*mm; // depends on your bunny volume
+    /* G4double bunnyHalfHeight = 0*mm; // depends on your bunny volume
     G4ThreeVector bunnyPosition(0, 0, endCapTopZ + bunnyHalfHeight);
     auto bunnyRotation = new G4RotationMatrix();
     bunnyRotation->rotateX(180.0 * deg);
@@ -260,7 +260,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                   bunny_logical,
                   "physicalBunny",
                   worldLogical,
-                  false, 0, fCheckOverlaps);
+                  false, 0, fCheckOverlaps); */
 
     G4double maxStep = 0.0001*mm;
 
@@ -345,12 +345,12 @@ void YourDetectorConstruction::CreateMaterial(
 void YourDetectorConstruction::BoxSourceGeometryCreator(const G4String& boxName, G4ThreeVector& boxSize,
     G4String materialName,const G4String& logicName,
     G4ThreeVector& physPlacement,const G4String& physName){
-    
+    G4bool fCheckOverlaps = true;
     G4Material* material = fCustomMats[materialName];
 
     G4Box* solidSource = new G4Box(boxName, (boxSize.x()/ 2)*cm,  boxSize.y()*cm / 2,  boxSize.z()*cm / 2);
     G4LogicalVolume* logicSource = new G4LogicalVolume(solidSource, material, logicName);
-    G4PVPlacement* physSource = new G4PVPlacement(0, physPlacement, logicSource, physName, fworldLogical, false, 0);
+    G4PVPlacement* physSource = new G4PVPlacement(0, physPlacement, logicSource, physName, fworldLogical, false, 0,fCheckOverlaps);
 } 
 void YourDetectorConstruction::CylinderSourceGeometryCreator(const G4String& CylinderName, 
     G4double& CylinderRadius, G4double& CylinderHeight,
@@ -359,19 +359,19 @@ void YourDetectorConstruction::CylinderSourceGeometryCreator(const G4String& Cyl
     G4Material* material = fCustomMats[materialName];
     G4Tubs* solidSource = new G4Tubs(CylinderName,0,(CylinderRadius*cm/2),CylinderHeight*cm/2,0,360*deg);
     G4LogicalVolume* logicSource = new G4LogicalVolume(solidSource, material, logicName);
-    G4PVPlacement* physSource = new G4PVPlacement(0, physPlacement, logicSource, physName, fworldLogical, false, 0);
+    G4PVPlacement* physSource = new G4PVPlacement(0, physPlacement, logicSource, physName, fworldLogical, false, 0,true);
 } 
 
 
 
 void YourDetectorConstruction::ConstructSDandField()
 {   
-    if (!(G4SDManager::GetSDMpointer()->FindSensitiveDetector("Sensitive-Detector"))){
+    /* if (!(G4SDManager::GetSDMpointer()->FindSensitiveDetector("Sensitive-Detector"))){
         YourSensitiveDetector * sensDet = new YourSensitiveDetector("Sensitive-Detector");
         G4SDManager::GetSDMpointer()->AddNewDetector(sensDet);
         ftargetLogical->SetSensitiveDetector(sensDet);
     }
-    else{ G4cout<<"SensDet has already been created"<<G4endl;}
+    else{ G4cout<<"SensDet has already been created"<<G4endl;} */
 
     YourSensitiveDetector * sensDet = new YourSensitiveDetector("Sensitive-Detector");
     G4SDManager::GetSDMpointer()->AddNewDetector(sensDet);
@@ -448,4 +448,6 @@ void YourDetectorConstruction::CreateSampleHolder(){
                   "physicalBunny_2",
                   fworldLogical,
                   false, 0, fCheckOverlaps);
+    bunny_logical_2->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 0.5, 0.0,1.0)));
+
 }
