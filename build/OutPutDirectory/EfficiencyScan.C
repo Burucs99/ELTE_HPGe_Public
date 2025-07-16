@@ -13,7 +13,6 @@
 void EfficiencyScan(int eventsPerRun = 100, const char* basePath = "./", double binWindow = 1.0) {
     std::vector<TString> distances;
 
-    // Get all subdirectories that start with "distance"
     TSystemDirectory baseDir("base", basePath);
     TList* files = baseDir.GetListOfFiles();
     if (!files) return;
@@ -28,7 +27,6 @@ void EfficiencyScan(int eventsPerRun = 100, const char* basePath = "./", double 
 
     std::sort(distances.begin(), distances.end());
 
-    // Target energies in MeV
     std::vector<std::pair<TString, double>> energies = {
         {"1.17", 1.1732},
         {"1.33", 1.3325}
@@ -41,7 +39,6 @@ void EfficiencyScan(int eventsPerRun = 100, const char* basePath = "./", double 
         std::cout << "\n=== Processing " << dist << " ===\n";
         
 
-        // Extract distance in mm
         TString distStr = dist;
         distStr.ReplaceAll("distance", "");
         double d_cm = distStr.Atof();
