@@ -10,7 +10,7 @@
 #include <algorithm>
 #include <cmath>
 
-void EfficiencyScan(int eventsPerRun = 100, const char* basePath = "./", double binWindow = 1.0) {
+void EfficiencyScan(int eventsPerRun = 150000, const char* basePath = "./", double binWindow = 1.0) {
     std::vector<TString> distances;
 
     TSystemDirectory baseDir("base", basePath);
@@ -34,7 +34,7 @@ void EfficiencyScan(int eventsPerRun = 100, const char* basePath = "./", double 
     double radius_mm = 24.0;
     double A2 = 0.102;
     double A4 = 0.008;
-   
+    
     for (const auto& dist : distances) {
         std::cout << "\n=== Processing " << dist << " ===\n";
         
@@ -108,8 +108,11 @@ void EfficiencyScan(int eventsPerRun = 100, const char* basePath = "./", double 
                     }
                 }
 
-                double efficiency = sum / eventsPerRun;
-                double error = std::sqrt(efficiency * (1 - efficiency) / eventsPerRun);
+                long double efficiency = sum / eventsPerRun;
+                if (efficiency < 0) efficiency = 0;
+                if (efficiency > 1) efficiency = 1;
+
+                long double error = std::sqrt(efficiency * (1 - efficiency) / eventsPerRun);
 
                 if (label == "1.17"){ 
                     Efficiencies_117[beta_idx] = efficiency;
@@ -189,11 +192,27 @@ void EfficiencyScan(int eventsPerRun = 100, const char* basePath = "./", double 
 
         std::cout<<"Finished the analysis"<<std::endl;
         std::cout<<"                           \n";
-        std::cout<<"Final result : W(0) = "<<W0<<" ± " << W0_error << std::endl;
-
+        std::cout<<"Final result : W(0) = "<< std::setprecision(8)<<W0<<" ± " << W0_error << std::endl;
+        
 
         outTxt.close();
+        TCanvas* c1 = new TCanvas("c1", "Efficiency vs Beta", 800, 600);
+        TGraphErrors* gEff117 = new TGraphErrors(200);
+        gEff117->SetTitle(Form("Efficiency vs #beta for %s;#beta (rad);Efficiency", dist.Data()));
+        gEff117->SetMarkerStyle(20);
+        gEff117->SetMarkerSize(0.7);
+        gEff117->SetLineColor(kBlue);
+        gEff117->SetMarkerColor(kBlue);
 
+        for (int i = 0; i < 200; ++i) {
+            gEff117->SetPoint(i, Betas[i], Efficiencies_117[i]);
+            gEff117->SetPointError(i, 0, Errors_117[i]);
+        }
+
+        gEff117->Draw("AP");
+        c1->SaveAs(Form("Efficiency_vs_Beta_%s_117.png", dist.Data()));
+
+       
     }
     
 
