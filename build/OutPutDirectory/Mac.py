@@ -5,7 +5,7 @@ def generate_angle_macro(
     distance_cm: float,
     output_path: str,
     num_bins: int = 200,
-    beamOn_count: int = 10000,
+    beamOn_count: int = 150000,
     base_seed: int = 21340
 ):
     detector_front_z_cm = 0.5
@@ -49,13 +49,13 @@ def generate_angle_macro(
 
     return "\n".join(macro_lines)
 
-distance_cm = 0.5
-output_path = "/home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_0.5"
-num_bins = 200
-beamOn_count = 100
-base_seed = 50000
+distance_cm = 10.5
+output_path = "/home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5"
+num_bins = 100
+beamOn_count = 150000
+base_seed = 76543
 
 macro_text = generate_angle_macro(distance_cm, output_path, num_bins, beamOn_count, base_seed)
 
-Path("source_distance0.5.mac").write_text(macro_text)
-print("✅ Macro file 'source_distance0.5.mac' generated.")
+Path("source_distance10.5.mac").write_text(macro_text)
+print("✅ Macro file 'source_distance10.5.mac' generated.")

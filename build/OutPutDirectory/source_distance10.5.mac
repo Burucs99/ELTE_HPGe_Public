@@ -1,0 +1,1207 @@
+/run/numberOfThreads 6
+/HPGe/run/EdepHist Edep Deposited-Energy 3000 0 1.4
+/run/initialize
+
+/gps/particle gamma
+/gps/pos/type Point
+/gps/pos/centre 0 0 -10.0000 cm
+
+/gps/direction 0.000000000000 0 1.000000000000
+/gps/energy 1.173200 MeV
+/random/setSeeds 76543 76544
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_0
+/run/beamOn 150000
+
+/gps/direction 0.000000000000 0 1.000000000000
+/gps/energy 1.332500 MeV
+/random/setSeeds 76544 76545
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_0
+/run/beamOn 150000
+
+/gps/direction 0.002269807833 0 0.999997423983
+/gps/energy 1.173200 MeV
+/random/setSeeds 76545 76546
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_1
+/run/beamOn 150000
+
+/gps/direction 0.002269807833 0 0.999997423983
+/gps/energy 1.332500 MeV
+/random/setSeeds 76546 76547
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_1
+/run/beamOn 150000
+
+/gps/direction 0.004539603972 0 0.999989695945
+/gps/energy 1.173200 MeV
+/random/setSeeds 76547 76548
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_2
+/run/beamOn 150000
+
+/gps/direction 0.004539603972 0 0.999989695945
+/gps/energy 1.332500 MeV
+/random/setSeeds 76548 76549
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_2
+/run/beamOn 150000
+
+/gps/direction 0.006809376722 0 0.999976815926
+/gps/energy 1.173200 MeV
+/random/setSeeds 76549 76550
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_3
+/run/beamOn 150000
+
+/gps/direction 0.006809376722 0 0.999976815926
+/gps/energy 1.332500 MeV
+/random/setSeeds 76550 76551
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_3
+/run/beamOn 150000
+
+/gps/direction 0.009079114391 0 0.999958783992
+/gps/energy 1.173200 MeV
+/random/setSeeds 76551 76552
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_4
+/run/beamOn 150000
+
+/gps/direction 0.009079114391 0 0.999958783992
+/gps/energy 1.332500 MeV
+/random/setSeeds 76552 76553
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_4
+/run/beamOn 150000
+
+/gps/direction 0.011348805283 0 0.999935600236
+/gps/energy 1.173200 MeV
+/random/setSeeds 76553 76554
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_5
+/run/beamOn 150000
+
+/gps/direction 0.011348805283 0 0.999935600236
+/gps/energy 1.332500 MeV
+/random/setSeeds 76554 76555
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_5
+/run/beamOn 150000
+
+/gps/direction 0.013618437707 0 0.999907264777
+/gps/energy 1.173200 MeV
+/random/setSeeds 76555 76556
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_6
+/run/beamOn 150000
+
+/gps/direction 0.013618437707 0 0.999907264777
+/gps/energy 1.332500 MeV
+/random/setSeeds 76556 76557
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_6
+/run/beamOn 150000
+
+/gps/direction 0.015887999967 0 0.999873777762
+/gps/energy 1.173200 MeV
+/random/setSeeds 76557 76558
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_7
+/run/beamOn 150000
+
+/gps/direction 0.015887999967 0 0.999873777762
+/gps/energy 1.332500 MeV
+/random/setSeeds 76558 76559
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_7
+/run/beamOn 150000
+
+/gps/direction 0.018157480372 0 0.999835139364
+/gps/energy 1.173200 MeV
+/random/setSeeds 76559 76560
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_8
+/run/beamOn 150000
+
+/gps/direction 0.018157480372 0 0.999835139364
+/gps/energy 1.332500 MeV
+/random/setSeeds 76560 76561
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_8
+/run/beamOn 150000
+
+/gps/direction 0.020426867229 0 0.999791349780
+/gps/energy 1.173200 MeV
+/random/setSeeds 76561 76562
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_9
+/run/beamOn 150000
+
+/gps/direction 0.020426867229 0 0.999791349780
+/gps/energy 1.332500 MeV
+/random/setSeeds 76562 76563
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_9
+/run/beamOn 150000
+
+/gps/direction 0.022696148846 0 0.999742409237
+/gps/energy 1.173200 MeV
+/random/setSeeds 76563 76564
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_10
+/run/beamOn 150000
+
+/gps/direction 0.022696148846 0 0.999742409237
+/gps/energy 1.332500 MeV
+/random/setSeeds 76564 76565
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_10
+/run/beamOn 150000
+
+/gps/direction 0.024965313532 0 0.999688317987
+/gps/energy 1.173200 MeV
+/random/setSeeds 76565 76566
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_11
+/run/beamOn 150000
+
+/gps/direction 0.024965313532 0 0.999688317987
+/gps/energy 1.332500 MeV
+/random/setSeeds 76566 76567
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_11
+/run/beamOn 150000
+
+/gps/direction 0.027234349595 0 0.999629076309
+/gps/energy 1.173200 MeV
+/random/setSeeds 76567 76568
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_12
+/run/beamOn 150000
+
+/gps/direction 0.027234349595 0 0.999629076309
+/gps/energy 1.332500 MeV
+/random/setSeeds 76568 76569
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_12
+/run/beamOn 150000
+
+/gps/direction 0.029503245347 0 0.999564684507
+/gps/energy 1.173200 MeV
+/random/setSeeds 76569 76570
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_13
+/run/beamOn 150000
+
+/gps/direction 0.029503245347 0 0.999564684507
+/gps/energy 1.332500 MeV
+/random/setSeeds 76570 76571
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_13
+/run/beamOn 150000
+
+/gps/direction 0.031771989096 0 0.999495142914
+/gps/energy 1.173200 MeV
+/random/setSeeds 76571 76572
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_14
+/run/beamOn 150000
+
+/gps/direction 0.031771989096 0 0.999495142914
+/gps/energy 1.332500 MeV
+/random/setSeeds 76572 76573
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_14
+/run/beamOn 150000
+
+/gps/direction 0.034040569155 0 0.999420451888
+/gps/energy 1.173200 MeV
+/random/setSeeds 76573 76574
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_15
+/run/beamOn 150000
+
+/gps/direction 0.034040569155 0 0.999420451888
+/gps/energy 1.332500 MeV
+/random/setSeeds 76574 76575
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_15
+/run/beamOn 150000
+
+/gps/direction 0.036308973836 0 0.999340611813
+/gps/energy 1.173200 MeV
+/random/setSeeds 76575 76576
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_16
+/run/beamOn 150000
+
+/gps/direction 0.036308973836 0 0.999340611813
+/gps/energy 1.332500 MeV
+/random/setSeeds 76576 76577
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_16
+/run/beamOn 150000
+
+/gps/direction 0.038577191452 0 0.999255623101
+/gps/energy 1.173200 MeV
+/random/setSeeds 76577 76578
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_17
+/run/beamOn 150000
+
+/gps/direction 0.038577191452 0 0.999255623101
+/gps/energy 1.332500 MeV
+/random/setSeeds 76578 76579
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_17
+/run/beamOn 150000
+
+/gps/direction 0.040845210317 0 0.999165486190
+/gps/energy 1.173200 MeV
+/random/setSeeds 76579 76580
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_18
+/run/beamOn 150000
+
+/gps/direction 0.040845210317 0 0.999165486190
+/gps/energy 1.332500 MeV
+/random/setSeeds 76580 76581
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_18
+/run/beamOn 150000
+
+/gps/direction 0.043113018746 0 0.999070201545
+/gps/energy 1.173200 MeV
+/random/setSeeds 76581 76582
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_19
+/run/beamOn 150000
+
+/gps/direction 0.043113018746 0 0.999070201545
+/gps/energy 1.332500 MeV
+/random/setSeeds 76582 76583
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_19
+/run/beamOn 150000
+
+/gps/direction 0.045380605056 0 0.998969769655
+/gps/energy 1.173200 MeV
+/random/setSeeds 76583 76584
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_20
+/run/beamOn 150000
+
+/gps/direction 0.045380605056 0 0.998969769655
+/gps/energy 1.332500 MeV
+/random/setSeeds 76584 76585
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_20
+/run/beamOn 150000
+
+/gps/direction 0.047647957562 0 0.998864191039
+/gps/energy 1.173200 MeV
+/random/setSeeds 76585 76586
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_21
+/run/beamOn 150000
+
+/gps/direction 0.047647957562 0 0.998864191039
+/gps/energy 1.332500 MeV
+/random/setSeeds 76586 76587
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_21
+/run/beamOn 150000
+
+/gps/direction 0.049915064585 0 0.998753466241
+/gps/energy 1.173200 MeV
+/random/setSeeds 76587 76588
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_22
+/run/beamOn 150000
+
+/gps/direction 0.049915064585 0 0.998753466241
+/gps/energy 1.332500 MeV
+/random/setSeeds 76588 76589
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_22
+/run/beamOn 150000
+
+/gps/direction 0.052181914444 0 0.998637595830
+/gps/energy 1.173200 MeV
+/random/setSeeds 76589 76590
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_23
+/run/beamOn 150000
+
+/gps/direction 0.052181914444 0 0.998637595830
+/gps/energy 1.332500 MeV
+/random/setSeeds 76590 76591
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_23
+/run/beamOn 150000
+
+/gps/direction 0.054448495460 0 0.998516580404
+/gps/energy 1.173200 MeV
+/random/setSeeds 76591 76592
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_24
+/run/beamOn 150000
+
+/gps/direction 0.054448495460 0 0.998516580404
+/gps/energy 1.332500 MeV
+/random/setSeeds 76592 76593
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_24
+/run/beamOn 150000
+
+/gps/direction 0.056714795955 0 0.998390420587
+/gps/energy 1.173200 MeV
+/random/setSeeds 76593 76594
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_25
+/run/beamOn 150000
+
+/gps/direction 0.056714795955 0 0.998390420587
+/gps/energy 1.332500 MeV
+/random/setSeeds 76594 76595
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_25
+/run/beamOn 150000
+
+/gps/direction 0.058980804254 0 0.998259117028
+/gps/energy 1.173200 MeV
+/random/setSeeds 76595 76596
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_26
+/run/beamOn 150000
+
+/gps/direction 0.058980804254 0 0.998259117028
+/gps/energy 1.332500 MeV
+/random/setSeeds 76596 76597
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_26
+/run/beamOn 150000
+
+/gps/direction 0.061246508681 0 0.998122670404
+/gps/energy 1.173200 MeV
+/random/setSeeds 76597 76598
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_27
+/run/beamOn 150000
+
+/gps/direction 0.061246508681 0 0.998122670404
+/gps/energy 1.332500 MeV
+/random/setSeeds 76598 76599
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_27
+/run/beamOn 150000
+
+/gps/direction 0.063511897565 0 0.997981081418
+/gps/energy 1.173200 MeV
+/random/setSeeds 76599 76600
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_28
+/run/beamOn 150000
+
+/gps/direction 0.063511897565 0 0.997981081418
+/gps/energy 1.332500 MeV
+/random/setSeeds 76600 76601
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_28
+/run/beamOn 150000
+
+/gps/direction 0.065776959233 0 0.997834350799
+/gps/energy 1.173200 MeV
+/random/setSeeds 76601 76602
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_29
+/run/beamOn 150000
+
+/gps/direction 0.065776959233 0 0.997834350799
+/gps/energy 1.332500 MeV
+/random/setSeeds 76602 76603
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_29
+/run/beamOn 150000
+
+/gps/direction 0.068041682016 0 0.997682479303
+/gps/energy 1.173200 MeV
+/random/setSeeds 76603 76604
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_30
+/run/beamOn 150000
+
+/gps/direction 0.068041682016 0 0.997682479303
+/gps/energy 1.332500 MeV
+/random/setSeeds 76604 76605
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_30
+/run/beamOn 150000
+
+/gps/direction 0.070306054246 0 0.997525467713
+/gps/energy 1.173200 MeV
+/random/setSeeds 76605 76606
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_31
+/run/beamOn 150000
+
+/gps/direction 0.070306054246 0 0.997525467713
+/gps/energy 1.332500 MeV
+/random/setSeeds 76606 76607
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_31
+/run/beamOn 150000
+
+/gps/direction 0.072570064256 0 0.997363316838
+/gps/energy 1.173200 MeV
+/random/setSeeds 76607 76608
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_32
+/run/beamOn 150000
+
+/gps/direction 0.072570064256 0 0.997363316838
+/gps/energy 1.332500 MeV
+/random/setSeeds 76608 76609
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_32
+/run/beamOn 150000
+
+/gps/direction 0.074833700383 0 0.997196027513
+/gps/energy 1.173200 MeV
+/random/setSeeds 76609 76610
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_33
+/run/beamOn 150000
+
+/gps/direction 0.074833700383 0 0.997196027513
+/gps/energy 1.332500 MeV
+/random/setSeeds 76610 76611
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_33
+/run/beamOn 150000
+
+/gps/direction 0.077096950965 0 0.997023600599
+/gps/energy 1.173200 MeV
+/random/setSeeds 76611 76612
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_34
+/run/beamOn 150000
+
+/gps/direction 0.077096950965 0 0.997023600599
+/gps/energy 1.332500 MeV
+/random/setSeeds 76612 76613
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_34
+/run/beamOn 150000
+
+/gps/direction 0.079359804340 0 0.996846036986
+/gps/energy 1.173200 MeV
+/random/setSeeds 76613 76614
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_35
+/run/beamOn 150000
+
+/gps/direction 0.079359804340 0 0.996846036986
+/gps/energy 1.332500 MeV
+/random/setSeeds 76614 76615
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_35
+/run/beamOn 150000
+
+/gps/direction 0.081622248851 0 0.996663337588
+/gps/energy 1.173200 MeV
+/random/setSeeds 76615 76616
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_36
+/run/beamOn 150000
+
+/gps/direction 0.081622248851 0 0.996663337588
+/gps/energy 1.332500 MeV
+/random/setSeeds 76616 76617
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_36
+/run/beamOn 150000
+
+/gps/direction 0.083884272841 0 0.996475503347
+/gps/energy 1.173200 MeV
+/random/setSeeds 76617 76618
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_37
+/run/beamOn 150000
+
+/gps/direction 0.083884272841 0 0.996475503347
+/gps/energy 1.332500 MeV
+/random/setSeeds 76618 76619
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_37
+/run/beamOn 150000
+
+/gps/direction 0.086145864656 0 0.996282535229
+/gps/energy 1.173200 MeV
+/random/setSeeds 76619 76620
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_38
+/run/beamOn 150000
+
+/gps/direction 0.086145864656 0 0.996282535229
+/gps/energy 1.332500 MeV
+/random/setSeeds 76620 76621
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_38
+/run/beamOn 150000
+
+/gps/direction 0.088407012645 0 0.996084434230
+/gps/energy 1.173200 MeV
+/random/setSeeds 76621 76622
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_39
+/run/beamOn 150000
+
+/gps/direction 0.088407012645 0 0.996084434230
+/gps/energy 1.332500 MeV
+/random/setSeeds 76622 76623
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_39
+/run/beamOn 150000
+
+/gps/direction 0.090667705158 0 0.995881201370
+/gps/energy 1.173200 MeV
+/random/setSeeds 76623 76624
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_40
+/run/beamOn 150000
+
+/gps/direction 0.090667705158 0 0.995881201370
+/gps/energy 1.332500 MeV
+/random/setSeeds 76624 76625
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_40
+/run/beamOn 150000
+
+/gps/direction 0.092927930548 0 0.995672837695
+/gps/energy 1.173200 MeV
+/random/setSeeds 76625 76626
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_41
+/run/beamOn 150000
+
+/gps/direction 0.092927930548 0 0.995672837695
+/gps/energy 1.332500 MeV
+/random/setSeeds 76626 76627
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_41
+/run/beamOn 150000
+
+/gps/direction 0.095187677170 0 0.995459344280
+/gps/energy 1.173200 MeV
+/random/setSeeds 76627 76628
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_42
+/run/beamOn 150000
+
+/gps/direction 0.095187677170 0 0.995459344280
+/gps/energy 1.332500 MeV
+/random/setSeeds 76628 76629
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_42
+/run/beamOn 150000
+
+/gps/direction 0.097446933382 0 0.995240722225
+/gps/energy 1.173200 MeV
+/random/setSeeds 76629 76630
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_43
+/run/beamOn 150000
+
+/gps/direction 0.097446933382 0 0.995240722225
+/gps/energy 1.332500 MeV
+/random/setSeeds 76630 76631
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_43
+/run/beamOn 150000
+
+/gps/direction 0.099705687544 0 0.995016972655
+/gps/energy 1.173200 MeV
+/random/setSeeds 76631 76632
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_44
+/run/beamOn 150000
+
+/gps/direction 0.099705687544 0 0.995016972655
+/gps/energy 1.332500 MeV
+/random/setSeeds 76632 76633
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_44
+/run/beamOn 150000
+
+/gps/direction 0.101963928019 0 0.994788096724
+/gps/energy 1.173200 MeV
+/random/setSeeds 76633 76634
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_45
+/run/beamOn 150000
+
+/gps/direction 0.101963928019 0 0.994788096724
+/gps/energy 1.332500 MeV
+/random/setSeeds 76634 76635
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_45
+/run/beamOn 150000
+
+/gps/direction 0.104221643173 0 0.994554095610
+/gps/energy 1.173200 MeV
+/random/setSeeds 76635 76636
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_46
+/run/beamOn 150000
+
+/gps/direction 0.104221643173 0 0.994554095610
+/gps/energy 1.332500 MeV
+/random/setSeeds 76636 76637
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_46
+/run/beamOn 150000
+
+/gps/direction 0.106478821372 0 0.994314970519
+/gps/energy 1.173200 MeV
+/random/setSeeds 76637 76638
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_47
+/run/beamOn 150000
+
+/gps/direction 0.106478821372 0 0.994314970519
+/gps/energy 1.332500 MeV
+/random/setSeeds 76638 76639
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_47
+/run/beamOn 150000
+
+/gps/direction 0.108735450990 0 0.994070722684
+/gps/energy 1.173200 MeV
+/random/setSeeds 76639 76640
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_48
+/run/beamOn 150000
+
+/gps/direction 0.108735450990 0 0.994070722684
+/gps/energy 1.332500 MeV
+/random/setSeeds 76640 76641
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_48
+/run/beamOn 150000
+
+/gps/direction 0.110991520398 0 0.993821353363
+/gps/energy 1.173200 MeV
+/random/setSeeds 76641 76642
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_49
+/run/beamOn 150000
+
+/gps/direction 0.110991520398 0 0.993821353363
+/gps/energy 1.332500 MeV
+/random/setSeeds 76642 76643
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_49
+/run/beamOn 150000
+
+/gps/direction 0.113247017974 0 0.993566863840
+/gps/energy 1.173200 MeV
+/random/setSeeds 76643 76644
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_50
+/run/beamOn 150000
+
+/gps/direction 0.113247017974 0 0.993566863840
+/gps/energy 1.332500 MeV
+/random/setSeeds 76644 76645
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_50
+/run/beamOn 150000
+
+/gps/direction 0.115501932098 0 0.993307255426
+/gps/energy 1.173200 MeV
+/random/setSeeds 76645 76646
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_51
+/run/beamOn 150000
+
+/gps/direction 0.115501932098 0 0.993307255426
+/gps/energy 1.332500 MeV
+/random/setSeeds 76646 76647
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_51
+/run/beamOn 150000
+
+/gps/direction 0.117756251152 0 0.993042529459
+/gps/energy 1.173200 MeV
+/random/setSeeds 76647 76648
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_52
+/run/beamOn 150000
+
+/gps/direction 0.117756251152 0 0.993042529459
+/gps/energy 1.332500 MeV
+/random/setSeeds 76648 76649
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_52
+/run/beamOn 150000
+
+/gps/direction 0.120009963522 0 0.992772687303
+/gps/energy 1.173200 MeV
+/random/setSeeds 76649 76650
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_53
+/run/beamOn 150000
+
+/gps/direction 0.120009963522 0 0.992772687303
+/gps/energy 1.332500 MeV
+/random/setSeeds 76650 76651
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_53
+/run/beamOn 150000
+
+/gps/direction 0.122263057596 0 0.992497730349
+/gps/energy 1.173200 MeV
+/random/setSeeds 76651 76652
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_54
+/run/beamOn 150000
+
+/gps/direction 0.122263057596 0 0.992497730349
+/gps/energy 1.332500 MeV
+/random/setSeeds 76652 76653
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_54
+/run/beamOn 150000
+
+/gps/direction 0.124515521767 0 0.992217660012
+/gps/energy 1.173200 MeV
+/random/setSeeds 76653 76654
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_55
+/run/beamOn 150000
+
+/gps/direction 0.124515521767 0 0.992217660012
+/gps/energy 1.332500 MeV
+/random/setSeeds 76654 76655
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_55
+/run/beamOn 150000
+
+/gps/direction 0.126767344429 0 0.991932477735
+/gps/energy 1.173200 MeV
+/random/setSeeds 76655 76656
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_56
+/run/beamOn 150000
+
+/gps/direction 0.126767344429 0 0.991932477735
+/gps/energy 1.332500 MeV
+/random/setSeeds 76656 76657
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_56
+/run/beamOn 150000
+
+/gps/direction 0.129018513982 0 0.991642184989
+/gps/energy 1.173200 MeV
+/random/setSeeds 76657 76658
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_57
+/run/beamOn 150000
+
+/gps/direction 0.129018513982 0 0.991642184989
+/gps/energy 1.332500 MeV
+/random/setSeeds 76658 76659
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_57
+/run/beamOn 150000
+
+/gps/direction 0.131269018827 0 0.991346783268
+/gps/energy 1.173200 MeV
+/random/setSeeds 76659 76660
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_58
+/run/beamOn 150000
+
+/gps/direction 0.131269018827 0 0.991346783268
+/gps/energy 1.332500 MeV
+/random/setSeeds 76660 76661
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_58
+/run/beamOn 150000
+
+/gps/direction 0.133518847370 0 0.991046274095
+/gps/energy 1.173200 MeV
+/random/setSeeds 76661 76662
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_59
+/run/beamOn 150000
+
+/gps/direction 0.133518847370 0 0.991046274095
+/gps/energy 1.332500 MeV
+/random/setSeeds 76662 76663
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_59
+/run/beamOn 150000
+
+/gps/direction 0.135767988019 0 0.990740659017
+/gps/energy 1.173200 MeV
+/random/setSeeds 76663 76664
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_60
+/run/beamOn 150000
+
+/gps/direction 0.135767988019 0 0.990740659017
+/gps/energy 1.332500 MeV
+/random/setSeeds 76664 76665
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_60
+/run/beamOn 150000
+
+/gps/direction 0.138016429186 0 0.990429939609
+/gps/energy 1.173200 MeV
+/random/setSeeds 76665 76666
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_61
+/run/beamOn 150000
+
+/gps/direction 0.138016429186 0 0.990429939609
+/gps/energy 1.332500 MeV
+/random/setSeeds 76666 76667
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_61
+/run/beamOn 150000
+
+/gps/direction 0.140264159289 0 0.990114117473
+/gps/energy 1.173200 MeV
+/random/setSeeds 76667 76668
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_62
+/run/beamOn 150000
+
+/gps/direction 0.140264159289 0 0.990114117473
+/gps/energy 1.332500 MeV
+/random/setSeeds 76668 76669
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_62
+/run/beamOn 150000
+
+/gps/direction 0.142511166745 0 0.989793194235
+/gps/energy 1.173200 MeV
+/random/setSeeds 76669 76670
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_63
+/run/beamOn 150000
+
+/gps/direction 0.142511166745 0 0.989793194235
+/gps/energy 1.332500 MeV
+/random/setSeeds 76670 76671
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_63
+/run/beamOn 150000
+
+/gps/direction 0.144757439979 0 0.989467171548
+/gps/energy 1.173200 MeV
+/random/setSeeds 76671 76672
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_64
+/run/beamOn 150000
+
+/gps/direction 0.144757439979 0 0.989467171548
+/gps/energy 1.332500 MeV
+/random/setSeeds 76672 76673
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_64
+/run/beamOn 150000
+
+/gps/direction 0.147002967418 0 0.989136051092
+/gps/energy 1.173200 MeV
+/random/setSeeds 76673 76674
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_65
+/run/beamOn 150000
+
+/gps/direction 0.147002967418 0 0.989136051092
+/gps/energy 1.332500 MeV
+/random/setSeeds 76674 76675
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_65
+/run/beamOn 150000
+
+/gps/direction 0.149247737492 0 0.988799834574
+/gps/energy 1.173200 MeV
+/random/setSeeds 76675 76676
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_66
+/run/beamOn 150000
+
+/gps/direction 0.149247737492 0 0.988799834574
+/gps/energy 1.332500 MeV
+/random/setSeeds 76676 76677
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_66
+/run/beamOn 150000
+
+/gps/direction 0.151491738637 0 0.988458523725
+/gps/energy 1.173200 MeV
+/random/setSeeds 76677 76678
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_67
+/run/beamOn 150000
+
+/gps/direction 0.151491738637 0 0.988458523725
+/gps/energy 1.332500 MeV
+/random/setSeeds 76678 76679
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_67
+/run/beamOn 150000
+
+/gps/direction 0.153734959292 0 0.988112120304
+/gps/energy 1.173200 MeV
+/random/setSeeds 76679 76680
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_68
+/run/beamOn 150000
+
+/gps/direction 0.153734959292 0 0.988112120304
+/gps/energy 1.332500 MeV
+/random/setSeeds 76680 76681
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_68
+/run/beamOn 150000
+
+/gps/direction 0.155977387898 0 0.987760626095
+/gps/energy 1.173200 MeV
+/random/setSeeds 76681 76682
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_69
+/run/beamOn 150000
+
+/gps/direction 0.155977387898 0 0.987760626095
+/gps/energy 1.332500 MeV
+/random/setSeeds 76682 76683
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_69
+/run/beamOn 150000
+
+/gps/direction 0.158219012904 0 0.987404042910
+/gps/energy 1.173200 MeV
+/random/setSeeds 76683 76684
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_70
+/run/beamOn 150000
+
+/gps/direction 0.158219012904 0 0.987404042910
+/gps/energy 1.332500 MeV
+/random/setSeeds 76684 76685
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_70
+/run/beamOn 150000
+
+/gps/direction 0.160459822760 0 0.987042372586
+/gps/energy 1.173200 MeV
+/random/setSeeds 76685 76686
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_71
+/run/beamOn 150000
+
+/gps/direction 0.160459822760 0 0.987042372586
+/gps/energy 1.332500 MeV
+/random/setSeeds 76686 76687
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_71
+/run/beamOn 150000
+
+/gps/direction 0.162699805922 0 0.986675616985
+/gps/energy 1.173200 MeV
+/random/setSeeds 76687 76688
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_72
+/run/beamOn 150000
+
+/gps/direction 0.162699805922 0 0.986675616985
+/gps/energy 1.332500 MeV
+/random/setSeeds 76688 76689
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_72
+/run/beamOn 150000
+
+/gps/direction 0.164938950848 0 0.986303777998
+/gps/energy 1.173200 MeV
+/random/setSeeds 76689 76690
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_73
+/run/beamOn 150000
+
+/gps/direction 0.164938950848 0 0.986303777998
+/gps/energy 1.332500 MeV
+/random/setSeeds 76690 76691
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_73
+/run/beamOn 150000
+
+/gps/direction 0.167177246004 0 0.985926857540
+/gps/energy 1.173200 MeV
+/random/setSeeds 76691 76692
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_74
+/run/beamOn 150000
+
+/gps/direction 0.167177246004 0 0.985926857540
+/gps/energy 1.332500 MeV
+/random/setSeeds 76692 76693
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_74
+/run/beamOn 150000
+
+/gps/direction 0.169414679856 0 0.985544857553
+/gps/energy 1.173200 MeV
+/random/setSeeds 76693 76694
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_75
+/run/beamOn 150000
+
+/gps/direction 0.169414679856 0 0.985544857553
+/gps/energy 1.332500 MeV
+/random/setSeeds 76694 76695
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_75
+/run/beamOn 150000
+
+/gps/direction 0.171651240878 0 0.985157780005
+/gps/energy 1.173200 MeV
+/random/setSeeds 76695 76696
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_76
+/run/beamOn 150000
+
+/gps/direction 0.171651240878 0 0.985157780005
+/gps/energy 1.332500 MeV
+/random/setSeeds 76696 76697
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_76
+/run/beamOn 150000
+
+/gps/direction 0.173886917548 0 0.984765626891
+/gps/energy 1.173200 MeV
+/random/setSeeds 76697 76698
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_77
+/run/beamOn 150000
+
+/gps/direction 0.173886917548 0 0.984765626891
+/gps/energy 1.332500 MeV
+/random/setSeeds 76698 76699
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_77
+/run/beamOn 150000
+
+/gps/direction 0.176121698345 0 0.984368400230
+/gps/energy 1.173200 MeV
+/random/setSeeds 76699 76700
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_78
+/run/beamOn 150000
+
+/gps/direction 0.176121698345 0 0.984368400230
+/gps/energy 1.332500 MeV
+/random/setSeeds 76700 76701
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_78
+/run/beamOn 150000
+
+/gps/direction 0.178355571758 0 0.983966102070
+/gps/energy 1.173200 MeV
+/random/setSeeds 76701 76702
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_79
+/run/beamOn 150000
+
+/gps/direction 0.178355571758 0 0.983966102070
+/gps/energy 1.332500 MeV
+/random/setSeeds 76702 76703
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_79
+/run/beamOn 150000
+
+/gps/direction 0.180588526277 0 0.983558734483
+/gps/energy 1.173200 MeV
+/random/setSeeds 76703 76704
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_80
+/run/beamOn 150000
+
+/gps/direction 0.180588526277 0 0.983558734483
+/gps/energy 1.332500 MeV
+/random/setSeeds 76704 76705
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_80
+/run/beamOn 150000
+
+/gps/direction 0.182820550398 0 0.983146299567
+/gps/energy 1.173200 MeV
+/random/setSeeds 76705 76706
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_81
+/run/beamOn 150000
+
+/gps/direction 0.182820550398 0 0.983146299567
+/gps/energy 1.332500 MeV
+/random/setSeeds 76706 76707
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_81
+/run/beamOn 150000
+
+/gps/direction 0.185051632620 0 0.982728799448
+/gps/energy 1.173200 MeV
+/random/setSeeds 76707 76708
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_82
+/run/beamOn 150000
+
+/gps/direction 0.185051632620 0 0.982728799448
+/gps/energy 1.332500 MeV
+/random/setSeeds 76708 76709
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_82
+/run/beamOn 150000
+
+/gps/direction 0.187281761451 0 0.982306236277
+/gps/energy 1.173200 MeV
+/random/setSeeds 76709 76710
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_83
+/run/beamOn 150000
+
+/gps/direction 0.187281761451 0 0.982306236277
+/gps/energy 1.332500 MeV
+/random/setSeeds 76710 76711
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_83
+/run/beamOn 150000
+
+/gps/direction 0.189510925399 0 0.981878612230
+/gps/energy 1.173200 MeV
+/random/setSeeds 76711 76712
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_84
+/run/beamOn 150000
+
+/gps/direction 0.189510925399 0 0.981878612230
+/gps/energy 1.332500 MeV
+/random/setSeeds 76712 76713
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_84
+/run/beamOn 150000
+
+/gps/direction 0.191739112981 0 0.981445929511
+/gps/energy 1.173200 MeV
+/random/setSeeds 76713 76714
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_85
+/run/beamOn 150000
+
+/gps/direction 0.191739112981 0 0.981445929511
+/gps/energy 1.332500 MeV
+/random/setSeeds 76714 76715
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_85
+/run/beamOn 150000
+
+/gps/direction 0.193966312716 0 0.981008190349
+/gps/energy 1.173200 MeV
+/random/setSeeds 76715 76716
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_86
+/run/beamOn 150000
+
+/gps/direction 0.193966312716 0 0.981008190349
+/gps/energy 1.332500 MeV
+/random/setSeeds 76716 76717
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_86
+/run/beamOn 150000
+
+/gps/direction 0.196192513130 0 0.980565396999
+/gps/energy 1.173200 MeV
+/random/setSeeds 76717 76718
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_87
+/run/beamOn 150000
+
+/gps/direction 0.196192513130 0 0.980565396999
+/gps/energy 1.332500 MeV
+/random/setSeeds 76718 76719
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_87
+/run/beamOn 150000
+
+/gps/direction 0.198417702754 0 0.980117551743
+/gps/energy 1.173200 MeV
+/random/setSeeds 76719 76720
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_88
+/run/beamOn 150000
+
+/gps/direction 0.198417702754 0 0.980117551743
+/gps/energy 1.332500 MeV
+/random/setSeeds 76720 76721
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_88
+/run/beamOn 150000
+
+/gps/direction 0.200641870123 0 0.979664656887
+/gps/energy 1.173200 MeV
+/random/setSeeds 76721 76722
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_89
+/run/beamOn 150000
+
+/gps/direction 0.200641870123 0 0.979664656887
+/gps/energy 1.332500 MeV
+/random/setSeeds 76722 76723
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_89
+/run/beamOn 150000
+
+/gps/direction 0.202865003778 0 0.979206714766
+/gps/energy 1.173200 MeV
+/random/setSeeds 76723 76724
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_90
+/run/beamOn 150000
+
+/gps/direction 0.202865003778 0 0.979206714766
+/gps/energy 1.332500 MeV
+/random/setSeeds 76724 76725
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_90
+/run/beamOn 150000
+
+/gps/direction 0.205087092265 0 0.978743727738
+/gps/energy 1.173200 MeV
+/random/setSeeds 76725 76726
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_91
+/run/beamOn 150000
+
+/gps/direction 0.205087092265 0 0.978743727738
+/gps/energy 1.332500 MeV
+/random/setSeeds 76726 76727
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_91
+/run/beamOn 150000
+
+/gps/direction 0.207308124137 0 0.978275698189
+/gps/energy 1.173200 MeV
+/random/setSeeds 76727 76728
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_92
+/run/beamOn 150000
+
+/gps/direction 0.207308124137 0 0.978275698189
+/gps/energy 1.332500 MeV
+/random/setSeeds 76728 76729
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_92
+/run/beamOn 150000
+
+/gps/direction 0.209528087950 0 0.977802628530
+/gps/energy 1.173200 MeV
+/random/setSeeds 76729 76730
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_93
+/run/beamOn 150000
+
+/gps/direction 0.209528087950 0 0.977802628530
+/gps/energy 1.332500 MeV
+/random/setSeeds 76730 76731
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_93
+/run/beamOn 150000
+
+/gps/direction 0.211746972267 0 0.977324521198
+/gps/energy 1.173200 MeV
+/random/setSeeds 76731 76732
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_94
+/run/beamOn 150000
+
+/gps/direction 0.211746972267 0 0.977324521198
+/gps/energy 1.332500 MeV
+/random/setSeeds 76732 76733
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_94
+/run/beamOn 150000
+
+/gps/direction 0.213964765657 0 0.976841378657
+/gps/energy 1.173200 MeV
+/random/setSeeds 76733 76734
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_95
+/run/beamOn 150000
+
+/gps/direction 0.213964765657 0 0.976841378657
+/gps/energy 1.332500 MeV
+/random/setSeeds 76734 76735
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_95
+/run/beamOn 150000
+
+/gps/direction 0.216181456693 0 0.976353203396
+/gps/energy 1.173200 MeV
+/random/setSeeds 76735 76736
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_96
+/run/beamOn 150000
+
+/gps/direction 0.216181456693 0 0.976353203396
+/gps/energy 1.332500 MeV
+/random/setSeeds 76736 76737
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_96
+/run/beamOn 150000
+
+/gps/direction 0.218397033955 0 0.975859997930
+/gps/energy 1.173200 MeV
+/random/setSeeds 76737 76738
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_97
+/run/beamOn 150000
+
+/gps/direction 0.218397033955 0 0.975859997930
+/gps/energy 1.332500 MeV
+/random/setSeeds 76738 76739
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_97
+/run/beamOn 150000
+
+/gps/direction 0.220611486027 0 0.975361764799
+/gps/energy 1.173200 MeV
+/random/setSeeds 76739 76740
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_98
+/run/beamOn 150000
+
+/gps/direction 0.220611486027 0 0.975361764799
+/gps/energy 1.332500 MeV
+/random/setSeeds 76740 76741
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_98
+/run/beamOn 150000
+
+/gps/direction 0.222824801502 0 0.974858506572
+/gps/energy 1.173200 MeV
+/random/setSeeds 76741 76742
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.17/ Beta_99
+/run/beamOn 150000
+
+/gps/direction 0.222824801502 0 0.974858506572
+/gps/energy 1.332500 MeV
+/random/setSeeds 76742 76743
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Beszámoló/ELTE_HPGe_Public/build/OutPutDirectory/distance_10.5/1.33/ Beta_99
+/run/beamOn 150000

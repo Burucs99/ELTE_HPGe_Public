@@ -9,8 +9,11 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
+#include <algorithm>
+#include <iostream>
+#include <iterator>
 
-void EfficiencyScan(int eventsPerRun = 150000, const char* basePath = "./", double binWindow = 1.0) {
+void EfficiencyScan(int eventsPerRun = 150000, const char* basePath = "./", double binWindow = 2.0) {
     std::vector<TString> distances;
 
     TSystemDirectory baseDir("base", basePath);
@@ -31,30 +34,35 @@ void EfficiencyScan(int eventsPerRun = 150000, const char* basePath = "./", doub
         {"1.17", 1.1732},
         {"1.33", 1.3325}
     };
-    double radius_mm = 24.0;
+    double radius_mm = 2.40;
     double A2 = 0.102;
-    double A4 = 0.008;
+    double A4 = 0.0091;
+    std::vector<double> W0s;
+    std::vector<double> W0s_err;
+
+    std::vector<double> Distance{0.5,1.5,2.0,2.5,4.0};
     
     for (const auto& dist : distances) {
         std::cout << "\n=== Processing " << dist << " ===\n";
-        
-
+        if(dist == "distance_2.5") eventsPerRun = 200000;
+	    if(dist == "distance_4.0") eventsPerRun = 250000;
         TString distStr = dist;
         distStr.ReplaceAll("distance", "");
         double d_cm = distStr.Atof();
         double d_mm = d_cm * 10.0;
         double beta_max = atan(radius_mm / d_mm);
-
-        std::vector<double> Betas(200, 0.0);
-        std::vector<double> sinbeta(200, 0.0);
-        std::vector<double> cosbeta(200, 0.0);
-        std::vector<double> P0(200, 0.0);
-        std::vector<double> P2(200, 0.0);
-        std::vector<double> P4(200, 0.0);
-        std::vector<double> Efficiencies_117(200, 0.0);
-        std::vector<double> Efficiencies_133(200, 0.0);
-        std::vector<double> Errors_117(200, 0.0);    
-        std::vector<double> Errors_133(200, 0.0);    
+        std::cout<<"BETA MAX--------"<<beta_max<<std::endl;
+        int NumberOfBins = 200;
+        std::vector<double> Betas(NumberOfBins, 0.0);
+        std::vector<double> sinbeta(NumberOfBins, 0.0);
+        std::vector<double> cosbeta(NumberOfBins, 0.0);
+        std::vector<double> P0(NumberOfBins, 0.0);
+        std::vector<double> P2(NumberOfBins, 0.0);
+        std::vector<double> P4(NumberOfBins, 0.0);
+        std::vector<double> Efficiencies_117(NumberOfBins, 0.0);
+        std::vector<double> Efficiencies_133(NumberOfBins, 0.0);
+        std::vector<double> Errors_117(NumberOfBins, 0.0);    
+        std::vector<double> Errors_133(NumberOfBins, 0.0);    
         double J0_117{0};
         double J0_133{0};
         double J2_117{0};
@@ -66,16 +74,18 @@ void EfficiencyScan(int eventsPerRun = 150000, const char* basePath = "./", doub
         double Q2_133{0};
         double Q4_117{0};
         double Q4_133{0};
-        double dBeta =  (beta_max * 1/ (200 - 1));
+        double dBeta = beta_max / (NumberOfBins-1);
+
         double varJ0_117{0}, varJ0_133{0};
         double varJ2_117{0}, varJ2_133{0};
         double varJ4_117{0}, varJ4_133{0};
       
-        std::vector<double> weights(200, dBeta);
+        std::vector<double> weights(NumberOfBins, dBeta);
         weights[0] = dBeta / 2.0;
         weights[199] = dBeta / 2.0;
-        for (int beta_idx = 0; beta_idx < 200; ++beta_idx) {
-            Betas[beta_idx] = beta_max * beta_idx/ (200 - 1);
+        for (int beta_idx = 0; beta_idx < NumberOfBins; ++beta_idx) {
+            Betas[beta_idx] = (beta_max * beta_idx/ (NumberOfBins - 1));
+            
             cosbeta[beta_idx] = cos(Betas[beta_idx]);
             sinbeta[beta_idx] = sin(Betas[beta_idx]);
             P0[beta_idx] =legendre(0,cosbeta[beta_idx]); 
@@ -96,21 +106,28 @@ void EfficiencyScan(int eventsPerRun = 150000, const char* basePath = "./", doub
                     f->Close();
                     continue;
                 }
-
-                int bin = h->FindBin(energy);
+                int bin =0;
+                if (label == "1.17"){
+                    bin = 2515;
+                }
+                else{
+                    bin = 2856;
+                }
+                
                 double sum = h->GetBinContent(bin);
-
-                if (binWindow > 1.0) {
+                sum+=h->GetBinContent(bin-1);
+                sum+=h->GetBinContent(bin+1);
+                /* if (binWindow > 1.0) {
                     int half = int((binWindow - 1) / 2);
                     for (int b = bin - half; b <= bin + half; ++b) {
                         if (b != bin && b >= 1 && b <= h->GetNbinsX())
                             sum += h->GetBinContent(b);
                     }
-                }
+                } */
 
                 long double efficiency = sum / eventsPerRun;
-                if (efficiency < 0) efficiency = 0;
-                if (efficiency > 1) efficiency = 1;
+                /* if (efficiency < 0) efficiency = 0;
+                if (efficiency > 1) efficiency = 1; */
 
                 long double error = std::sqrt(efficiency * (1 - efficiency) / eventsPerRun);
 
@@ -141,12 +158,42 @@ void EfficiencyScan(int eventsPerRun = 150000, const char* basePath = "./", doub
 
            
         }
-    
-        Q2_117 = J2_117 / J0_117;
-        Q4_117 = J4_117 / J0_117;
-        Q2_133 = J2_133 / J0_133;
-        Q4_133 = J4_133 / J0_133;
+        std::cout<<"Debugging J-s"<<std::endl;
+        std::cout<<"-----   J0_117 : ----------"<<std::endl;
+        std::cout<<J0_117<<std::endl;
 
+        std::cout<<"-------------------------"<<std::endl;
+        std::cout<<"-----   J2_117 : ----------"<<std::endl;
+        std::cout<<J2_117<<std::endl;
+
+        std::cout<<"-------------------------"<<std::endl;
+        Q2_117 = J2_117 / J0_117;
+        std::cout<<"-----   Q2_117 : ----------"<<std::endl;
+        std::cout<<Q2_117<<std::endl;
+        std::cout<<"----------------"<<std::endl;
+
+
+        std::cout<<"-----   J0_117 : ----------"<<std::endl;
+        std::cout<<J0_117<<std::endl;
+
+        std::cout<<"-------------------------"<<std::endl;
+        std::cout<<"-----   J4_117 : ----------"<<std::endl;
+        std::cout<<J4_117<<std::endl;
+
+        std::cout<<"-------------------------"<<std::endl;
+
+        Q4_117 = J4_117 / J0_117;
+        std::cout<<"-----   Q4_117 : ----------"<<std::endl;
+        std::cout<<Q4_117<<std::endl;
+        std::cout<<"----------------"<<std::endl;
+        Q2_133 = J2_133 / J0_133;
+        std::cout<<"-----   Q2_133 : ----------"<<std::endl;
+        std::cout<<Q2_133<<std::endl;
+        std::cout<<"----------------"<<std::endl;
+        Q4_133 = J4_133 / J0_133;
+        std::cout<<"-----   Q4_133 : ----------"<<std::endl;
+        std::cout<<Q4_133<<std::endl;
+        std::cout<<"----------------"<<std::endl;
         double Q2_117_err = std::sqrt(varJ2_117 / (J0_117 * J0_117) + (J2_117 * J2_117 * varJ0_117) / std::pow(J0_117, 4));
         double Q4_117_err = std::sqrt(varJ4_117 / (J0_117 * J0_117) + (J4_117 * J4_117 * varJ0_117) / std::pow(J0_117, 4));
 
@@ -168,7 +215,6 @@ void EfficiencyScan(int eventsPerRun = 150000, const char* basePath = "./", doub
         W0+=A4 *legendre(4,1)*Q4_117*Q4_133;
         double P2_1 = legendre(2, 1);
         double P4_1 = legendre(4, 1);
-
         double term2 = A2 * A2 * P2_1;
         double term4 = A4 * A4 * P4_1;
 
@@ -188,15 +234,15 @@ void EfficiencyScan(int eventsPerRun = 150000, const char* basePath = "./", doub
                           Efficiencies_133[i], Errors_133[i]);
         }
 
-        
-
+        W0s.push_back(W0);
+        W0s_err.push_back(W0_error);
         std::cout<<"Finished the analysis"<<std::endl;
         std::cout<<"                           \n";
-        std::cout<<"Final result : W(0) = "<< std::setprecision(8)<<W0<<" ± " << W0_error << std::endl;
+        std::cout<<"Final result : W(0) = "<< std::setprecision(12)<<W0<<" ± " << W0_error << std::endl;
         
 
         outTxt.close();
-        TCanvas* c1 = new TCanvas("c1", "Efficiency vs Beta", 800, 600);
+        /* TCanvas* c1 = new TCanvas("c1", "Efficiency vs Beta", 800, 600);
         TGraphErrors* gEff117 = new TGraphErrors(200);
         gEff117->SetTitle(Form("Efficiency vs #beta for %s;#beta (rad);Efficiency", dist.Data()));
         gEff117->SetMarkerStyle(20);
@@ -212,8 +258,46 @@ void EfficiencyScan(int eventsPerRun = 150000, const char* basePath = "./", doub
         gEff117->Draw("AP");
         c1->SaveAs(Form("Efficiency_vs_Beta_%s_117.png", dist.Data()));
 
+
+        TCanvas* c3 = new TCanvas("c3", "Efficiency vs Beta", 800, 600);
+        TGraphErrors* gEff133 = new TGraphErrors(200);
+        gEff133->SetTitle(Form("Efficiency vs #beta for %s;#beta (rad);Efficiency", dist.Data()));
+        gEff133->SetMarkerStyle(20);
+        gEff133->SetMarkerSize(0.7);
+        gEff133->SetLineColor(kBlue);
+        gEff133->SetMarkerColor(kBlue);
+
+        for (int i = 0; i < 200; ++i) {
+            gEff133->SetPoint(i, Betas[i], Efficiencies_133[i]);
+            gEff133->SetPointError(i, 0, Errors_133[i]);
+        }
+
+        gEff133->Draw("AP");
+        c3->SaveAs(Form("Efficiency_vs_Beta_%s_133.png", dist.Data()));
        
     }
     
+    TCanvas* c2 = new TCanvas("c2", "W0 vs distance", 800, 600);
+    TGraphErrors* gW0 = new TGraphErrors(200);
+    gW0->SetTitle("W0");
+    gW0->SetMarkerStyle(20);
+    gW0->SetMarkerSize(0.7);
+    gW0->SetLineColor(kBlue);
+    gW0->SetMarkerColor(kBlue);
+    std::reverse(Distance.begin(), Distance.end());
+    for (int i = 0; i < Distance.size(); ++i) {
+            gW0->SetPoint(i,  Distance[i],W0s[i]);
+            gW0->SetPointError(i, 0, W0s_err[i]);
+            std::cout<<"The "<<i<<"th"<<W0s[i]<<"  "<<Distance[i]<<" "<<std::endl;
 
+        }
+    gW0->GetYaxis()->SetRangeUser(0.99, 1.015);  
+
+    gW0->Draw("AP");
+
+     
+    c2->SaveAs("W0 vs distance.png"); */
+    std::cout<<"Vége csekk "<<legendre(4, 1.0) <<" Ez egy kellene legyen"<<std::endl;
+    std::cout<<legendre(2, 1)<<legendre(4, 1)<<std::endl;
+    }
 }
