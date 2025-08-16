@@ -32,7 +32,7 @@ private:
     G4UIcommand*  fBoxCmd;
     G4UIcommand*  fTubCmd;
     G4UIcommand*  fSampleHolderCmd;
-
+    G4UIcommand*  fPlaceCsSampleCmd;
 };
 
 #endif

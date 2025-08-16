@@ -49,6 +49,11 @@ public:
     void SetSampleHolderPosition(G4ThreeVector placement){
         fSampleHolderPlacement=placement;
     };
+
+    void SetCaesiumPosition(G4ThreeVector placement){
+        fCaesiumPlacement = placement;
+    };
+    void PlaceCaesiumContaianer();
 private:
     
     YourDetectorMessenger* fDetMessenger;
@@ -72,6 +77,7 @@ private:
     G4String fGeometryName;
     G4String fMaterialName;
     G4ThreeVector fSampleHolderPlacement;
+    G4ThreeVector fCaesiumPlacement;
     virtual void ConstructSDandField();
 };
 #endif
