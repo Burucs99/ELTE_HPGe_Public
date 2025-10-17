@@ -80,6 +80,7 @@ void YourSensitiveDetector::EndOfEvent(G4HCofThisEvent*)
         analysisManager->AddNtupleRow(0);  
     } */
     fTotalEnergy = 0;
+    fCoinc = 0;
 }
 
 
@@ -98,6 +99,6 @@ G4bool YourSensitiveDetector::ProcessHits(G4Step* aStep, G4TouchableHistory*) {
 
     eventData->steps.push_back(step);  
     eventData->totalEnergy += edep; */
-
+    
     return true;
 }

@@ -23,7 +23,8 @@ YourDetectorMessenger::YourDetectorMessenger(YourDetectorConstruction* det)
     fBoxCmd(nullptr),
     fTubCmd(nullptr),
     fSampleHolderCmd(nullptr),
-    fPlaceCsSampleCmd(nullptr){
+    fPlaceCsSampleCmd(nullptr),
+    fSetDeadLayerCmd(nullptr){
 
     fDirCMD = new G4UIdirectory("/HPGe/det/");
     fDirCMD->SetGuidance("UI commands specific to the detector construction of this application"); 
@@ -142,6 +143,17 @@ YourDetectorMessenger::YourDetectorMessenger(YourDetectorConstruction* det)
     fPlaceCsSampleCmd->SetParameter(param);
     fPlaceCsSampleCmd->AvailableForStates(G4State_PreInit,G4State_Idle);
     fPlaceCsSampleCmd->SetToBeBroadcasted(false); 
+
+
+    fSetDeadLayerCmd = new G4UIcommand("/HPGe/det/setDeadLayer", this);
+    param = new G4UIparameter("top", 'd', false);
+    fSetDeadLayerCmd->SetParameter(param);
+    param = new G4UIparameter("side", 'd', false);
+    fSetDeadLayerCmd->SetParameter(param);
+    param = new G4UIparameter("inside", 'd', false);
+    fSetDeadLayerCmd->SetParameter(param);
+    fSetDeadLayerCmd->AvailableForStates(G4State_PreInit,G4State_Idle);
+    fSetDeadLayerCmd->SetToBeBroadcasted(false); 
 }
 
 YourDetectorMessenger::~YourDetectorMessenger() {
@@ -153,6 +165,7 @@ YourDetectorMessenger::~YourDetectorMessenger() {
     delete fDirCMD;
     delete fSampleHolderCmd;
     delete fPlaceCsSampleCmd;
+    delete fSetDeadLayerCmd;
   }
 
 void YourDetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
@@ -324,5 +337,13 @@ void YourDetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
         fYourDetector->SetCaesiumPosition(
             G4ThreeVector(posX*CLHEP::cm, posY*CLHEP::cm, posZ*CLHEP::cm)
         );
+    } 
+    if (command == fSetDeadLayerCmd) {
+        std::istringstream iss(newValue);
+        G4double  posX, posY, posZ;
+        
+        iss  >> posX >> posY >> posZ;
+        
+        fYourDetector->SetDeadLayer(posX*CLHEP::mm, posY*CLHEP::mm, posZ*CLHEP::mm);
     }
 }

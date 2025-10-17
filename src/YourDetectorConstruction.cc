@@ -34,6 +34,7 @@
 YourDetectorConstruction::YourDetectorConstruction()
 :   G4VUserDetectorConstruction()
      {
+    
     fDetMessenger    = new YourDetectorMessenger(this);
 }
 
@@ -67,7 +68,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
 /*     auto logicalVolume = new G4LogicalVolume(solid, yourMaterial, "logicalName");
  */ 
 
-    /* G4double z, a, density;
+    G4double z, a, density;
     G4String name, symbol;
     G4int ncomponents, natoms;
     //(C3H4O2)
@@ -93,7 +94,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
         );
 
     //
-    CreateSampleHolder(); */
+    CreateSampleHolder();
     if (fCreateBox || fCreateTub) {
         if (fCustomMats.find(fMaterialName) == fCustomMats.end()) {
             G4cerr << "ERROR: Material '" << fMaterialName 
@@ -227,18 +228,18 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
 
     G4cout<<absorberMaterial->GetTemperature()<<G4endl;
     // Dead layer thicknesses
-    constexpr G4double DeadLayerZ    = 1.0*mm;  // front face
-    constexpr G4double DeadLayerRad  = 1.0*mm;  // around barrel
-    constexpr G4double DeadLayerHole = 1.0*mm;  // inside hole
+    G4double DeadLayerZ    = ftopDeadlayer;  // front face
+    G4double DeadLayerRad  = fsideDeadLayer;  // around barrel
+    G4double DeadLayerHole = finsideDeadLayer;  // inside hole
 
     // Active crystal dimensions
-    constexpr G4double activeCrystalLength = crystalLength - DeadLayerZ;
-    constexpr G4double activeCrystalRadius = crystalDiameter/2 - DeadLayerRad;
-    constexpr G4double activeHoleRadius    = crystalHoleDiameter/2 + DeadLayerHole;
+    G4double activeCrystalLength = crystalLength - DeadLayerZ;
+    G4double activeCrystalRadius = crystalDiameter/2 - DeadLayerRad;
+    G4double activeHoleRadius    = crystalHoleDiameter/2 + DeadLayerHole;
 
     // Placement shifts (same as your original logic)
-    constexpr G4double activeZShift = START + windowDistance + activeCrystalLength / 2;
-    constexpr G4double deadZShift   = activeZShift - activeCrystalLength / 2 + DeadLayerZ / 2;
+    G4double activeZShift = START + windowDistance + activeCrystalLength / 2;
+    G4double deadZShift   = activeZShift - activeCrystalLength / 2 + DeadLayerZ / 2;
 
     // ---------------------------------------------------------
     // Outer full crystal (including all dead layers)
@@ -312,7 +313,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
 
     G4double endCapTopZ = calorimeterShift - endCapShift - endCapLength / 2;
     G4double bunnyHalfHeight = 0*mm; // depends on your bunny volume
-    /* G4ThreeVector bunnyPosition(0, 0, endCapTopZ + bunnyHalfHeight);
+    G4ThreeVector bunnyPosition(0, 0, endCapTopZ + bunnyHalfHeight);
     auto bunnyRotation = new G4RotationMatrix();
     bunnyRotation->rotateX(180.0 * deg);
     new G4PVPlacement(bunnyRotation,
@@ -321,7 +322,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                   "physicalBunny",
                   worldLogical,
                   false, 0, fCheckOverlaps);
- */
+
     G4double maxStep = 0.0001*mm;
 
     G4UserLimits* stepLimits = new G4UserLimits(maxStep);
@@ -359,7 +360,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                                                     worldLogical,
                                                     false, 0, fCheckOverlaps);
     BoxLogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 0.0, 0.5,0.1))); */
-    //PlaceCaesiumContaianer();
+    PlaceCaesiumContaianer();
     return worldPhysical;
 }
 
@@ -677,11 +678,11 @@ void YourDetectorConstruction::PlaceCaesiumContaianer( ){
 
     // Visualization attributes
 // Define new distinct colors for each component
-G4VisAttributes* redOuter = new G4VisAttributes(G4Colour(1.0, 0.0, 0.0, 0.3));       // Red for outer shield
-G4VisAttributes* blueEpoxy = new G4VisAttributes(G4Colour(0.0, 0.0, 1.0, 0.7));      // Bright blue for epoxy
-G4VisAttributes* yellowPaper = new G4VisAttributes(G4Colour(1.0, 1.0, 0.0, 0.3));    // Yellow for paper
-G4VisAttributes* greenSource = new G4VisAttributes(G4Colour(0.0, 1.0, 0.0, 0.3));    // Solid green for Cs137 source
-G4VisAttributes* purpleCap = new G4VisAttributes(G4Colour(0.6, 0.0, 0.8, 0.3));      // Purple for end caps
+G4VisAttributes* redOuter = new G4VisAttributes(G4Colour(1.0, 0.0, 0.0, 0.9));       // Red for outer shield
+G4VisAttributes* blueEpoxy = new G4VisAttributes(G4Colour(0.0, 0.0, 1.0, 0.9));      // Bright blue for epoxy
+G4VisAttributes* yellowPaper = new G4VisAttributes(G4Colour(1.0, 1.0, 0.0, 0.9));    // Yellow for paper
+G4VisAttributes* greenSource = new G4VisAttributes(G4Colour(0.0, 1.0, 0.0, 0.9));    // Solid green for Cs137 source
+G4VisAttributes* purpleCap = new G4VisAttributes(G4Colour(0.6, 0.0, 0.8, 0.9));      // Purple for end caps
 
 // Set visibility
 redOuter->SetVisibility(true);

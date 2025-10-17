@@ -8,6 +8,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <CLHEP/Units/SystemOfUnits.h>
+
 #include <utility>
 #include <cstdlib>
 class G4Material;
@@ -53,6 +55,13 @@ public:
     void SetCaesiumPosition(G4ThreeVector placement){
         fCaesiumPlacement = placement;
     };
+    void SetDeadLayer(G4double top,G4double side, G4double inside){
+        ftopDeadlayer=top;
+        fsideDeadLayer=side;
+        finsideDeadLayer=inside;
+        G4cout<<"Dead Layers set to "<<top<<side<<inside<<G4endl;
+
+    }
     void PlaceCaesiumContaianer();
 private:
     
@@ -79,5 +88,10 @@ private:
     G4ThreeVector fSampleHolderPlacement;
     G4ThreeVector fCaesiumPlacement;
     virtual void ConstructSDandField();
+
+
+    G4double ftopDeadlayer = 1.0*CLHEP::mm;
+    G4double fsideDeadLayer = 1.0*CLHEP::mm;
+    G4double finsideDeadLayer = 1.0*CLHEP::mm;
 };
 #endif
