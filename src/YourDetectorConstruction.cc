@@ -312,7 +312,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                                             false, 0, fCheckOverlaps);
 
     G4double endCapTopZ = calorimeterShift - endCapShift - endCapLength / 2;
-    G4double bunnyHalfHeight = 0*mm; // depends on your bunny volume
+     G4double bunnyHalfHeight = 0*mm; // depends on your bunny volume
     G4ThreeVector bunnyPosition(0, 0, endCapTopZ + bunnyHalfHeight);
     auto bunnyRotation = new G4RotationMatrix();
     bunnyRotation->rotateX(180.0 * deg);
@@ -322,6 +322,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                   "physicalBunny",
                   worldLogical,
                   false, 0, fCheckOverlaps);
+
 
     G4double maxStep = 0.0001*mm;
 
@@ -360,7 +361,15 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                                                     worldLogical,
                                                     false, 0, fCheckOverlaps);
     BoxLogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 0.0, 0.5,0.1))); */
-    PlaceCaesiumContaianer();
+    //PlaceCaesiumContaianer();
+    G4Material* Cobalt = nistMGR->FindOrBuildMaterial("G4_Co");
+
+    G4ThreeVector cobaltpost(0, 0, -150.0*CLHEP::mm);
+    auto cobaltrot = new G4RotationMatrix();
+    cobaltrot->rotateX(180.0 * deg);
+    G4Tubs* Cobalt_ring=new G4Tubs("Co_ring",15.0*mm, 16.5*mm, 1*mm,0.,twopi);
+    G4LogicalVolume* Cobalt_logical = new G4LogicalVolume(Cobalt_ring,Cobalt,"Co_ring");
+    new G4PVPlacement(cobaltrot,cobaltpost,Cobalt_logical,"Co_ring",worldLogical,false,0,false);
     return worldPhysical;
 }
 
@@ -677,6 +686,7 @@ void YourDetectorConstruction::PlaceCaesiumContaianer( ){
 
 
     // Visualization attributes
+
 // Define new distinct colors for each component
 G4VisAttributes* redOuter = new G4VisAttributes(G4Colour(1.0, 0.0, 0.0, 0.9));       // Red for outer shield
 G4VisAttributes* blueEpoxy = new G4VisAttributes(G4Colour(0.0, 0.0, 1.0, 0.9));      // Bright blue for epoxy
@@ -702,6 +712,9 @@ G4Tubs* solid_Sshield_out = new G4Tubs("Sshield_out", ring_R1, ring_R2, Source_H
 G4LogicalVolume* logic_Sshield_out = new G4LogicalVolume(solid_Sshield_out, Plexiglass, "Sshield_out");
 new G4PVPlacement(Rotation, placement, logic_Sshield_out, "Sshield_out", logicWorld, false, 0, fCheckOverlaps);
 logic_Sshield_out->SetVisAttributes(redOuter);  // Red
+
+
+
 
 // Epoxy ring shield
 G4Tubs* solid_epoxy_Sshield_down = new G4Tubs("epoxy_Sshield_down", ring_R1/2, ring_R1, Source_Height/2, 0., twopi);

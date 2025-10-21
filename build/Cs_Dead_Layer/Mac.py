@@ -62,7 +62,7 @@ def generate_macro(output_file, distances_cm, dead_layers, n_events=1000000, see
 
 if __name__ == "__main__":
     # Távolságok (cm)
-    distances = [3.0+0.235,9.0+0.235,15.0+0.235]
+    distances = [0.0+0.235]
    
 
     # Dead layer konfigurációk (top, side, inside) [mm]
@@ -78,12 +78,12 @@ if __name__ == "__main__":
         (4, 1.5 , 1)
     ] """
 
-    dead_layers=[
-        (3.5,1,2),(3.5,1,0.5),
-        (3.5,0.5,0.5),(3.5,2,2),
-        (3.5,0.5,1),
-    ]
+    """ dead_layers=[
+        (3.0,1,2),(2.5,1,2),
+        (2,1,2),(1.5,1,2)
+    ] """
+    dead_layers=[]
 
-    generate_macro("Cs_DeadLayer_Series_inner+_final_precise.mac", distances, dead_layers)
+    generate_macro("Cs_DeadLayer_Series_inner+_FINAL_0.mac", distances, dead_layers)
 """  1. T4_S1_I1        RMSE =   2.84% (átlag 4 távolságra)
  2. T3_S2_I1        RMSE =   3.93% (átlag 4 távolságra) """
