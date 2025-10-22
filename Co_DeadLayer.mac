@@ -1,0 +1,117 @@
+# /control/execute OutPutDirectory/Co_DeadLayer_Series.mac
+/run/numberOfThreads 8
+/HPGe/run/EdepHist Edep Deposited-Energy 3000 0 3.1
+/run/initialize
+/gps/particle ion
+/gps/ion 27 60 0 0
+/gps/energy 0.0 eV
+
+# --- Dead layer config: top=2.7mm side=1.5mm inside=2mm ---
+/HPGe/det/setDeadLayer 2.7 1.5 2
+/run/reinitializeGeometry
+/HPGe/det/setCsSample 0.0 0.0 -3.550
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -1.0500
+/run/reinitializeGeometry
+/random/setSeeds 35698 35699
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Co_Dead_Layer/Data/D3.5cm/T2.7_S1.5_I2/ Cs_DL_T2.7_S1.5_I2_3.5cm_1_.root
+/run/beamOn 10000000
+
+# --- Dead layer config: top=2.7mm side=1.5mm inside=2mm ---
+/HPGe/det/setDeadLayer 2.7 1.5 2
+/run/reinitializeGeometry
+/HPGe/det/setCsSample 0.0 0.0 -4.550
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -2.0500
+/run/reinitializeGeometry
+/random/setSeeds 35700 35701
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Co_Dead_Layer/Data/D4.5cm/T2.7_S1.5_I2/ Cs_DL_T2.7_S1.5_I2_4.5cm_1_.root
+/run/beamOn 10000000
+
+# --- Dead layer config: top=2.7mm side=1.5mm inside=2mm ---
+/HPGe/det/setDeadLayer 2.7 1.5 2
+/run/reinitializeGeometry
+/HPGe/det/setCsSample 0.0 0.0 -5.550
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -3.0500
+/run/reinitializeGeometry
+/random/setSeeds 35702 35703
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Co_Dead_Layer/Data/D5.5cm/T2.7_S1.5_I2/ Cs_DL_T2.7_S1.5_I2_5.5cm_1_.root
+/run/beamOn 10000000
+
+# --- Dead layer config: top=2.7mm side=1.5mm inside=2mm ---
+/HPGe/det/setDeadLayer 2.7 1.5 2
+/run/reinitializeGeometry
+/HPGe/det/setCsSample 0.0 0.0 -6.550
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -4.0500
+/run/reinitializeGeometry
+/random/setSeeds 35704 35705
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Co_Dead_Layer/Data/D6.5cm/T2.7_S1.5_I2/ Cs_DL_T2.7_S1.5_I2_6.5cm_1_.root
+/run/beamOn 10000000
+
+# --- Dead layer config: top=2.7mm side=1.5mm inside=2mm ---
+/HPGe/det/setDeadLayer 2.7 1.5 2
+/run/reinitializeGeometry
+/HPGe/det/setCsSample 0.0 0.0 -7.550
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -5.0500
+/run/reinitializeGeometry
+/random/setSeeds 35706 35707
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Co_Dead_Layer/Data/D7.5cm/T2.7_S1.5_I2/ Cs_DL_T2.7_S1.5_I2_7.5cm_1_.root
+/run/beamOn 10000000
+
+# --- Dead layer config: top=2.7mm side=1.5mm inside=2mm ---
+/HPGe/det/setDeadLayer 2.7 1.5 2
+/run/reinitializeGeometry
+/HPGe/det/setCsSample 0.0 0.0 -8.550
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -6.0500
+/run/reinitializeGeometry
+/random/setSeeds 35708 35709
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Co_Dead_Layer/Data/D8.6cm/T2.7_S1.5_I2/ Cs_DL_T2.7_S1.5_I2_8.6cm_1_.root
+/run/beamOn 10000000
+
+# --- Dead layer config: top=2.7mm side=1.5mm inside=2mm ---
+/HPGe/det/setDeadLayer 2.7 1.5 2
+/run/reinitializeGeometry
+/HPGe/det/setCsSample 0.0 0.0 -9.550
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -7.0500
+/run/reinitializeGeometry
+/random/setSeeds 35710 35711
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Co_Dead_Layer/Data/D9.6cm/T2.7_S1.5_I2/ Cs_DL_T2.7_S1.5_I2_9.6cm_1_.root
+/run/beamOn 10000000
+
+# --- Dead layer config: top=2.7mm side=1.5mm inside=2mm ---
+/HPGe/det/setDeadLayer 2.7 1.5 2
+/run/reinitializeGeometry
+/HPGe/det/setCsSample 0.0 0.0 -10.550
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -8.0500
+/run/reinitializeGeometry
+/random/setSeeds 35712 35713
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Co_Dead_Layer/Data/D10.6cm/T2.7_S1.5_I2/ Cs_DL_T2.7_S1.5_I2_10.6cm_1_.root
+/run/beamOn 10000000
+
+# --- Dead layer config: top=2.7mm side=1.5mm inside=2mm ---
+/HPGe/det/setDeadLayer 2.7 1.5 2
+/run/reinitializeGeometry
+/HPGe/det/setCsSample 0.0 0.0 -12.550
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -10.0500
+/run/reinitializeGeometry
+/random/setSeeds 35714 35715
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Co_Dead_Layer/Data/D12.6cm/T2.7_S1.5_I2/ Cs_DL_T2.7_S1.5_I2_12.6cm_1_.root
+/run/beamOn 10000000
+
+# --- Dead layer config: top=2.7mm side=1.5mm inside=2mm ---
+/HPGe/det/setDeadLayer 2.7 1.5 2
+/run/reinitializeGeometry
+/HPGe/det/setCsSample 0.0 0.0 -15.550
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -13.0500
+/run/reinitializeGeometry
+/random/setSeeds 35716 35717
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Co_Dead_Layer/Data/D15.6cm/T2.7_S1.5_I2/ Cs_DL_T2.7_S1.5_I2_15.6cm_1_.root
+/run/beamOn 10000000
+
+# --- Dead layer config: top=2.7mm side=1.5mm inside=2mm ---
+/HPGe/det/setDeadLayer 2.7 1.5 2
+/run/reinitializeGeometry
+/HPGe/det/setCsSample 0.0 0.0 -173.050
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -170.5500
+/run/reinitializeGeometry
+/random/setSeeds 35718 35719
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Co_Dead_Layer/Data/D173.1cm/T2.7_S1.5_I2/ Cs_DL_T2.7_S1.5_I2_173.1cm_1_.root
+/run/beamOn 10000000
