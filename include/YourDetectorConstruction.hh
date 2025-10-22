@@ -51,6 +51,9 @@ public:
     void SetSampleHolderPosition(G4ThreeVector placement){
         fSampleHolderPlacement=placement;
     };
+    G4ThreeVector GetCaesiumPosition(){
+        return fCaesiumPlacement;
+    }
 
     void SetCaesiumPosition(G4ThreeVector placement){
         fCaesiumPlacement = placement;

@@ -364,7 +364,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     //PlaceCaesiumContaianer();
     G4Material* Cobalt = nistMGR->FindOrBuildMaterial("G4_Co");
 
-    G4ThreeVector cobaltpost(0, 0, -150.0*CLHEP::mm);
+    G4ThreeVector cobaltpost(0, 0, fCaesiumPlacement.z());
     auto cobaltrot = new G4RotationMatrix();
     cobaltrot->rotateX(180.0 * deg);
     G4Tubs* Cobalt_ring=new G4Tubs("Co_ring",15.0*mm, 16.5*mm, 1*mm,0.,twopi);

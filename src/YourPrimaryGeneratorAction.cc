@@ -7,12 +7,14 @@
 #include "G4IonTable.hh"
 #include "G4GeneralParticleSource.hh"
 #include "Randomize.hh"
+#include "YourDetectorMessenger.hh"
 
 YourPrimaryGeneratorAction::YourPrimaryGeneratorAction(YourDetectorConstruction* det)
 : G4VUserPrimaryGeneratorAction(),
   fDetector(det),
-  fGps(nullptr) {
+  fGps(nullptr),fDetMessenger(nullptr) {
     fGps = new G4GeneralParticleSource();
+    fDetMessenger = new YourDetectorMessenger(fDetector);
     SetDefault();
   }
 
@@ -26,7 +28,8 @@ void YourPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent) {
     G4double inner_r = 15.0 * mm;
     G4double outer_r = 16.5 * mm;
     G4double halfz = 1.0 * mm;
-    G4double center_z = -150.0 * mm;
+    G4ThreeVector placement =  fDetector->GetCaesiumPosition();
+    G4double center_z = placement.z();
     
     G4double r, phi, x, y, z;
     
