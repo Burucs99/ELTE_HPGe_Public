@@ -1,0 +1,23 @@
+# /control/execute Rádium/Rádium_közel.mac
+/run/numberOfThreads 8
+/HPGe/run/EdepHist Edep Deposited-Energy 3000 0 3.1
+/run/initialize
+/gps/pos/type Volume
+/gps/pos/shape Cylinder
+/gps/pos/radius 6.875 mm
+/gps/pos/halfz 3.5 mm
+/run/reinitializeGeometry
+
+/gps/particle ion
+/gps/ion 88 226 0 0
+/gps/energy 0.0 eV
+
+/gps/pos/centre 0 0 -0.350 cm
+/gps/ang/type iso
+/HPGe/det/setDeadLayer 2.5 1.5 2
+
+/HPGe/det/setCsSample 0.0 0.0 -0.35
+/run/reinitializeGeometry
+/random/setSeeds 35698 45699
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/ Ra_CaCO3_Közel.root
+/run/beamOn 100000

@@ -362,14 +362,27 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                                                     false, 0, fCheckOverlaps);
     BoxLogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 0.0, 0.5,0.1))); */
     //PlaceCaesiumContaianer();
+
+    
     G4Material* Cobalt = nistMGR->FindOrBuildMaterial("G4_Co");
 
     G4ThreeVector cobaltpost(0, 0, fCaesiumPlacement.z());
-    auto cobaltrot = new G4RotationMatrix();
-    cobaltrot->rotateX(180.0 * deg);
+    
     G4Tubs* Cobalt_ring=new G4Tubs("Co_ring",15.0*mm, 16.5*mm, 1*mm,0.,twopi);
     G4LogicalVolume* Cobalt_logical = new G4LogicalVolume(Cobalt_ring,Cobalt,"Co_ring");
     new G4PVPlacement(cobaltrot,cobaltpost,Cobalt_logical,"Co_ring",worldLogical,false,0,false);
+
+
+
+    G4ThreeVector radiumPos(0, 0, fCaesiumPlacement.z()); // Make sure z-position is correct
+    
+    G4Material* Calcium_Carbonate = nistMGR->FindOrBuildMaterial("G4_CALCIUM_CARBONATE");
+
+    G4RotationMatrix* radiumRot = new G4RotationMatrix();
+
+    G4Tubs* Radium = new G4Tubs("Radium", 0*mm, 13.75/2*mm, 3.5*mm, 0., twopi);
+    G4LogicalVolume* Radium_logical = new G4LogicalVolume(Radium, Calcium_Carbonate, "Radium_logical");
+    new G4PVPlacement(radiumRot, radiumPos, Radium_logical, "Radium", worldLogical, false, 0, false);
     return worldPhysical;
 }
 

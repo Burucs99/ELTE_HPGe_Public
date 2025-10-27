@@ -1,0 +1,130 @@
+/run/numberOfThreads 8
+/HPGe/run/EdepHist Edep Deposited-Energy 3000 0 3.1
+/run/initialize
+/gps/pos/type Volume
+/gps/pos/shape Cylinder
+/gps/pos/radius 6.875 mm
+/gps/pos/halfz 3.5 mm
+/run/reinitializeGeometry
+
+/gps/pos/centre 0 0 -12.350 cm
+/gps/ang/type iso
+/HPGe/det/setDeadLayer 2.5 1.5 2
+
+/HPGe/det/setCsSample 0.0 0.0 -12.350
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -9.85
+/run/reinitializeGeometry
+
+/gps/particle gamma
+/gps/energy 186.100 keV
+/random/setSeeds 25698 25699
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol186.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 242.000 keV
+/random/setSeeds 25700 25701
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol242.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 295.220 keV
+/random/setSeeds 25702 25703
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol295.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 351.930 keV
+/random/setSeeds 25704 25705
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol351.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 609.310 keV
+/random/setSeeds 25706 25707
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol609.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 768.360 keV
+/random/setSeeds 25708 25709
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol768.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 934.060 keV
+/random/setSeeds 25710 25711
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol934.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 1120.300 keV
+/random/setSeeds 25712 25713
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol1120.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 1238.100 keV
+/random/setSeeds 25714 25715
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol1238.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 1377.700 keV
+/random/setSeeds 25716 25717
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol1377.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 1408.000 keV
+/random/setSeeds 25718 25719
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol1408.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 1509.200 keV
+/random/setSeeds 25720 25721
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol1509.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 1661.274 keV
+/random/setSeeds 25722 25723
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol1661.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 1729.600 keV
+/random/setSeeds 25724 25725
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol1729.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 1764.500 keV
+/random/setSeeds 25726 25727
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol1764.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 1847.400 keV
+/random/setSeeds 25728 25729
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol1847.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 2118.600 keV
+/random/setSeeds 25730 25731
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol2118.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 2203.200 keV
+/random/setSeeds 25732 25733
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol2203.root
+/run/beamOn 3000000
+
+/gps/particle gamma
+/gps/energy 2447.900 keV
+/random/setSeeds 25734 25735
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Rádium/Mono/ Mono_távol2447.root
+/run/beamOn 3000000
