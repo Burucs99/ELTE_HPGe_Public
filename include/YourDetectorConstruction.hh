@@ -58,6 +58,7 @@ public:
     void SetCaesiumPosition(G4ThreeVector placement){
         fCaesiumPlacement = placement;
     };
+    
     void SetDeadLayer(G4double top,G4double side, G4double inside){
         ftopDeadlayer=top;
         fsideDeadLayer=side;
@@ -65,6 +66,8 @@ public:
         G4cout<<"Dead Layers set to "<<top<<side<<inside<<G4endl;
 
     }
+
+    
     void PlaceCaesiumContaianer();
 private:
     
@@ -92,7 +95,7 @@ private:
     G4ThreeVector fCaesiumPlacement;
     virtual void ConstructSDandField();
 
-
+    G4int fSensDetCheck = 0;
     G4double ftopDeadlayer = 1.0*CLHEP::mm;
     G4double fsideDeadLayer = 1.0*CLHEP::mm;
     G4double finsideDeadLayer = 1.0*CLHEP::mm;

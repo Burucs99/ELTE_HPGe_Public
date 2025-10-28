@@ -7,7 +7,7 @@
 
 class YourEventAction ;
 class YourDetectorConstruction;
-
+class G4LogicalVolume;
 class YourSteppingAction : public G4UserSteppingAction {
 public:
     YourSteppingAction(YourDetectorConstruction* det, YourEventAction* actEvt);
@@ -17,6 +17,7 @@ public:
 private:
     YourDetectorConstruction* fDetector;
     YourEventAction* fEventAction;
+    G4LogicalVolume* aluminium = nullptr;
 };
 
 #endif

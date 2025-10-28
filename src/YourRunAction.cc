@@ -17,13 +17,12 @@ YourRunAction::YourRunAction(YourPrimaryGeneratorAction* primGen,YourDetectorCon
   G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
   
-  analysisManager->CreateNtuple("Positions","Positions");
-  analysisManager->CreateNtupleDColumn("X"); 
-  analysisManager->CreateNtupleDColumn("Y");
-  analysisManager->CreateNtupleDColumn("Z");
+  analysisManager->CreateNtuple("Edep","Positions");
   analysisManager->CreateNtupleDColumn("Energy");
-  analysisManager->CreateNtupleIColumn("EventID");
+  analysisManager->CreateNtupleIColumn("CoulombIDX");
   analysisManager->CreateNtupleIColumn("RunID");
+  analysisManager->CreateNtupleIColumn("EventID");
+
 
   analysisManager->FinishNtuple(0); 
 }

@@ -154,6 +154,9 @@ YourDetectorMessenger::YourDetectorMessenger(YourDetectorConstruction* det)
     fSetDeadLayerCmd->SetParameter(param);
     fSetDeadLayerCmd->AvailableForStates(G4State_PreInit,G4State_Idle);
     fSetDeadLayerCmd->SetToBeBroadcasted(false); 
+
+
+ 
 }
 
 YourDetectorMessenger::~YourDetectorMessenger() {

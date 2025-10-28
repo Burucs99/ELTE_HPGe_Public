@@ -108,9 +108,9 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                 fGeometryName, 
                 fBoxSize, 
                 fMaterialName,  
-                fGeometryName + "_Logic",
+                fMaterialName + "_Logic",
                 fPlacement,
-                fGeometryName + "_Phys"
+                fMaterialName + "_Phys"
             );
         }
         else if (fCreateTub) {
@@ -364,16 +364,17 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     //PlaceCaesiumContaianer();
 
     
-    G4Material* Cobalt = nistMGR->FindOrBuildMaterial("G4_Co");
+     G4Material* Cobalt = nistMGR->FindOrBuildMaterial("G4_Co");
+    G4RotationMatrix* radiumRot = new G4RotationMatrix();
 
     G4ThreeVector cobaltpost(0, 0, fCaesiumPlacement.z());
     
     G4Tubs* Cobalt_ring=new G4Tubs("Co_ring",15.0*mm, 16.5*mm, 1*mm,0.,twopi);
     G4LogicalVolume* Cobalt_logical = new G4LogicalVolume(Cobalt_ring,Cobalt,"Co_ring");
-    new G4PVPlacement(cobaltrot,cobaltpost,Cobalt_logical,"Co_ring",worldLogical,false,0,false);
+    new G4PVPlacement(radiumRot,cobaltpost,Cobalt_logical,"Co_ring",worldLogical,false,0,false);
 
 
-
+    /*
     G4ThreeVector radiumPos(0, 0, fCaesiumPlacement.z()); // Make sure z-position is correct
     
     G4Material* Calcium_Carbonate = nistMGR->FindOrBuildMaterial("G4_CALCIUM_CARBONATE");
@@ -382,7 +383,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
 
     G4Tubs* Radium = new G4Tubs("Radium", 0*mm, 13.75/2*mm, 3.5*mm, 0., twopi);
     G4LogicalVolume* Radium_logical = new G4LogicalVolume(Radium, Calcium_Carbonate, "Radium_logical");
-    new G4PVPlacement(radiumRot, radiumPos, Radium_logical, "Radium", worldLogical, false, 0, false);
+    new G4PVPlacement(radiumRot, radiumPos, Radium_logical, "Radium", worldLogical, false, 0, false); */
     return worldPhysical;
 }
 
@@ -456,6 +457,8 @@ void YourDetectorConstruction::BoxSourceGeometryCreator(const G4String& boxName,
     G4Box* solidSource = new G4Box(boxName, (boxSize.x()/ 2)*cm,  boxSize.y()*cm / 2,  boxSize.z()*cm / 2);
     G4LogicalVolume* logicSource = new G4LogicalVolume(solidSource, material, logicName);
     G4PVPlacement* physSource = new G4PVPlacement(0, physPlacement, logicSource, physName, fworldLogical, false, 0,fCheckOverlaps);
+    logicSource->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 1.0, 0.0,0.5)));
+
 } 
 void YourDetectorConstruction::CylinderSourceGeometryCreator(const G4String& CylinderName, 
     G4double& CylinderRadius, G4double& CylinderHeight,

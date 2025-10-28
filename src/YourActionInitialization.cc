@@ -5,6 +5,7 @@
 #include "YourEventAction.hh"
 #include "YourRunAction.hh"
 #include "YourSteppingAction.hh"
+#include "YourTrackingAction.hh"
 YourActionInitialization::YourActionInitialization(YourDetectorConstruction* det)
 : G4VUserActionInitialization(),
   fDetector(det) {
@@ -45,11 +46,13 @@ void YourActionInitialization::Build() const {
 
     SetUserAction(actEvt);
 
-    
+    YourTrackingAction* actTrack = new YourTrackingAction();
+    SetUserAction(actTrack);
 
     YourSteppingAction* actStep = new YourSteppingAction(fDetector,actEvt);
 
     SetUserAction(actStep);
+
 
    
 }
