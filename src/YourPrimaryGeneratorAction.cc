@@ -25,7 +25,7 @@ YourPrimaryGeneratorAction::~YourPrimaryGeneratorAction(){
 // A PrimaryGeneratorAction-ben
 void YourPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent) {
     // Véletlen pozíció a gyűrűben
-    G4double inner_r = 15.0 * mm;
+   /*  G4double inner_r = 15.0 * mm;
     G4double outer_r = 16.5 * mm;
     G4double halfz = 1.0 * mm;
     G4ThreeVector placement =  fDetector->GetCaesiumPosition();
@@ -44,7 +44,7 @@ void YourPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent) {
     
     fGps->GetCurrentSource()->GetPosDist()->SetPosDisType("Point");
     fGps->GetCurrentSource()->GetPosDist()->SetCentreCoords(G4ThreeVector(x, y, z));
-    
+     */
     fGps->GeneratePrimaryVertex(anEvent);
 }
 void YourPrimaryGeneratorAction::SetDefault(){

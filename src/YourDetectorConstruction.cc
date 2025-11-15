@@ -364,18 +364,18 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     //PlaceCaesiumContaianer();
 
     
-     G4Material* Cobalt = nistMGR->FindOrBuildMaterial("G4_Co");
+ /*     G4Material* Cobalt = nistMGR->FindOrBuildMaterial("G4_Co");
     G4RotationMatrix* radiumRot = new G4RotationMatrix();
 
     G4ThreeVector cobaltpost(0, 0, fCaesiumPlacement.z());
     
     G4Tubs* Cobalt_ring=new G4Tubs("Co_ring",15.0*mm, 16.5*mm, 1*mm,0.,twopi);
     G4LogicalVolume* Cobalt_logical = new G4LogicalVolume(Cobalt_ring,Cobalt,"Co_ring");
-    new G4PVPlacement(radiumRot,cobaltpost,Cobalt_logical,"Co_ring",worldLogical,false,0,false);
+    new G4PVPlacement(radiumRot,cobaltpost,Cobalt_logical,"Co_ring",worldLogical,false,0,false); */
 
 
-    /*
-    G4ThreeVector radiumPos(0, 0, fCaesiumPlacement.z()); // Make sure z-position is correct
+    
+    /* G4ThreeVector radiumPos(0, 0, fCaesiumPlacement.z()); // Make sure z-position is correct
     
     G4Material* Calcium_Carbonate = nistMGR->FindOrBuildMaterial("G4_CALCIUM_CARBONATE");
 
@@ -383,7 +383,43 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
 
     G4Tubs* Radium = new G4Tubs("Radium", 0*mm, 13.75/2*mm, 3.5*mm, 0., twopi);
     G4LogicalVolume* Radium_logical = new G4LogicalVolume(Radium, Calcium_Carbonate, "Radium_logical");
-    new G4PVPlacement(radiumRot, radiumPos, Radium_logical, "Radium", worldLogical, false, 0, false); */
+    new G4PVPlacement(radiumRot, radiumPos, Radium_logical, "Radium", worldLogical, false, 0, false);
+ */
+
+    // 1. Anyag definiálása
+    G4double D = 1.8 * g/cm3;
+    G4int ncomponents_uran;
+    G4String name_uran, symbol_uran;
+
+    // Elemi anyagok
+    G4Element* elU  = new G4Element(name_uran="Uranium", symbol_uran="U", z=92., a=238.02891*g/mole);
+    G4Element* elN  = new G4Element(name_uran="Nitrogen", symbol_uran="N", z=7., a=14.0067*g/mole);
+    G4Element* elO_uran  = new G4Element(name_uran="Oxygen", symbol_uran="O", z=8., a=16.00*g/mole);
+
+    // Uranium nitrate (UO2(NO3)2)
+    G4Material* Uranium_Nitrate = new G4Material(name_uran="Uranium_Nitrate", D, ncomponents_uran=3);
+    Uranium_Nitrate->AddElement(elU, 1);
+    Uranium_Nitrate->AddElement(elN, 2);
+    Uranium_Nitrate->AddElement(elO_uran, 8);
+
+    // 2. Henger (tubus) létrehozása
+    G4RotationMatrix* uranRot = new G4RotationMatrix();
+    G4ThreeVector uranPos = G4ThreeVector(0, 0,  fCaesiumPlacement.z());  // tetszőleges pozíció, ahova elhelyezed
+
+    G4Tubs* UraniumTubs = new G4Tubs("UraniumTubs",
+                                    0*mm,        // belső sugár
+                                    14.25*mm,    // külső sugár (átmérő 28.5 mm)
+                                    14.3*mm,     // félmagasság (teljes magasság 28.6 mm)
+                                    0.*deg,
+                                    360.*deg);
+
+    G4LogicalVolume* UraniumTubs_logical =
+        new G4LogicalVolume(UraniumTubs, Uranium_Nitrate, "UraniumTubs_logical");
+
+    // 3. Elhelyezés a világban
+    new G4PVPlacement(uranRot, uranPos, UraniumTubs_logical,
+                    "UraniumTubs", worldLogical, false, 0, false);
+
     return worldPhysical;
 }
 
@@ -458,6 +494,11 @@ void YourDetectorConstruction::BoxSourceGeometryCreator(const G4String& boxName,
     G4LogicalVolume* logicSource = new G4LogicalVolume(solidSource, material, logicName);
     G4PVPlacement* physSource = new G4PVPlacement(0, physPlacement, logicSource, physName, fworldLogical, false, 0,fCheckOverlaps);
     logicSource->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 1.0, 0.0,0.5)));
+
+    G4double maxStep = 0.0001*mm;
+
+    G4UserLimits* stepLimits = new G4UserLimits(maxStep);
+    logicSource->SetUserLimits(stepLimits);
 
 } 
 void YourDetectorConstruction::CylinderSourceGeometryCreator(const G4String& CylinderName, 

@@ -38,7 +38,7 @@ int main(int argc, char** argv){
    }
    G4VisManager* visManager = new G4VisExecutive();
    visManager->SetVerboseLevel(0); 
-
+  
    visManager->Initialize();
 
    G4UImanager* uiManager = G4UImanager::GetUIpointer();

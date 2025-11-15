@@ -1,0 +1,24 @@
+# /control/execute Compton_Cobalt/Aluminium_6_co.mac
+/run/numberOfThreads 8
+/HPGe/run/EdepHist Edep Deposited-Energy 3000 0 3.1
+/run/initialize
+/gps/particle ion
+/gps/ion 27 60 0 0
+/gps/energy 0.0 eV
+
+/HPGe/det/CreateIsotope Al27 13 27 26.981538
+/HPGe/det/CreateElement Aluminum Al Al27:100
+/HPGe/det/CreateMaterial Aluminum 2.70 Aluminum:100
+
+/HPGe/det/setSourceBox AluminiumBox Aluminum 4.4 3.0 1.5 0 0 -6.40 ### Minima for 1 
+
+/HPGe/det/setDeadLayer 2.5 1.5 2
+/gps/pos/centre 0 0 -6.05 cm
+/gps/ang/type iso
+/HPGe/det/setCsSample 0.0 0.0 -6.05
+/HPGe/det/setSampleHolderPosition 0.0 0.0 -3.2350
+/run/reinitializeGeometry 1
+/random/setSeeds 25698 25699
+
+/HPGe/run/OutputName /home/aburucs/G4/Geant4/Gamma_Final/ELTE_HPGe_Public/build/Compton_Cobalt/6/ Compt_6
+/run/beamOn 15000000
