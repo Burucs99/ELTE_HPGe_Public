@@ -47,7 +47,7 @@ void YourSensitiveDetector::Initialize(G4HCofThisEvent * hce)
 }
 void YourSensitiveDetector::EndOfEvent(G4HCofThisEvent*) {
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-    const G4Event* event = G4RunManager::GetRunManager()->GetCurrentEvent();
+    /* const G4Event* event = G4RunManager::GetRunManager()->GetCurrentEvent();
     G4int eventID = event->GetEventID();
     const G4Run* run = G4RunManager::GetRunManager()->GetCurrentRun();
     G4int runID = run->GetRunID();
@@ -69,7 +69,7 @@ void YourSensitiveDetector::EndOfEvent(G4HCofThisEvent*) {
             analysisManager->AddNtupleRow(0);
         }
         
-    }
+    } */
 
     
     if(fTotalEnergy>0.0) analysisManager->FillH1(0,fTotalEnergy,1);
@@ -86,12 +86,12 @@ void YourSensitiveDetector::EndOfEvent(G4HCofThisEvent*) {
 
 G4bool YourSensitiveDetector::ProcessHits(G4Step* step, G4TouchableHistory*) {
     G4double edep = step->GetTotalEnergyDeposit();
-    G4int eventID = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
+    /* G4int eventID = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
     G4int runID = G4RunManager::GetRunManager()->GetCurrentRun()->GetRunID();
     G4int uniqueEventID = runID * 1000000 + eventID;
-    G4Track* track = step->GetTrack();
+    G4Track* track = step->GetTrack(); */
     fTotalEnergy += edep;
-    YourTrackInfo* info = dynamic_cast<YourTrackInfo*>(track->GetUserInformation());
+    /* YourTrackInfo* info = dynamic_cast<YourTrackInfo*>(track->GetUserInformation());
     G4int comptonIDX = (info) ? info->GetComptonCount() : 0;
 
     YourHit* hit = new YourHit();
@@ -100,7 +100,7 @@ G4bool YourSensitiveDetector::ProcessHits(G4Step* step, G4TouchableHistory*) {
     hit->SetRunID(runID);
     hit->SetTrackID(track->GetTrackID());
     hit->SetComptonID(comptonIDX);
-    fHitsCollection->insert(hit);
+    fHitsCollection->insert(hit); */
 
     return true;
 }

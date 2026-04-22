@@ -64,7 +64,12 @@ void YourRunAction::BeginOfRunAction(const G4Run* run) {
     std::stringstream strRunID,streventNumber;
     strRunID << runID;
     streventNumber<<eventNum;
-    
+    /* analysisManager->CreateH1(
+                "PathLength",
+                "PathLength",100,
+                0,
+                15
+            ); */
     if(fOutPutDir.empty()){
         fOutPutDir="OutPutDirectory";
         /* G4cout<<"No outputDirectory Defined"<<G4endl; */

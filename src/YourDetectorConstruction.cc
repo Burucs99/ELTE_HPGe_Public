@@ -68,7 +68,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
 /*     auto logicalVolume = new G4LogicalVolume(solid, yourMaterial, "logicalName");
  */ 
 
-    G4double z, a, density;
+    /* G4double z, a, density;
     G4String name, symbol;
     G4int ncomponents, natoms;
     //(C3H4O2)
@@ -91,10 +91,10 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                                                  , PLA
                                                  , "logical"
                                                  , 0, 0, 0
-        );
+        ); */
 
     //
-    CreateSampleHolder();
+    //CreateSampleHolder();
     if (fCreateBox || fCreateTub) {
         if (fCustomMats.find(fMaterialName) == fCustomMats.end()) {
             G4cerr << "ERROR: Material '" << fMaterialName 
@@ -312,7 +312,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                                             false, 0, fCheckOverlaps);
 
     G4double endCapTopZ = calorimeterShift - endCapShift - endCapLength / 2;
-     G4double bunnyHalfHeight = 0*mm; // depends on your bunny volume
+     /* G4double bunnyHalfHeight = 0*mm; // depends on your bunny volume
     G4ThreeVector bunnyPosition(0, 0, endCapTopZ + bunnyHalfHeight);
     auto bunnyRotation = new G4RotationMatrix();
     bunnyRotation->rotateX(180.0 * deg);
@@ -321,7 +321,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                   bunny_logical,
                   "physicalBunny",
                   worldLogical,
-                  false, 0, fCheckOverlaps);
+                  false, 0, fCheckOverlaps); */
 
 
     G4double maxStep = 0.0001*mm;
@@ -387,23 +387,23 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
  */
 
     // 1. Anyag definiálása
-    G4double D = 1.8 * g/cm3;
+    /* G4double D = 1.8 * g/cm3;
     G4int ncomponents_uran;
     G4String name_uran, symbol_uran;
 
     // Elemi anyagok
     G4Element* elU  = new G4Element(name_uran="Uranium", symbol_uran="U", z=92., a=238.02891*g/mole);
     G4Element* elN  = new G4Element(name_uran="Nitrogen", symbol_uran="N", z=7., a=14.0067*g/mole);
-    G4Element* elO_uran  = new G4Element(name_uran="Oxygen", symbol_uran="O", z=8., a=16.00*g/mole);
+    G4Element* elO_uran  = new G4Element(name_uran="Oxygen", symbol_uran="O", z=8., a=16.00*g/mole); */
 
     // Uranium nitrate (UO2(NO3)2)
-    G4Material* Uranium_Nitrate = new G4Material(name_uran="Uranium_Nitrate", D, ncomponents_uran=3);
+    /* G4Material* Uranium_Nitrate = new G4Material(name_uran="Uranium_Nitrate", D, ncomponents_uran=3);
     Uranium_Nitrate->AddElement(elU, 1);
     Uranium_Nitrate->AddElement(elN, 2);
-    Uranium_Nitrate->AddElement(elO_uran, 8);
+    Uranium_Nitrate->AddElement(elO_uran, 8); */
 
     // 2. Henger (tubus) létrehozása
-    G4RotationMatrix* uranRot = new G4RotationMatrix();
+    /* G4RotationMatrix* uranRot = new G4RotationMatrix();
     G4ThreeVector uranPos = G4ThreeVector(0, 0,  fCaesiumPlacement.z());  // tetszőleges pozíció, ahova elhelyezed
 
     G4Tubs* UraniumTubs = new G4Tubs("UraniumTubs",
@@ -418,7 +418,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
 
     // 3. Elhelyezés a világban
     new G4PVPlacement(uranRot, uranPos, UraniumTubs_logical,
-                    "UraniumTubs", worldLogical, false, 0, false);
+                    "UraniumTubs", worldLogical, false, 0, false); */
 
     return worldPhysical;
 }
@@ -496,6 +496,16 @@ void YourDetectorConstruction::BoxSourceGeometryCreator(const G4String& boxName,
     logicSource->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 1.0, 0.0,0.5)));
 
     G4double maxStep = 0.0001*mm;
+    G4cout<<"***********************************************"<<G4endl;
+    G4cout<<"***********************************************"<<G4endl;
+    G4cout<<"***********************************************"<<G4endl;
+
+    G4cout<<"Created source box with size "<<boxSize.z()*cm / 2<<G4endl;
+    G4cout<<"***********************************************"<<G4endl;
+
+    G4cout<<"***********************************************"<<G4endl;
+
+    G4cout<<"***********************************************"<<G4endl;
 
     G4UserLimits* stepLimits = new G4UserLimits(maxStep);
     logicSource->SetUserLimits(stepLimits);

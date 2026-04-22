@@ -7,7 +7,7 @@
 class YourDetectorConstruction;
 class YourDetectorMessenger;
 
-class G4GeneralParticleSource;
+class G4ParticleGun;
 class YourPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction {
 public:
     YourPrimaryGeneratorAction(YourDetectorConstruction* det);
