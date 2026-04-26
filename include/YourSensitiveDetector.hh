@@ -21,7 +21,7 @@ private:
     
     YourHitCollection* fHitsCollection;
     G4int fHCID; 
-    
+    G4double fEdep;
     virtual void Initialize(G4HCofThisEvent *) override;
     virtual void EndOfEvent(G4HCofThisEvent *) override;
     virtual G4bool ProcessHits(G4Step*, G4TouchableHistory *) override;
