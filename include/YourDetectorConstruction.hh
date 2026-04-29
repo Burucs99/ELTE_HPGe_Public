@@ -10,6 +10,11 @@
 #include <vector>
 #include <utility>
 #include <cstdlib>
+#include "Materials.hh"
+
+#include "YourDetector.hh"
+
+
 class G4Material;
 class YourDetectorMessenger;
 class G4Isotope;
@@ -55,6 +60,9 @@ private:
     G4LogicalVolume* fworldLogical;
     G4LogicalVolume* ftargetLogical;
     G4VPhysicalVolume* fTargetPhysical;
+
+    YourDetector* fDetector;
+    Materials* materialsTable;
     
     
 

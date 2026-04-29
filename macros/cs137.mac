@@ -1,0 +1,14 @@
+#/run/numberOfThreads 6
+
+/gps/pos/type Point
+/gps/pos/centre 0.0 -26.5 0.0 mm
+/gps/particle gamma
+/gps/ang/type iso
+
+/gps/energy 662 keV
+
+
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/scintyEfficiency/0/ data
+/run/initialize
+/run/beamOn 10 
+

@@ -27,7 +27,9 @@
 #include "G4SubtractionSolid.hh"
 #include "G4UserLimits.hh"
 #include "G4Cons.hh"
-#include "/home/aburucs/CadMesh/CADMesh/CADMesh.hh"
+//#include "/home/aburucs/CadMesh/CADMesh/CADMesh.hh"
+
+
 
 
 
@@ -35,6 +37,9 @@ YourDetectorConstruction::YourDetectorConstruction()
 :   G4VUserDetectorConstruction()
      {
     fDetMessenger    = new YourDetectorMessenger(this);
+
+    this->fDetector = new YourDetector();
+    this->materialsTable = new Materials();
 }
 
 YourDetectorConstruction::~YourDetectorConstruction() {
@@ -66,7 +71,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
 /*     auto logicalVolume = new G4LogicalVolume(solid, yourMaterial, "logicalName");
  */ 
     
-    G4Material* NaI = nistMGR->FindOrBuildMaterial("G4_SODIUM_IODIDE");
+    /*G4Material* NaI = nistMGR->FindOrBuildMaterial("G4_SODIUM_IODIDE");
 
     G4Tubs* scintiSolid = new G4Tubs(
         "Scinti",
@@ -88,7 +93,16 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                                                         activeCrystalLogical,
                                                         "Calorimeter",
                                                         worldLogical,
-                                                        false, 0, true);
+                                                        false, 0, true);*/
+
+    this->fDetector->Build(worldLogical, this->materialsTable->GetNatriumIodineMaterial(), G4ThreeVector(0, 0, 0), 0,
+                        this->materialsTable->GetMagnesiumOxidMaterial(),
+                        this->materialsTable->GetMagnesiumOxidMaterial(),
+                        this->materialsTable->GetAluminiumMaterial(),
+                        this->materialsTable->GetAluminiumMaterial());
+
+
+
     return worldPhysical;
 }
 
@@ -177,16 +191,16 @@ void YourDetectorConstruction::CylinderSourceGeometryCreator(const G4String& Cyl
 
 void YourDetectorConstruction::ConstructSDandField()
 {   
-    if (!(G4SDManager::GetSDMpointer()->FindSensitiveDetector("Sensitive-Detector"))){
+    /*if (!(G4SDManager::GetSDMpointer()->FindSensitiveDetector("Sensitive-Detector"))){
         YourSensitiveDetector * sensDet = new YourSensitiveDetector("Sensitive-Detector");
         G4SDManager::GetSDMpointer()->AddNewDetector(sensDet);
         ftargetLogical->SetSensitiveDetector(sensDet);
     }
-    else{ G4cout<<"SensDet has already been created"<<G4endl;}
+    else{ G4cout<<"SensDet has already been created"<<G4endl;}*/
 
-    YourSensitiveDetector * sensDet = new YourSensitiveDetector("Sensitive-Detector");
-    G4SDManager::GetSDMpointer()->AddNewDetector(sensDet);
-    ftargetLogical->SetSensitiveDetector(sensDet);
+    G4VSensitiveDetector* sd = new YourSensitiveDetector("Sensitive-Detector");
+    G4SDManager::GetSDMpointer()->AddNewDetector(sd);
+    this->fDetector->GetLogicalVolume()->SetSensitiveDetector(sd);
 }
 
 
@@ -222,7 +236,7 @@ void YourDetectorConstruction::SetSourceTube(
 }
 
 void YourDetectorConstruction::CreateSampleHolder(){
-    G4bool fCheckOverlaps = true;
+    /*G4bool fCheckOverlaps = true;
 
     G4double z, a, density;
     G4String name, symbol;
@@ -258,5 +272,5 @@ void YourDetectorConstruction::CreateSampleHolder(){
                   bunny_logical_2,
                   "physicalBunny_2",
                   fworldLogical,
-                  false, 0, fCheckOverlaps);
+                  false, 0, fCheckOverlaps);*/
 }

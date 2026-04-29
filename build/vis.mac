@@ -1,0 +1,15 @@
+#/run/numberOfThreads 6
+/run/initialize
+
+/control/verbose 0
+/vis/open OGLI
+/vis/viewer/set/viewpointVector 1 1 0
+/vis/drawVolume
+/vis/viewer/set/autoRefresh true
+/vis/scene/add/trajectories smooth 
+/vis/scene/add/scale 10 cm       
+/vis/scene/add/eventID   
+/vis/scene/add/axes 0 0 0 20 cm       
+/vis/scene/endOfEventAction accumulate
+/vis/verbose warnings
+/vis/viewer/flush

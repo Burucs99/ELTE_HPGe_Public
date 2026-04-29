@@ -1,0 +1,27 @@
+# Set fontize and options
+font.family: serif
+font.serif: cmr10
+mathtext.fontset: cm
+font.size: 18
+
+text.usetex : True
+# Magyar nyelvi és karakterkódolási csomagok betöltése a preambulumba
+text.latex.preamble : \usepackage[T1]{fontenc} \usepackage[utf8]{inputenc} \usepackage[magyar]{babel}
+
+axes.labelsize: 16
+legend.fontsize: 16
+axes.titlesize : 16
+xtick.labelsize: 16
+ytick.labelsize: 16
+legend.frameon: True
+
+#figure.figsize: 4.3, 4.0
+
+#figure.autolayout : False
+savefig.bbox : tight
+
+#figure.constrained_layout.use: True
+figure.constrained_layout.h_pad: 0.005
+figure.constrained_layout.w_pad: 0.005
+figure.constrained_layout.hspace: 0.005
+figure.constrained_layout.wspace: 0.005

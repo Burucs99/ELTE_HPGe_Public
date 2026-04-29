@@ -41,24 +41,10 @@ G4Run* YourRunAction::GenerateRun() {
 
 void YourRunAction::BeginOfRunAction(const G4Run* run) {
     timer->Start();
+
+    G4AnalysisManager* manager = G4AnalysisManager::Instance();
     
-    G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-    for (const auto& [name, config] : fHistConfigs) {
-        if (analysisManager->GetH1Id(name) == -1) {  
-            G4cout << "Creating Histogram '" << name << "' with "
-                   << config.edepBins << " bins from " 
-                   << config.edepMin << " to " << config.edepMax << " MeV" << G4endl;
-            
-            analysisManager->CreateH1(
-                name,
-                config.Title,
-                config.edepBins,
-                config.edepMin,
-                config.edepMax*MeV
-            );
-        } else {
-        }
-    }
+    manager->CreateH1("Edep_SD", "Energy deposited in SD", 1000, 0, 1.5 * MeV);
     
     G4int runID = run->GetRunID();
     G4int eventNum =run->GetNumberOfEvent();
@@ -83,7 +69,7 @@ void YourRunAction::BeginOfRunAction(const G4Run* run) {
     std::string fileName = outputDir + FileName + /* strRunID.str() + */
                            /* "-Events=" + streventNumber.str() + */ ".root";
 
-    analysisManager->OpenFile(fileName);
+    manager->OpenFile(fileName);
 }
 
 
