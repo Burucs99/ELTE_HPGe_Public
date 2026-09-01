@@ -1,0 +1,220 @@
+G4bool fCheckOverlaps = true;
+
+    auto calorimeterSolid          = new G4Tubs ("Calorimeter", 0, endCapOuterDiameter/2, endCapLength/2, 0, 360*deg);
+    auto calorimeterLogicalVolume  = new G4LogicalVolume (calorimeterSolid, vacuum, "Calorimeter");
+    /* auto calorimeterPhysicalVolume = new G4PVPlacement (0, G4ThreeVector(0, 0, calorimeterShift),
+                                                        calorimeterLogicalVolume,
+                                                        "Calorimeter",
+                                                        worldLogical,
+                                                        false, 0, fCheckOverlaps);
+  */
+    G4double barrelInnerRadius = 187.0 * mm;
+    G4double barrelOuterRadius = 187.5 * mm;  // 1.5 mm falvastagság
+    G4double barrelHalfHeight  = 438.0 * mm;
+
+    // A hordó tengelyének távolsága a detektor tengelyétől (sugár irányban)
+    // Feltételezem, hogy a 225 mm = 22.5 cm a hordó középpontjának távolsága
+    G4double barrelCenterOffsetR = 225.0 * mm + barrelOuterRadius;  // <-- ezt pontosítsd, ha a 286 mm volt a helyes belső sugár
+
+    // A hordó teteje legyen 11 cm-rel a detektor teteje felett
+    // A detektor teteje: START (mivel a START a legelső Z koordináta a kódban)
+    G4double detectorTopZ = START;  // a detektor legelső pontja
+    G4double barrelTopZ   = detectorTopZ - 110.0 * mm;  // hordó teteje 11 cm-rel feljebb
+
+    // Hordó középpontjának Z koordinátája: teteje - félmagasság
+    G4double barrelCenterZ = barrelTopZ + barrelHalfHeight;
+    
+    G4ThreeVector detectorOffset(0*cm, 0.0,  calorimeterShift);
+    auto calorimeterPhysicalVolume = new G4PVPlacement (0, detectorOffset,
+                                                        calorimeterLogicalVolume,
+                                                        "Calorimeter",
+                                                        worldLogical,
+                                                        false, 0, fCheckOverlaps);
+    //------------------------
+    //--------Endcap----------
+    auto endCapSolid          = new G4Tubs ("EndCap", endCapInnerDiameter/2, endCapOuterDiameter/2, endCapLength/2, 0, 360*deg);
+    auto endCapLogicalVolume  = new G4LogicalVolume (endCapSolid, aluminium, "EndCap");
+    auto endCapPhysicalVolume = new G4PVPlacement (0, G4ThreeVector(0, 0, endCapShift),
+                                                    endCapLogicalVolume,
+                                                    "EndCap",
+                                                    calorimeterLogicalVolume,
+                                                    false, 0, fCheckOverlaps);
+    
+    auto endCapDisk1Solid          = new G4Tubs ("EndCapDisk1", 0, endCapOuterDiameter/2 - endCapThickness/2, endCapThickness/2, 0, 360*deg);
+    auto endCapDisk1LogicalVolume  = new G4LogicalVolume (endCapDisk1Solid, aluminium, "EndCapDisk1");
+    auto endCapDisk1PhysicalVolume = new G4PVPlacement (0, G4ThreeVector(0, 0, endCapDisk1Shift),
+                                                        endCapDisk1LogicalVolume,
+                                                        "EndCapDisk1",
+                                                        calorimeterLogicalVolume,
+                                                        false, 0, fCheckOverlaps);
+    
+    auto endCapDisk2Solid          = new G4Tubs ("EndCapDisk2", 0, endCapOuterDiameter/2 - endCapThickness/2, endCapThickness/2, 0, 360*deg);
+    auto endCapDisk2LogicalVolume  = new G4LogicalVolume (endCapDisk2Solid, aluminium, "EndCapDisk2");
+    auto endCapDisk2PhysicalVolume = new G4PVPlacement (0, G4ThreeVector(0, 0, endCapDisk2Shift),
+                                                        endCapDisk2LogicalVolume,
+                                                        "EndCapDisk2",
+                                                        calorimeterLogicalVolume,
+                                                        false, 0, fCheckOverlaps);
+    
+    //------------------------
+    //--------Crystal---------
+
+    G4cout<<absorberMaterial->GetTemperature()<<G4endl;
+    // Dead layer thicknesses
+    G4double DeadLayerZ    = ftopDeadlayer;  // front face
+    G4double DeadLayerRad  = fsideDeadLayer;  // around barrel
+    G4double DeadLayerHole = finsideDeadLayer;  // inside hole
+
+    // Active crystal dimensions
+    G4double activeCrystalLength = crystalLength - DeadLayerZ;
+    G4double activeCrystalRadius = crystalDiameter/2 - DeadLayerRad;
+    G4double activeHoleRadius    = crystalHoleDiameter/2 + DeadLayerHole;
+
+    // Placement shifts (same as your original logic)
+    G4double activeZShift = START + windowDistance + activeCrystalLength / 2;
+    G4double deadZShift   = activeZShift - activeCrystalLength / 2 + DeadLayerZ / 2;
+
+    // ---------------------------------------------------------
+    // Outer full crystal (including all dead layers)
+    // ---------------------------------------------------------
+    auto fullCrystalSolid = new G4Tubs("FullCrystal",
+                                    0,
+                                    crystalDiameter/2,
+                                    crystalLength/2,
+                                    0, 360*deg);
+
+    // Outer hole (bore) full size (before dead layer)
+    auto fullHoleSolid = new G4Tubs("FullHole",
+                                    0,
+                                    crystalHoleDiameter/2,
+                                    crystalHoleDepth/2,
+                                    0, 360*deg);
+
+    // Full crystal with bore
+    auto fullCrystalWithBore = new G4SubtractionSolid("FullCrystalWithBore",
+                                                    fullCrystalSolid,
+                                                    fullHoleSolid,
+                                                    0,
+                                                    G4ThreeVector(0, 0, crystalHoleRelShift));
+
+    // ---------------------------------------------------------
+    // Active crystal volume
+    // ---------------------------------------------------------
+    auto activeCrystalSolidCyl = new G4Tubs("ActiveCrystalCyl",
+                                            0,
+                                            activeCrystalRadius,
+                                            activeCrystalLength/2,
+                                            0, 360*deg);
+
+    auto activeHoleSolid = new G4Tubs("ActiveHole",
+                                    0,
+                                    activeHoleRadius,
+                                    crystalHoleDepth/2,
+                                    0, 360*deg);
+
+    auto activeCrystalSolid = new G4SubtractionSolid("ActiveCrystal",
+                                                    activeCrystalSolidCyl,
+                                                    activeHoleSolid,
+                                                    0,
+                                                    G4ThreeVector(0, 0, crystalHoleRelShift + DeadLayerZ));
+
+    // ---------------------------------------------------------
+    // Dead layer = Full crystal with bore - Active crystal
+    // ---------------------------------------------------------
+    auto deadLayerSolid = new G4SubtractionSolid("DeadLayer",
+                                                fullCrystalWithBore,
+                                                activeCrystalSolid);
+
+    // ---------------------------------------------------------
+    // Logical & physical volumes
+    // ---------------------------------------------------------
+    auto activeCrystalLogical = new G4LogicalVolume(activeCrystalSolid, absorberMaterial, "ActiveCrystal");
+     
+    auto activeCrystalPhysical = new G4PVPlacement(0,
+                                            G4ThreeVector(0, 0, activeZShift + DeadLayerZ),
+                                            activeCrystalLogical,
+                                            "ActiveCrystal",
+                                            calorimeterLogicalVolume,
+                                            false, 0, fCheckOverlaps);
+
+    auto deadLayerLogical = new G4LogicalVolume(deadLayerSolid, absorberMaterial, "DeadLayer");
+    auto deadLayerPhysical = new G4PVPlacement(0,
+                                            G4ThreeVector(0, 0, activeZShift + DeadLayerZ),
+                                            deadLayerLogical,
+                                            "DeadLayer",
+                                            calorimeterLogicalVolume,
+                                            false, 0, fCheckOverlaps);
+
+    G4double endCapTopZ = calorimeterShift - endCapShift - endCapLength / 2;
+    /* G4double bunnyHalfHeight = 0*mm; // depends on your bunny volume
+    G4ThreeVector bunnyPosition(0, 0, endCapTopZ + bunnyHalfHeight);
+    auto bunnyRotation = new G4RotationMatrix();
+    bunnyRotation->rotateX(180.0 * deg);
+    new G4PVPlacement(bunnyRotation,
+                  bunnyPosition,
+                  bunny_logical,
+                  "physicalBunny",
+                  worldLogical,
+                  false, 0, fCheckOverlaps); */
+
+
+    G4double maxStep = 0.0001*mm;
+
+    G4UserLimits* stepLimits = new G4UserLimits(maxStep);
+    deadLayerLogical->SetUserLimits(stepLimits);
+    activeCrystalLogical->SetUserLimits(stepLimits);
+    calorimeterLogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(1.0, 0.0, 0.0,0.1)));
+    endCapDisk2LogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(1.0, 0.0, 0.0,0.1)));
+    endCapDisk1LogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 0.0, 1.0,0.6)));
+    endCapLogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 1.0, 1.0,0.2)));
+    deadLayerLogical->SetVisAttributes(new G4VisAttributes(G4Color(1.0, 0.0, 0.0,0.1)));
+
+    G4VisAttributes* crystalVisAtt = new G4VisAttributes(G4Color(0.0, 1.0, 0.0,0.6));
+    crystalVisAtt->SetForceSolid(true);
+    activeCrystalLogical->SetVisAttributes(crystalVisAtt);
+    ftargetLogical=activeCrystalLogical;
+
+
+
+        // -------------------------------------------------------------------
+    // Hordó (acél hengerfal) hozzáadása
+    // -------------------------------------------------------------------
+   
+    // Hordó anyaga: acél (G4_STAINLESS-STEEL vagy G4_Fe)
+    G4Material* steelMaterial = nistMGR->FindOrBuildMaterial("G4_STAINLESS-STEEL");
+    if (!steelMaterial) steelMaterial = nistMGR->FindOrBuildMaterial("G4_Fe");
+
+    // Hordó szilárd test (csak a fal, lyukas henger)
+    G4Tubs* barrelSolid = new G4Tubs("Barrel",
+                                    barrelInnerRadius,
+                                    barrelOuterRadius,
+                                    barrelHalfHeight,
+                                    0.0, 360.0*deg);
+
+    // Logikai térfogat
+    G4LogicalVolume* barrelLogical = new G4LogicalVolume(barrelSolid, steelMaterial, "Barrel");
+
+    // Fizikai elhelyezés: X irányban eltolva 225 mm-rel, Z irányban a számított középpontba
+    // Feltételezem, hogy a hordó tengelye párhuzamos a Z tengellyel (mint a HPGe)
+    
+    G4ThreeVector barrelPosition(barrelCenterOffsetR, 0.0, barrelCenterZ);
+    /* G4PVPlacement* barrelPhysical = new G4PVPlacement(nullptr,
+                                                    barrelPosition,
+                                                    barrelLogical,
+                                                    "Barrel",
+                                                    worldLogical,  // a világba rakjuk, nem a kaloriméterbe
+                                                    false,
+                                                    0,
+                                                    fCheckOverlaps); */
+    
+
+    // Vizuális megjelenés (opcionális)
+    G4VisAttributes* barrelVisAtt = new G4VisAttributes(G4Color(0.5, 0.5, 0.5, 0.8));  // szürke acél
+    barrelVisAtt->SetForceSolid(true);
+    barrelLogical->SetVisAttributes(barrelVisAtt);
+
+    
+
+
+    return worldPhysical;
+}

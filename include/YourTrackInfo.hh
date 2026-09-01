@@ -6,14 +6,14 @@
 
 class YourTrackInfo : public G4VUserTrackInformation {
 public:
-    YourTrackInfo(): fComptonCount(0) {}
-    virtual ~YourTrackInfo() {}
+    YourTrackInfo() : G4VUserTrackInformation(), Detected(false) {}  // inline definíció
+    virtual ~YourTrackInfo() {}                                       // inline definíció
 
-    void AddComptonScattering() { fComptonCount++; }
-    void SetComptonCount(G4int n) { fComptonCount = n; }
-    G4int GetComptonCount() const { return fComptonCount; }
-    
+    void SetDetectedTrue() { Detected = true; }
+    G4bool IsDetected() const { return Detected; }  // opcionális getter
+
 private:
-    G4int fComptonCount;
+    G4bool Detected = false;
 };
+
 #endif

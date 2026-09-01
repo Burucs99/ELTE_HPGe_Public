@@ -40,19 +40,11 @@ void YourActionInitialization::Build() const {
 
     YourRunAction* actRun = new YourRunAction(primGen,fDetector);
 
-    SetUserAction(actRun);
 
     YourEventAction* actEvt = new YourEventAction();
+    YourSteppingAction* stepAction = new YourSteppingAction(actEvt);
+    SetUserAction(actRun);
 
-    SetUserAction(actEvt);
-
-    YourTrackingAction* actTrack = new YourTrackingAction();
-    SetUserAction(actTrack);
-
-    YourSteppingAction* actStep = new YourSteppingAction(fDetector,actEvt);
-
-    SetUserAction(actStep);
-
-
-   
+   SetUserAction(actEvt);
+    SetUserAction(stepAction);
 }

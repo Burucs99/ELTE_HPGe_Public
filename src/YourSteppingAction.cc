@@ -3,76 +3,47 @@
 #include "G4Step.hh"
 #include "G4SystemOfUnits.hh"
 #include "YourEventAction.hh"
+#include "EventData.hh"
 #include "YourTrackInfo.hh"
-#include "G4VProcess.hh"  
-#include "G4String.hh"
-#include "G4Alpha.hh"
-#include "G4Electron.hh"
+#include "YourTrackingAction.hh"
 #include "G4RunManager.hh"
-#include "G4AnalysisManager.hh"
-
-YourSteppingAction::YourSteppingAction(YourDetectorConstruction* det,YourEventAction* actEvt)
-: G4UserSteppingAction(),
-  fDetector(det),
-  fEventAction(actEvt){}
+#include "G4Event.hh"
+#include "G4Run.hh"
+YourSteppingAction::YourSteppingAction(YourEventAction* actEvt)
+: G4UserSteppingAction(),fEvtAct(actEvt){}
 
 YourSteppingAction::~YourSteppingAction() {};
 
 
-void YourSteppingAction::UserSteppingAction(const G4Step* step) {
+void YourSteppingAction::UserSteppingAction(const G4Step* theStep){
 
-    //G4Track* track = step->GetTrack();
-
-    /* const G4VProcess* process = step->GetPostStepPoint()->GetProcessDefinedStep();
-
-    G4String processName = process->GetProcessName();
-    G4VPhysicalVolume* prePV = step->GetPreStepPoint()->GetPhysicalVolume();
-
-    G4String volName = prePV->GetName();
-    YourTrackInfo* info = dynamic_cast<YourTrackInfo*>(track->GetUserInformation()); */
-    /* G4ParticleDefinition* particle = track->GetDefinition();
-
-    if (particle == G4Alpha::Definition()) {
-        track->SetTrackStatus(fStopAndKill);
-        return;
-    } */
-
-    /* if (track->GetDefinition()->GetParticleName() != "gamma") return;
-    /* if (!info) {
-        info = new YourTrackInfo();
-        track->SetUserInformation(info);
-    }
+    /* StepData myData;
+    const G4Event* event = G4RunManager::GetRunManager()->GetCurrentEvent();
+    G4int eventID = event->GetEventID();
+    const G4Run* run = G4RunManager::GetRunManager()->GetCurrentRun();
+    G4int runID = run->GetRunID();
+    G4Track* track = theStep->GetTrack();
+    G4int trackID = track->GetTrackID();
+    G4String Volume = track->GetVolume()->GetName(); 
+    G4int StepNumber = track->GetCurrentStepNumber();
+    myData.RunID = runID;
+    myData.TrackID = trackID;
+    myData.EventID = eventID;
+    myData.StepID = StepNumber;
+    myData.energyDeposited = theStep->GetTotalEnergyDeposit();
+    G4ThreeVector pos = theStep->GetPreStepPoint()->GetPosition();
+    myData.position = pos;
     
-    G4StepPoint* prePoint = step->GetPreStepPoint();
-    G4StepPoint* postPoint = step->GetPostStepPoint();
-    
-    G4VPhysicalVolume* preVol = prePoint->GetPhysicalVolume();
-    G4VPhysicalVolume* postVol = postPoint->GetPhysicalVolume();
-    
-    G4String preVolName = "";
-    G4String postVolName = "";
-    
-    if (preVol) preVolName = preVol->GetName();
-    if (postVol) postVolName = postVol->GetName();
-    if (!G4StrUtil::contains(preVolName, "Aluminum_Phys") && 
-        G4StrUtil::contains(postVolName, "Aluminum_Phys")) 
-    {
+    if(G4StrUtil::contains(Volume, "ActiveCrystal") && theStep->GetTotalEnergyDeposit()!=0 ){
+        
+        G4int id = 0;
+        fEvtAct->PushBackTrack(trackID,id);
+            
+        
         
     }
     
-    if (G4StrUtil::contains(preVolName, "Aluminum_Phys") && 
-        !G4StrUtil::contains(postVolName, "Aluminum_Phys")) 
-    {
-        
-        
-        G4double trackLength = track->GetTrackLength();
-         G4cout << "  A dobozban megtett út: " << trackLength / mm << " mm" << G4endl;
-        G4cout << "====================================" << G4endl; 
-        G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-        analysisManager->FillH1(1,trackLength,1);
-    }    
-   */
-    
+    fEvtAct->PushBackEvent(myData);
+ */
+
 }
-
-

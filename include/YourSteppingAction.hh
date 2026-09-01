@@ -5,19 +5,19 @@
 #include "G4UserSteppingAction.hh"
 
 
+
 class YourEventAction ;
 class YourDetectorConstruction;
-class G4LogicalVolume;
+
 class YourSteppingAction : public G4UserSteppingAction {
 public:
-    YourSteppingAction(YourDetectorConstruction* det, YourEventAction* actEvt);
+    YourSteppingAction(YourEventAction* actEvt);
     ~YourSteppingAction() override;
 
     void UserSteppingAction(const G4Step*) override;
 private:
-    YourDetectorConstruction* fDetector;
-    YourEventAction* fEventAction;
-    G4LogicalVolume* aluminium = nullptr;
+    YourEventAction* fEvtAct;
+    
 };
 
 #endif

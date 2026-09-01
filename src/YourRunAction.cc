@@ -6,6 +6,7 @@
 #include "G4AnalysisManager.hh"
 #include "G4SystemOfUnits.hh"
 #include <filesystem> 
+
 YourRunAction::YourRunAction(YourPrimaryGeneratorAction* primGen,YourDetectorConstruction* det)
 : G4UserRunAction(),
  fDetector(det),
@@ -17,14 +18,20 @@ YourRunAction::YourRunAction(YourPrimaryGeneratorAction* primGen,YourDetectorCon
   G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
   
-  analysisManager->CreateNtuple("Edep","Positions");
-  analysisManager->CreateNtupleDColumn("Energy");
-  analysisManager->CreateNtupleIColumn("CoulombIDX");
-  analysisManager->CreateNtupleIColumn("RunID");
-  analysisManager->CreateNtupleIColumn("EventID");
+   /*  analysisManager->CreateNtuple("Tracking","Tracking");
+    analysisManager->CreateNtupleIColumn("RunID");
+    analysisManager->CreateNtupleIColumn("EventID");
+    analysisManager->CreateNtupleIColumn("TrackID");
+    analysisManager->CreateNtupleIColumn("StepID");
+    analysisManager->CreateNtupleIColumn("DetID");
+    analysisManager->CreateNtupleDColumn("Edep");
+    analysisManager->CreateNtupleDColumn("X");
+    analysisManager->CreateNtupleDColumn("Y");
+    analysisManager->CreateNtupleDColumn("Z");
+    analysisManager->FinishNtuple(0); */
 
 
-  analysisManager->FinishNtuple(0); 
+
 }
 
 YourRunAction::~YourRunAction() { delete timer; }
@@ -58,7 +65,6 @@ void YourRunAction::BeginOfRunAction(const G4Run* run) {
         } else {
         }
     }
-    
     G4int runID = run->GetRunID();
     G4int eventNum =run->GetNumberOfEvent();
     std::stringstream strRunID,streventNumber;

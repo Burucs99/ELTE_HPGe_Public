@@ -86,6 +86,7 @@ void YourSensitiveDetector::EndOfEvent(G4HCofThisEvent*) {
 
 G4bool YourSensitiveDetector::ProcessHits(G4Step* step, G4TouchableHistory*) {
     G4double edep = step->GetTotalEnergyDeposit();
+    
     /* G4int eventID = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
     G4int runID = G4RunManager::GetRunManager()->GetCurrentRun()->GetRunID();
     G4int uniqueEventID = runID * 1000000 + eventID;

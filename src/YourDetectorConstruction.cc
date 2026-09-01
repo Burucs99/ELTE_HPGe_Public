@@ -53,7 +53,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     // World
     G4Material* worldMat   = nistMGR->FindOrBuildMaterial("G4_AIR");
     
-    G4double worldSize   = 2*m;
+    G4double worldSize   = 4*m;
 
     G4Box* worldSolid             = new G4Box("solid-World",worldSize/2,worldSize/2,worldSize/2);
     G4LogicalVolume* worldLogical = new G4LogicalVolume(worldSolid,worldMat,"logic-World");
@@ -68,7 +68,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
 /*     auto logicalVolume = new G4LogicalVolume(solid, yourMaterial, "logicalName");
  */ 
 
-    /* G4double z, a, density;
+    G4double z, a, density;
     G4String name, symbol;
     G4int ncomponents, natoms;
     //(C3H4O2)
@@ -91,7 +91,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                                                  , PLA
                                                  , "logical"
                                                  , 0, 0, 0
-        ); */
+        );
 
     //
     //CreateSampleHolder();
@@ -191,12 +191,34 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
 
     auto calorimeterSolid          = new G4Tubs ("Calorimeter", 0, endCapOuterDiameter/2, endCapLength/2, 0, 360*deg);
     auto calorimeterLogicalVolume  = new G4LogicalVolume (calorimeterSolid, vacuum, "Calorimeter");
-    auto calorimeterPhysicalVolume = new G4PVPlacement (0, G4ThreeVector(0, 0, calorimeterShift),
+    /* auto calorimeterPhysicalVolume = new G4PVPlacement (0, G4ThreeVector(0, 0, calorimeterShift),
                                                         calorimeterLogicalVolume,
                                                         "Calorimeter",
                                                         worldLogical,
                                                         false, 0, fCheckOverlaps);
- 
+  */
+    G4double barrelInnerRadius = 187.0 * mm;
+    G4double barrelOuterRadius = 187.5 * mm;  // 1.5 mm falvastagság
+    G4double barrelHalfHeight  = 438.0 * mm;
+
+    // A hordó tengelyének távolsága a detektor tengelyétől (sugár irányban)
+    // Feltételezem, hogy a 225 mm = 22.5 cm a hordó középpontjának távolsága
+    G4double barrelCenterOffsetR = 225.0 * mm + barrelOuterRadius;  // <-- ezt pontosítsd, ha a 286 mm volt a helyes belső sugár
+
+    // A hordó teteje legyen 11 cm-rel a detektor teteje felett
+    // A detektor teteje: START (mivel a START a legelső Z koordináta a kódban)
+    G4double detectorTopZ = START;  // a detektor legelső pontja
+    G4double barrelTopZ   = detectorTopZ - 110.0 * mm;  // hordó teteje 11 cm-rel feljebb
+
+    // Hordó középpontjának Z koordinátája: teteje - félmagasság
+    G4double barrelCenterZ = barrelTopZ + barrelHalfHeight;
+    
+    G4ThreeVector detectorOffset(0*cm, 0.0,  calorimeterShift);
+    auto calorimeterPhysicalVolume = new G4PVPlacement (0, detectorOffset,
+                                                        calorimeterLogicalVolume,
+                                                        "Calorimeter",
+                                                        worldLogical,
+                                                        false, 0, fCheckOverlaps);
     //------------------------
     //--------Endcap----------
     auto endCapSolid          = new G4Tubs ("EndCap", endCapInnerDiameter/2, endCapOuterDiameter/2, endCapLength/2, 0, 360*deg);
@@ -296,12 +318,13 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     // Logical & physical volumes
     // ---------------------------------------------------------
     auto activeCrystalLogical = new G4LogicalVolume(activeCrystalSolid, absorberMaterial, "ActiveCrystal");
+     
     auto activeCrystalPhysical = new G4PVPlacement(0,
-                                                G4ThreeVector(0, 0, activeZShift + DeadLayerZ),
-                                                activeCrystalLogical,
-                                                "ActiveCrystal",
-                                                calorimeterLogicalVolume,
-                                                false, 0, fCheckOverlaps);
+                                            G4ThreeVector(0, 0, activeZShift + DeadLayerZ),
+                                            activeCrystalLogical,
+                                            "ActiveCrystal",
+                                            calorimeterLogicalVolume,
+                                            false, 0, fCheckOverlaps);
 
     auto deadLayerLogical = new G4LogicalVolume(deadLayerSolid, absorberMaterial, "DeadLayer");
     auto deadLayerPhysical = new G4PVPlacement(0,
@@ -312,7 +335,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                                             false, 0, fCheckOverlaps);
 
     G4double endCapTopZ = calorimeterShift - endCapShift - endCapLength / 2;
-     /* G4double bunnyHalfHeight = 0*mm; // depends on your bunny volume
+    /* G4double bunnyHalfHeight = 0*mm; // depends on your bunny volume
     G4ThreeVector bunnyPosition(0, 0, endCapTopZ + bunnyHalfHeight);
     auto bunnyRotation = new G4RotationMatrix();
     bunnyRotation->rotateX(180.0 * deg);
@@ -342,83 +365,45 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
 
 
 
+        // -------------------------------------------------------------------
+    // Hordó (acél hengerfal) hozzáadása
+    // -------------------------------------------------------------------
+   
+    // Hordó anyaga: acél (G4_STAINLESS-STEEL vagy G4_Fe)
+    G4Material* steelMaterial = nistMGR->FindOrBuildMaterial("G4_STAINLESS-STEEL");
+    if (!steelMaterial) steelMaterial = nistMGR->FindOrBuildMaterial("G4_Fe");
+
+    // Hordó szilárd test (csak a fal, lyukas henger)
+    G4Tubs* barrelSolid = new G4Tubs("Barrel",
+                                    barrelInnerRadius,
+                                    barrelOuterRadius,
+                                    barrelHalfHeight,
+                                    0.0, 360.0*deg);
+
+    // Logikai térfogat
+    G4LogicalVolume* barrelLogical = new G4LogicalVolume(barrelSolid, steelMaterial, "Barrel");
+
+    // Fizikai elhelyezés: X irányban eltolva 225 mm-rel, Z irányban a számított középpontba
+    // Feltételezem, hogy a hordó tengelye párhuzamos a Z tengellyel (mint a HPGe)
+    
+    G4ThreeVector barrelPosition(barrelCenterOffsetR, 0.0, barrelCenterZ);
+    /* G4PVPlacement* barrelPhysical = new G4PVPlacement(nullptr,
+                                                    barrelPosition,
+                                                    barrelLogical,
+                                                    "Barrel",
+                                                    worldLogical,  // a világba rakjuk, nem a kaloriméterbe
+                                                    false,
+                                                    0,
+                                                    fCheckOverlaps); */
+    
+
+    // Vizuális megjelenés (opcionális)
+    G4VisAttributes* barrelVisAtt = new G4VisAttributes(G4Color(0.5, 0.5, 0.5, 0.8));  // szürke acél
+    barrelVisAtt->SetForceSolid(true);
+    barrelLogical->SetVisAttributes(barrelVisAtt);
 
     
 
-
-    /* constexpr G4double BoxSize                    = 60*cm; 
-    constexpr G4double BoxThickness               = 10*cm;
-
-    auto OuterBox = new G4Box ("OuterBox",BoxSize/2,BoxSize/2,BoxSize/2);
-    auto InnerBox    = new G4Box ("InnerBox", BoxSize/2-BoxThickness,BoxSize/2-BoxThickness,BoxSize/2-BoxThickness);
-
-    auto BoxSolid         = new G4SubtractionSolid ("Box", OuterBox, InnerBox, 0, G4ThreeVector(0, 0, 0));
-    auto lead = nistMGR->FindOrBuildMaterial("G4_Pb");
-    auto BoxLogicalVolume  = new G4LogicalVolume (BoxSolid, lead, "Box");
-    auto BoxPhysicalVolume = new G4PVPlacement (0, G4ThreeVector(0, 0, 0),//
-                                                    BoxLogicalVolume,
-                                                    "Box",
-                                                    worldLogical,
-                                                    false, 0, fCheckOverlaps);
-    BoxLogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 0.0, 0.5,0.1))); */
-    //PlaceCaesiumContaianer();
-
-    
- /*     G4Material* Cobalt = nistMGR->FindOrBuildMaterial("G4_Co");
-    G4RotationMatrix* radiumRot = new G4RotationMatrix();
-
-    G4ThreeVector cobaltpost(0, 0, fCaesiumPlacement.z());
-    
-    G4Tubs* Cobalt_ring=new G4Tubs("Co_ring",15.0*mm, 16.5*mm, 1*mm,0.,twopi);
-    G4LogicalVolume* Cobalt_logical = new G4LogicalVolume(Cobalt_ring,Cobalt,"Co_ring");
-    new G4PVPlacement(radiumRot,cobaltpost,Cobalt_logical,"Co_ring",worldLogical,false,0,false); */
-
-
-    
-    /* G4ThreeVector radiumPos(0, 0, fCaesiumPlacement.z()); // Make sure z-position is correct
-    
-    G4Material* Calcium_Carbonate = nistMGR->FindOrBuildMaterial("G4_CALCIUM_CARBONATE");
-
-    G4RotationMatrix* radiumRot = new G4RotationMatrix();
-
-    G4Tubs* Radium = new G4Tubs("Radium", 0*mm, 13.75/2*mm, 3.5*mm, 0., twopi);
-    G4LogicalVolume* Radium_logical = new G4LogicalVolume(Radium, Calcium_Carbonate, "Radium_logical");
-    new G4PVPlacement(radiumRot, radiumPos, Radium_logical, "Radium", worldLogical, false, 0, false);
- */
-
-    // 1. Anyag definiálása
-    /* G4double D = 1.8 * g/cm3;
-    G4int ncomponents_uran;
-    G4String name_uran, symbol_uran;
-
-    // Elemi anyagok
-    G4Element* elU  = new G4Element(name_uran="Uranium", symbol_uran="U", z=92., a=238.02891*g/mole);
-    G4Element* elN  = new G4Element(name_uran="Nitrogen", symbol_uran="N", z=7., a=14.0067*g/mole);
-    G4Element* elO_uran  = new G4Element(name_uran="Oxygen", symbol_uran="O", z=8., a=16.00*g/mole); */
-
-    // Uranium nitrate (UO2(NO3)2)
-    /* G4Material* Uranium_Nitrate = new G4Material(name_uran="Uranium_Nitrate", D, ncomponents_uran=3);
-    Uranium_Nitrate->AddElement(elU, 1);
-    Uranium_Nitrate->AddElement(elN, 2);
-    Uranium_Nitrate->AddElement(elO_uran, 8); */
-
-    // 2. Henger (tubus) létrehozása
-    /* G4RotationMatrix* uranRot = new G4RotationMatrix();
-    G4ThreeVector uranPos = G4ThreeVector(0, 0,  fCaesiumPlacement.z());  // tetszőleges pozíció, ahova elhelyezed
-
-    G4Tubs* UraniumTubs = new G4Tubs("UraniumTubs",
-                                    0*mm,        // belső sugár
-                                    14.25*mm,    // külső sugár (átmérő 28.5 mm)
-                                    14.3*mm,     // félmagasság (teljes magasság 28.6 mm)
-                                    0.*deg,
-                                    360.*deg);
-
-    G4LogicalVolume* UraniumTubs_logical =
-        new G4LogicalVolume(UraniumTubs, Uranium_Nitrate, "UraniumTubs_logical");
-
-    // 3. Elhelyezés a világban
-    new G4PVPlacement(uranRot, uranPos, UraniumTubs_logical,
-                    "UraniumTubs", worldLogical, false, 0, false); */
 
     return worldPhysical;
 }
@@ -528,7 +513,7 @@ void YourDetectorConstruction::CylinderSourceGeometryCreator(const G4String& Cyl
     G4PVPlacement* physSource = new G4PVPlacement(0, physPlacement, logicSource, physName, fworldLogical, false, 0,true);
 
 
-    G4Tubs* COS_16H = new G4Tubs("COS-16H Tub",0,8*CLHEP::mm/2,13*CLHEP::mm/2,0,360*deg);
+    /* G4Tubs* COS_16H = new G4Tubs("COS-16H Tub",0,8*CLHEP::mm/2,13*CLHEP::mm/2,0,360*deg);
     auto Cos_16H_tok         = new G4SubtractionSolid ("COS-16H Tok", COS_16H, solidSource, 0, G4ThreeVector(0, 0, 0));
     auto Stainless_Steel = nistMGR->FindOrBuildMaterial("G4_STAINLESS-STEEL");
     auto Cos_16H_tok_LogicalVolume  = new G4LogicalVolume (Cos_16H_tok , Stainless_Steel, "Cos16");
@@ -537,7 +522,7 @@ void YourDetectorConstruction::CylinderSourceGeometryCreator(const G4String& Cyl
                                                     "Cos16",
                                                     fworldLogical,
                                                     false, 0, true);
-    Cos_16H_tok_LogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 1.0, 0.0,0.5)));
+    Cos_16H_tok_LogicalVolume->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 1.0, 0.0,0.5))); */
 } 
 
 
