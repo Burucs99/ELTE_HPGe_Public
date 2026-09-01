@@ -1,0 +1,34 @@
+#/run/numberOfThreads 6 
+/run/initialize
+
+/HPGe/det/setSourceTube WaterTube Water 37.4 87.6 0 0 0
+
+/vis/open OGLI
+#/vis/viewer/set/viewpointVector 0.95 0.95 0.5
+/vis/viewer/set/viewpointVector -1 0 0
+/vis/drawVolume
+/vis/viewer/set/autoRefresh true
+
+
+/vis/scene/add/trajectories smooth
+
+#/vis/filtering/trajectories/create/particleFilter
+#/vis/filtering/trajectories/particleFilter-0/add mu+
+
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts true
+
+
+/vis/scene/add/hits
+
+
+/vis/scene/add/scale 10 cm
+/vis/scene/add/axes 0 0 0 10 cm
+/vis/viewer/set/targetPoint 0 0 0 pc
+/vis/viewer/zoom  100
+
+#/vis/scene/add/eventID
+/vis/scene/endOfEventAction accumulate
+/vis/verbose warnings
+
+

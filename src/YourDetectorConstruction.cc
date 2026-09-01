@@ -27,7 +27,7 @@
 #include "G4SubtractionSolid.hh"
 #include "G4UserLimits.hh"
 #include "G4Cons.hh"
-#include "/home/aburucs/CadMesh/CADMesh/CADMesh.hh"
+//#include "/home/aburucs/CadMesh/CADMesh/CADMesh.hh"
 
 
 
@@ -85,13 +85,13 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     PLA->AddElement(elH, natoms=4);
     PLA->AddElement(elO, natoms=2);
     PLA->AddElement(elC,natoms=3);
-    auto bunny_mesh = CADMesh::TessellatedMesh::FromSTL("../geom/plate_ascii.stl");
+    //auto bunny_mesh = CADMesh::TessellatedMesh::FromSTL("../geom/plate_ascii.stl");
 
-    auto bunny_logical = new G4LogicalVolume( bunny_mesh->GetSolid() 
+    /*auto bunny_logical = new G4LogicalVolume( bunny_mesh->GetSolid() 
                                                  , PLA
                                                  , "logical"
                                                  , 0, 0, 0
-        );
+        );*/
 
     //
     //CreateSampleHolder();
@@ -197,23 +197,9 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
                                                         worldLogical,
                                                         false, 0, fCheckOverlaps);
   */
-    G4double barrelInnerRadius = 187.0 * mm;
-    G4double barrelOuterRadius = 187.5 * mm;  // 1.5 mm falvastagság
-    G4double barrelHalfHeight  = 438.0 * mm;
-
-    // A hordó tengelyének távolsága a detektor tengelyétől (sugár irányban)
-    // Feltételezem, hogy a 225 mm = 22.5 cm a hordó középpontjának távolsága
-    G4double barrelCenterOffsetR = 225.0 * mm + barrelOuterRadius;  // <-- ezt pontosítsd, ha a 286 mm volt a helyes belső sugár
-
-    // A hordó teteje legyen 11 cm-rel a detektor teteje felett
-    // A detektor teteje: START (mivel a START a legelső Z koordináta a kódban)
-    G4double detectorTopZ = START;  // a detektor legelső pontja
-    G4double barrelTopZ   = detectorTopZ - 110.0 * mm;  // hordó teteje 11 cm-rel feljebb
-
-    // Hordó középpontjának Z koordinátája: teteje - félmagasság
-    G4double barrelCenterZ = barrelTopZ + barrelHalfHeight;
     
-    G4ThreeVector detectorOffset(0*cm, 0.0,  calorimeterShift);
+    //A horddó közepétől a távolság a detektor falától: maga a detektor sugarával való eltolás, a hordó falvastagságával való eltolás, és a hordó középpontjának a detektor középpontjától való eltolása
+    G4ThreeVector detectorOffset(- endCapOuterDiameter / 2 -22.5 * cm -28.75 * cm, 0.0,(-43.8 + 11) * cm +  calorimeterShift);
     auto calorimeterPhysicalVolume = new G4PVPlacement (0, detectorOffset,
                                                         calorimeterLogicalVolume,
                                                         "Calorimeter",
@@ -368,7 +354,23 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
         // -------------------------------------------------------------------
     // Hordó (acél hengerfal) hozzáadása
     // -------------------------------------------------------------------
-   
+    //28.75 cm 287.5 mm
+    G4double barrelInnerRadius = 287.5 * mm;
+    G4double barrelOuterRadius = 289.0 * mm;  // 1.5 mm falvastagság
+    G4double barrelHalfHeight  = 438.0 * mm;
+
+    // A hordó tengelyének távolsága a detektor tengelyétől (sugár irányban)
+    // Feltételezem, hogy a 225 mm = 22.5 cm a hordó középpontjának távolsága
+    G4double barrelCenterOffsetR = 225.0 * mm + barrelOuterRadius;  // <-- ezt pontosítsd, ha a 286 mm volt a helyes belső sugár
+
+    // A hordó teteje legyen 11 cm-rel a detektor teteje felett
+    // A detektor teteje: START (mivel a START a legelső Z koordináta a kódban)
+    G4double detectorTopZ = START;  // a detektor legelső pontja
+    G4double barrelTopZ   = detectorTopZ - 110.0 * mm;  // hordó teteje 11 cm-rel feljebb
+
+    // Hordó középpontjának Z koordinátája: teteje - félmagasság
+    G4double barrelCenterZ = barrelTopZ + barrelHalfHeight;
+
     // Hordó anyaga: acél (G4_STAINLESS-STEEL vagy G4_Fe)
     G4Material* steelMaterial = nistMGR->FindOrBuildMaterial("G4_STAINLESS-STEEL");
     if (!steelMaterial) steelMaterial = nistMGR->FindOrBuildMaterial("G4_Fe");
@@ -386,15 +388,15 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     // Fizikai elhelyezés: X irányban eltolva 225 mm-rel, Z irányban a számított középpontba
     // Feltételezem, hogy a hordó tengelye párhuzamos a Z tengellyel (mint a HPGe)
     
-    G4ThreeVector barrelPosition(barrelCenterOffsetR, 0.0, barrelCenterZ);
-    /* G4PVPlacement* barrelPhysical = new G4PVPlacement(nullptr,
+    G4ThreeVector barrelPosition(0.0, 0.0, 0.0);
+    G4PVPlacement* barrelPhysical = new G4PVPlacement(nullptr,
                                                     barrelPosition,
                                                     barrelLogical,
                                                     "Barrel",
                                                     worldLogical,  // a világba rakjuk, nem a kaloriméterbe
                                                     false,
                                                     0,
-                                                    fCheckOverlaps); */
+                                                    fCheckOverlaps);
     
 
     // Vizuális megjelenés (opcionális)
@@ -592,17 +594,17 @@ void YourDetectorConstruction::CreateSampleHolder(){
     PLA->AddElement(elH, natoms=4);
     PLA->AddElement(elO, natoms=2);
     PLA->AddElement(elC,natoms=3);
-    auto bunny_mesh_2 = CADMesh::TessellatedMesh::FromSTL("../geom/detector_stand_ascii.stl");
+    //auto bunny_mesh_2 = CADMesh::TessellatedMesh::FromSTL("../geom/detector_stand_ascii.stl");
 
-    auto bunny_logical_2 = new G4LogicalVolume( bunny_mesh_2->GetSolid() 
+    /*auto bunny_logical_2 = new G4LogicalVolume( bunny_mesh_2->GetSolid() 
                                                  , PLA
                                                  , "logical_2"
                                                  , 0, 0, 0
-        );
+        );*/
  
     G4double endCapTopZ = 0.0*mm;
     G4double bunnyHalfHeight = 0*mm;
-    auto bunnyRotation = new G4RotationMatrix();
+    /*auto bunnyRotation = new G4RotationMatrix();
     bunnyRotation->rotateX(180.0 * deg);
     new G4PVPlacement(bunnyRotation,
                   fSampleHolderPlacement,
@@ -610,7 +612,7 @@ void YourDetectorConstruction::CreateSampleHolder(){
                   "physicalBunny_2",
                   fworldLogical,
                   false, 0, fCheckOverlaps);
-    bunny_logical_2->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 0.5, 0.0,1.0)));
+    bunny_logical_2->SetVisAttributes(new G4VisAttributes(G4Color(0.0, 0.5, 0.0,1.0)));*/
 
 }
 

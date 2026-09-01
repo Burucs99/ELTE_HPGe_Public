@@ -1,0 +1,66 @@
+#/control/execute Víz.mac
+/run/numberOfThreads 11
+/HPGe/run/EdepHist Edep Deposited-Energy 3000 0 3.1
+/run/initialize
+
+/HPGe/det/setDeadLayer 2.5 1.5 2
+
+/gps/particle ion
+/gps/ion 63 152 0 0
+/gps/pos/centre 0 0 -0.8 cm # a Hordó tetejétől 36 + 7 cm -re van a forrás. Mivel a hordó teteje a -438 cm-nél van, ezért a forrás pozíciója -395 cm. A hordó teteje a 0 cm-nél van, a hordó alja a -876 cm-nél.
+/HPGe/det/CreateIsotope H1  1 1 1.00794
+/HPGe/det/CreateIsotope O16 8 16 15.9994
+
+/HPGe/det/CreateElement Hydrogen H H1:100
+/HPGe/det/CreateElement Oxygen O O16:100
+
+/HPGe/det/CreateMaterial Water 1.0 Hydrogen:11.19 Oxygen:88.81
+
+
+
+/random/setSeeds 98766 54643
+/HPGe/det/setSourceTube WaterTube Water 57.5 87.6 0 0 0
+/run/reinitializeGeometry 1
+
+
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_37.4
+/run/beamOn 2000000
+
+
+/random/setSeeds 38766 44643
+/HPGe/det/setSourceTube WaterTube Water 50 87.6 0 0 0
+/run/reinitializeGeometry 1
+
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_30.0
+/run/beamOn 2000000
+
+/random/setSeeds 88366 44623
+/HPGe/det/setSourceTube WaterTube Water 40.0 87.6 0 0 0
+/run/reinitializeGeometry 1
+
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_20.0
+/run/beamOn 2000000
+
+/random/setSeeds 11366 22623
+/HPGe/det/setSourceTube WaterTube Water 30.0 87.6 0 0 0
+/run/reinitializeGeometry 1
+
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_10.0
+/run/beamOn 1000000
+
+/random/setSeeds 11366 22623
+/HPGe/det/setSourceTube WaterTube Water 20.0 87.6 0 0 0
+/run/reinitializeGeometry 1
+
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_10.0
+/run/beamOn 1000000
+
+/random/setSeeds 11366 22623
+/HPGe/det/setSourceTube WaterTube Water 10.0 87.6 0 0 0
+/run/reinitializeGeometry 1
+
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_10.0
+/run/beamOn 1000000
+
+
+

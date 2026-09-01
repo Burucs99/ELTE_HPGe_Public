@@ -45,7 +45,7 @@ int main(int argc, char** argv){
    uiManager->SetVerboseLevel(0);
    if(ui)
    {
-      //uiManager->ApplyCommand("/control/execute vis.mac");
+      uiManager->ApplyCommand("/control/execute ../build/vis.mac");
       ui->SessionStart();
 
    }
