@@ -1,5 +1,6 @@
 #include "YourPhysicsList.hh"
 
+#include "G4EmStandardPhysics.hh"
 #include "G4EmStandardPhysics_option4.hh"
 #include "G4ProductionCutsTable.hh"
 #include "G4SystemOfUnits.hh"
@@ -8,13 +9,13 @@
 #include "G4RadioactiveDecayPhysics.hh"
 YourPhysicsList::YourPhysicsList()
 {
-    RegisterPhysics(new G4EmStandardPhysics_option4());
+    RegisterPhysics(new G4EmStandardPhysics());
 
     // Ha kell:
-    RegisterPhysics(new G4DecayPhysics());
-    RegisterPhysics(new G4RadioactiveDecayPhysics());
-    /* G4EmParameters::Instance()->SetFluo(false);
-    G4EmParameters::Instance()->SetAuger(false); */
+    /*RegisterPhysics(new G4DecayPhysics());
+    RegisterPhysics(new G4RadioactiveDecayPhysics());*/
+    G4EmParameters::Instance()->SetFluo(false);
+    G4EmParameters::Instance()->SetAuger(false);
 }
 
 YourPhysicsList::~YourPhysicsList(){}
@@ -22,19 +23,19 @@ YourPhysicsList::~YourPhysicsList(){}
 
 void YourPhysicsList::SetCuts()
 {
-    /* SetCutsWithDefault();
+    SetCutsWithDefault();
 
     G4ProductionCutsTable::GetProductionCutsTable()
         ->SetEnergyRange(1*keV,10*MeV);
 
-    SetCutValue(0.1*mm,"gamma");
-    SetCutValue(0.1*mm,"e-");
-    SetCutValue(0.1*mm,"e+");
+    SetCutValue(2*mm,"gamma");
+    SetCutValue(1*mm,"e-");
+    SetCutValue(1*mm,"e+");
 
     G4cout
         << "Cuts applied:"
         << "\n gamma: " << GetCutValue("gamma")/mm << " mm"
         << "\n e-: " << GetCutValue("e-")/mm << " mm"
         << "\n e+: " << GetCutValue("e+")/mm << " mm"
-        << G4endl; */
+        << G4endl;
 }

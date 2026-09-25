@@ -1,0 +1,418 @@
+
+# /control/execute Eu152_Steel_Radii.mac
+/run/numberOfThreads 11
+/HPGe/run/EdepHist Edep Deposited-Energy 3000 0 3.1
+/HPGe/det/setDeadLayer 2.5 1.5 2
+/run/initialize
+
+/gps/particle gamma
+/gps/ang/mintheta 1.012 rad
+/gps/ang/maxtheta 1.117 rad   
+/gps/pos/type Point
+/gps/ang/type iso
+/gps/ang/mintheta 1.012 rad
+/gps/ang/maxtheta 1.117 rad
+/gps/ang/minphi -0.128431 rad
+/gps/ang/maxphi 0.128431 rad
+/gps/pos/centre 0 0 -0.8 cm
+
+# ====================================================
+# STEEL ANYAG BEÁLLÍTÁSA
+# ====================================================
+/HPGe/det/CreateIsotope Fe56 26 56 55.845
+/HPGe/det/CreateElement Iron Fe Fe56:100
+/HPGe/det/CreateMaterial Steel 7.8 Iron:100
+
+# ====================================================
+# FORRÁSHENGER: R = 5, 10, 15, 20, 25, 28.5 cm
+# Az első paraméter 2R: 10, 20, 30, 40, 50, 57 cm
+# ====================================================
+
+# ====================================================
+# 1.) R = 5 cm  (2R = 10 cm)
+# ====================================================
+/HPGe/det/setSourceTube SteelTube Steel 10 87.6 0 0 0
+/run/reinitializeGeometry 1
+
+# 1.) Eu-152 (121.78 keV)
+/random/setSeeds 162345 111789
+/gps/energy 121.78 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R5cm_Eu152_122
+/run/beamOn 10000000
+
+/random/setSeeds 162345 111789
+/gps/energy 344.28 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R5cm_Eu152_344
+/run/beamOn 10000000
+
+/random/setSeeds 162345 111789
+/gps/energy 778.90 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R5cm_Eu152_779
+/run/beamOn 10000000
+
+# 2.) Eu-152 (443.96 keV)
+/random/setSeeds 172345 121789
+/gps/energy 443.96 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R5cm_Eu152_444
+/run/beamOn 10000000
+
+# 3.) Eu-152 (867.38 keV)
+/random/setSeeds 182345 131789
+/gps/energy 867.38 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R5cm_Eu152_867
+/run/beamOn 10000000
+
+# 4.) Eu-152 (964.06 keV)
+/random/setSeeds 192345 141789
+/gps/energy 964.06 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R5cm_Eu152_964
+/run/beamOn 10000000
+
+# 5.) Eu-152 (1085.84 keV)
+/random/setSeeds 202345 151789
+/gps/energy 1085.84 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R5cm_Eu152_1086
+/run/beamOn 10000000
+
+# 6.) Eu-152 (1112.08 keV)
+/random/setSeeds 212345 161789
+/gps/energy 1112.08 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R5cm_Eu152_1112
+/run/beamOn 10000000
+
+# 7.) Eu-152 (1212.95 keV)
+/random/setSeeds 222345 171789
+/gps/energy 1212.95 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R5cm_Eu152_1213
+/run/beamOn 10000000
+
+# 8.) Eu-152 (1408.01 keV)
+/random/setSeeds 232345 181789
+/gps/energy 1408.01 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R5cm_Eu152_1408
+/run/beamOn 10000000
+
+# ====================================================
+# 2.) R = 10 cm  (2R = 20 cm)
+# ====================================================
+/HPGe/det/setSourceTube SteelTube Steel 20 87.6 0 0 0
+/run/reinitializeGeometry 1
+
+# 1.) Eu-152 (121.78 keV)
+/random/setSeeds 262345 211789
+/gps/energy 121.78 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R10cm_Eu152_122
+/run/beamOn 10000000
+
+/random/setSeeds 162345 111789
+/gps/energy 344.28 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R10cm_Eu152_344
+/run/beamOn 10000000
+
+/random/setSeeds 162345 111789
+/gps/energy 778.90 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R10cm_Eu152_779
+/run/beamOn 10000000
+
+# 2.) Eu-152 (443.96 keV)
+/random/setSeeds 272345 221789
+/gps/energy 443.96 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R10cm_Eu152_444
+/run/beamOn 10000000
+
+# 3.) Eu-152 (867.38 keV)
+/random/setSeeds 282345 231789
+/gps/energy 867.38 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R10cm_Eu152_867
+/run/beamOn 10000000
+
+# 4.) Eu-152 (964.06 keV)
+/random/setSeeds 292345 241789
+/gps/energy 964.06 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R10cm_Eu152_964
+/run/beamOn 10000000
+
+# 5.) Eu-152 (1085.84 keV)
+/random/setSeeds 302345 251789
+/gps/energy 1085.84 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R10cm_Eu152_1086
+/run/beamOn 10000000
+
+# 6.) Eu-152 (1112.08 keV)
+/random/setSeeds 312345 261789
+/gps/energy 1112.08 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R10cm_Eu152_1112
+/run/beamOn 10000000
+
+# 7.) Eu-152 (1212.95 keV)
+/random/setSeeds 322345 271789
+/gps/energy 1212.95 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R10cm_Eu152_1213
+/run/beamOn 10000000
+
+# 8.) Eu-152 (1408.01 keV)
+/random/setSeeds 332345 281789
+/gps/energy 1408.01 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R10cm_Eu152_1408
+/run/beamOn 10000000
+
+# ====================================================
+# 3.) R = 15 cm  (2R = 30 cm)
+# ====================================================
+/HPGe/det/setSourceTube SteelTube Steel 30 87.6 0 0 0
+/run/reinitializeGeometry 1
+
+# 1.) Eu-152 (121.78 keV)
+/random/setSeeds 362345 311789
+/gps/energy 121.78 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R15cm_Eu152_122
+/run/beamOn 10000000
+
+/random/setSeeds 162345 111789
+/gps/energy 344.28 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R15cm_Eu152_344
+/run/beamOn 10000000
+
+/random/setSeeds 162345 111789
+/gps/energy 778.90 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R15cm_Eu152_779
+/run/beamOn 10000000
+
+# 2.) Eu-152 (443.96 keV)
+/random/setSeeds 372345 321789
+/gps/energy 443.96 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R15cm_Eu152_444
+/run/beamOn 10000000
+
+# 3.) Eu-152 (867.38 keV)
+/random/setSeeds 382345 331789
+/gps/energy 867.38 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R15cm_Eu152_867
+/run/beamOn 10000000
+
+# 4.) Eu-152 (964.06 keV)
+/random/setSeeds 392345 341789
+/gps/energy 964.06 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R15cm_Eu152_964
+/run/beamOn 10000000
+
+# 5.) Eu-152 (1085.84 keV)
+/random/setSeeds 402345 351789
+/gps/energy 1085.84 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R15cm_Eu152_1086
+/run/beamOn 10000000
+
+# 6.) Eu-152 (1112.08 keV)
+/random/setSeeds 412345 361789
+/gps/energy 1112.08 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R15cm_Eu152_1112
+/run/beamOn 10000000
+
+# 7.) Eu-152 (1212.95 keV)
+/random/setSeeds 422345 371789
+/gps/energy 1212.95 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R15cm_Eu152_1213
+/run/beamOn 10000000
+
+# 8.) Eu-152 (1408.01 keV)
+/random/setSeeds 432345 381789
+/gps/energy 1408.01 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R15cm_Eu152_1408
+/run/beamOn 10000000
+
+# ====================================================
+# 3.) R = 20 cm  (2R = 40 cm)
+# ====================================================
+/HPGe/det/setSourceTube SteelTube Steel 40 87.6 0 0 0
+/run/reinitializeGeometry 1
+
+# 1.) Eu-152 (121.78 keV)
+/random/setSeeds 362345 311789
+/gps/energy 121.78 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R20cm_Eu152_122
+/run/beamOn 10000000
+
+/random/setSeeds 162345 111789
+/gps/energy 344.28 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R20cm_Eu152_344
+/run/beamOn 10000000
+
+/random/setSeeds 162345 111789
+/gps/energy 778.90 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R20cm_Eu152_779
+/run/beamOn 10000000
+
+# 2.) Eu-152 (443.96 keV)
+/random/setSeeds 372345 321789
+/gps/energy 443.96 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R20cm_Eu152_444
+/run/beamOn 10000000
+
+# 3.) Eu-152 (867.38 keV)
+/random/setSeeds 382345 331789
+/gps/energy 867.38 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R20cm_Eu152_867
+/run/beamOn 10000000
+
+# 4.) Eu-152 (964.06 keV)
+/random/setSeeds 392345 341789
+/gps/energy 964.06 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R20cm_Eu152_964
+/run/beamOn 10000000
+
+# 5.) Eu-152 (1085.84 keV)
+/random/setSeeds 402345 351789
+/gps/energy 1085.84 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R20cm_Eu152_1086
+/run/beamOn 10000000
+
+# 6.) Eu-152 (1112.08 keV)
+/random/setSeeds 412345 361789
+/gps/energy 1112.08 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R20cm_Eu152_1112
+/run/beamOn 10000000
+
+# 7.) Eu-152 (1212.95 keV)
+/random/setSeeds 422345 371789
+/gps/energy 1212.95 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R20cm_Eu152_1213
+/run/beamOn 10000000
+
+# 8.) Eu-152 (1408.01 keV)
+/random/setSeeds 432345 381789
+/gps/energy 1408.01 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R20cm_Eu152_1408
+/run/beamOn 10000000
+
+# ====================================================
+# 3.) R = 25 cm  (2R = 50 cm)
+# ====================================================
+/HPGe/det/setSourceTube SteelTube Steel 50 87.6 0 0 0
+/run/reinitializeGeometry 1
+
+# 1.) Eu-152 (121.78 keV)
+/random/setSeeds 362345 311789
+/gps/energy 121.78 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R25cm_Eu152_122
+/run/beamOn 10000000
+
+/random/setSeeds 162345 111789
+/gps/energy 344.28 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R25cm_Eu152_344
+/run/beamOn 10000000
+
+/random/setSeeds 162345 111789
+/gps/energy 778.90 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R25cm_Eu152_779
+/run/beamOn 10000000
+
+# 2.) Eu-152 (443.96 keV)
+/random/setSeeds 372345 321789
+/gps/energy 443.96 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R25cm_Eu152_444
+/run/beamOn 10000000
+
+# 3.) Eu-152 (867.38 keV)
+/random/setSeeds 382345 331789
+/gps/energy 867.38 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R25cm_Eu152_867
+/run/beamOn 10000000
+
+# 4.) Eu-152 (964.06 keV)
+/random/setSeeds 392345 341789
+/gps/energy 964.06 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R25cm_Eu152_964
+/run/beamOn 10000000
+
+# 5.) Eu-152 (1085.84 keV)
+/random/setSeeds 402345 351789
+/gps/energy 1085.84 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R25cm_Eu152_1086
+/run/beamOn 10000000
+
+# 6.) Eu-152 (1112.08 keV)
+/random/setSeeds 412345 361789
+/gps/energy 1112.08 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R25cm_Eu152_1112
+/run/beamOn 10000000
+
+# 7.) Eu-152 (1212.95 keV)
+/random/setSeeds 422345 371789
+/gps/energy 1212.95 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R25cm_Eu152_1213
+/run/beamOn 10000000
+
+# 8.) Eu-152 (1408.01 keV)
+/random/setSeeds 432345 381789
+/gps/energy 1408.01 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R25cm_Eu152_1408
+/run/beamOn 10000000
+
+# ====================================================
+# 3.) R = 28.5 cm  (2R = 50 cm)
+# ====================================================
+/HPGe/det/setSourceTube SteelTube Steel 57 87.6 0 0 0
+/run/reinitializeGeometry 1
+
+# 1.) Eu-152 (121.78 keV)
+/random/setSeeds 362345 311789
+/gps/energy 121.78 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R28cm_Eu152_122
+/run/beamOn 10000000
+
+/random/setSeeds 162345 111789
+/gps/energy 344.28 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R28cm_Eu152_344
+/run/beamOn 10000000
+
+/random/setSeeds 162345 111789
+/gps/energy 778.90 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R28cm_Eu152_779
+/run/beamOn 10000000
+
+# 2.) Eu-152 (443.96 keV)
+/random/setSeeds 372345 321789
+/gps/energy 443.96 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R28cm_Eu152_444
+/run/beamOn 10000000
+
+# 3.) Eu-152 (867.38 keV)
+/random/setSeeds 382345 331789
+/gps/energy 867.38 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R28cm_Eu152_867
+/run/beamOn 10000000
+
+# 4.) Eu-152 (964.06 keV)
+/random/setSeeds 392345 341789
+/gps/energy 964.06 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R28cm_Eu152_964
+/run/beamOn 10000000
+
+# 5.) Eu-152 (1085.84 keV)
+/random/setSeeds 402345 351789
+/gps/energy 1085.84 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R28cm_Eu152_1086
+/run/beamOn 10000000
+
+# 6.) Eu-152 (1112.08 keV)
+/random/setSeeds 412345 361789
+/gps/energy 1112.08 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R28cm_Eu152_1112
+/run/beamOn 10000000
+
+# 7.) Eu-152 (1212.95 keV)
+/random/setSeeds 422345 371789
+/gps/energy 1212.95 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R28cm_Eu152_1213
+/run/beamOn 10000000
+
+# 8.) Eu-152 (1408.01 keV)
+/random/setSeeds 432345 381789
+/gps/energy 1408.01 keV
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ Steel_R28cm_Eu152_1408
+/run/beamOn 10000000
+
+
+
+
+

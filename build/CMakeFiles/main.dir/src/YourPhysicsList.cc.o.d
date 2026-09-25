@@ -281,6 +281,7 @@ CMakeFiles/main.dir/src/YourPhysicsList.cc.o: \
  /home/tamas/G4/geant4-v11.3.2-install/include/Geant4/G4GeomSplitter.hh \
  /home/tamas/G4/geant4-v11.3.2-install/include/Geant4/geomwdefs.hh \
  /home/tamas/G4/geant4-v11.3.2-install/include/Geant4/G4Region.icc \
+ /home/tamas/G4/geant4-v11.3.2-install/include/Geant4/G4EmStandardPhysics.hh \
  /home/tamas/G4/geant4-v11.3.2-install/include/Geant4/G4EmStandardPhysics_option4.hh \
  /home/tamas/G4/geant4-v11.3.2-install/include/Geant4/G4ProductionCutsTable.hh \
  /home/tamas/G4/geant4-v11.3.2-install/include/Geant4/G4SystemOfUnits.hh \

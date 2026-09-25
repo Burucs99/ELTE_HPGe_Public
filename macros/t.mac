@@ -1,0 +1,19 @@
+# /control/execute Eu152_Steel_Radii.mac
+/run/numberOfThreads 11
+/HPGe/run/EdepHist Edep Deposited-Energy 3000 0 3.1
+/HPGe/det/setDeadLayer 2.5 1.5 2
+/run/initialize
+
+/gps/particle gamma
+/gps/ang/type iso
+/gps/energy 1112.08 keV
+/gps/ang/mintheta 1.012 rad
+/gps/ang/maxtheta 1.117 rad
+/gps/ang/minphi -0.128431 rad
+/gps/ang/maxphi 0.128431 rad
+/gps/pos/type Point
+
+/gps/pos/centre 0 0 -0.8 cm
+
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/fem/ teszt
+/run/beamOn 1000000

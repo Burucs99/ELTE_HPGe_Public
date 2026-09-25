@@ -22,45 +22,46 @@
 /HPGe/det/setSourceTube WaterTube Water 57.5 87.6 0 0 0
 /run/reinitializeGeometry 1
 
-
-/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_37.4
-/run/beamOn 2000000
-
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_57.5
+/run/beamOn 12000000
 
 /random/setSeeds 38766 44643
 /HPGe/det/setSourceTube WaterTube Water 50 87.6 0 0 0
 /run/reinitializeGeometry 1
 
-/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_30.0
-/run/beamOn 2000000
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_50.0
+/run/beamOn 10000000
 
 /random/setSeeds 88366 44623
 /HPGe/det/setSourceTube WaterTube Water 40.0 87.6 0 0 0
 /run/reinitializeGeometry 1
 
-/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_20.0
-/run/beamOn 2000000
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_40.0
+/run/beamOn 10000000
 
-/random/setSeeds 11366 22623
+/random/setSeeds 11367 22624
 /HPGe/det/setSourceTube WaterTube Water 30.0 87.6 0 0 0
 /run/reinitializeGeometry 1
 
-/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_10.0
-/run/beamOn 1000000
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_30.0
+/run/beamOn 10000000
 
-/random/setSeeds 11366 22623
+/random/setSeeds 11368 22625
 /HPGe/det/setSourceTube WaterTube Water 20.0 87.6 0 0 0
 /run/reinitializeGeometry 1
 
-/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_10.0
-/run/beamOn 1000000
+/HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_20.0
+/run/beamOn 10000000
 
-/random/setSeeds 11366 22623
+/random/setSeeds 11369 22626
 /HPGe/det/setSourceTube WaterTube Water 10.0 87.6 0 0 0
 /run/reinitializeGeometry 1
 
 /HPGe/run/OutputName /home/tamas/FILES/ELTE_HPGe_Public/output/viz/ Eu152_Water_10.0
-/run/beamOn 1000000
+/run/beamOn 10000000
+
+
+
 
 
 

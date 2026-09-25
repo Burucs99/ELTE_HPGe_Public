@@ -509,7 +509,7 @@ void YourDetectorConstruction::CylinderSourceGeometryCreator(const G4String& Cyl
 
     G4NistManager* nistMGR =                  G4NistManager::Instance();
 
-    G4Tubs* solidSource = new G4Tubs(CylinderName,0,(CylinderRadius*cm/2),CylinderHeight*cm/2,0,360*deg);
+    G4Tubs* solidSource = new G4Tubs(CylinderName, 3 * cm, (CylinderRadius*cm/2),CylinderHeight*cm/2,0,360*deg);
     G4cout<<"Itt akad meg"<<G4endl;
     G4LogicalVolume* logicSource = new G4LogicalVolume(solidSource, material, logicName);
     G4PVPlacement* physSource = new G4PVPlacement(0, physPlacement, logicSource, physName, fworldLogical, false, 0,true);
