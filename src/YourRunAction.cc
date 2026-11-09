@@ -16,8 +16,7 @@ YourRunAction::YourRunAction(YourPrimaryGeneratorAction* primGen,YourDetectorCon
   fRunMessenger = new YourRunMessenger(this);
   G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
-  
-  analysisManager->CreateNtuple("Positions","Positions");
+  /* analysisManager->CreateNtuple("Positions","Positions");
   analysisManager->CreateNtupleDColumn("X"); 
   analysisManager->CreateNtupleDColumn("Y");
   analysisManager->CreateNtupleDColumn("Z");
@@ -25,7 +24,7 @@ YourRunAction::YourRunAction(YourPrimaryGeneratorAction* primGen,YourDetectorCon
   analysisManager->CreateNtupleIColumn("EventID");
   analysisManager->CreateNtupleIColumn("RunID");
 
-  analysisManager->FinishNtuple(0); 
+  analysisManager->FinishNtuple(0);  */
 }
 
 YourRunAction::~YourRunAction() { delete timer; }

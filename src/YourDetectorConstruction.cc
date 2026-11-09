@@ -50,7 +50,7 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     
     
     // World
-    G4Material* worldMat   = nistMGR->FindOrBuildMaterial("G4_AIR");
+    G4Material* worldMat   = nistMGR->FindOrBuildMaterial("G4_Galactic");
     
     G4double worldSize   = 1*m;
 
@@ -75,7 +75,14 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
         25.0 * mm,    // half-length = 50/2
         0.0 * deg,
         360.0 * deg
-    );
+    ); 
+    /* G4Sphere("pName",
+                10*cm,
+                10.01*cm,
+                G4double  pSPhi,
+                G4double  pDPhi,
+                G4double  pSTheta,
+                G4double  pDTheta ) */
 
     auto activeCrystalLogical = new G4LogicalVolume(
         scintiSolid,
@@ -84,11 +91,81 @@ G4VPhysicalVolume* YourDetectorConstruction::Construct() {
     );
 
     ftargetLogical=activeCrystalLogical;
-    auto ScintiPlacement = new G4PVPlacement (0, G4ThreeVector(0, 0, -25.0*mm),
+    auto ScintiPlacement = new G4PVPlacement (0, G4ThreeVector(0, 0, 0*mm),
                                                         activeCrystalLogical,
                                                         "Calorimeter",
                                                         worldLogical,
-                                                        false, 0, true);
+                                                       false, 0, true); 
+    if (fCreateBox || fCreateTub) {
+        if (fCustomMats.find(fMaterialName) == fCustomMats.end()) {
+            G4cerr << "ERROR: Material '" << fMaterialName 
+                   << "' not found in fCustomMats!" << G4endl;
+            return nullptr;  
+        }
+
+
+        if (fCreateBox) {
+            BoxSourceGeometryCreator(
+                fGeometryName, 
+                fBoxSize, 
+                fMaterialName,  
+                fMaterialName + "_Logic",
+                fPlacement,
+                fMaterialName + "_Phys"
+            );
+        }
+        else if (fCreateTub) {
+            CylinderSourceGeometryCreator(
+                fGeometryName,
+                fTubRadius,
+                fTubHeight,
+                fMaterialName,
+                fGeometryName + "_Logic",
+                fPlacement,
+                fGeometryName + "_Phys"
+            );
+        }
+    }
+
+
+
+     G4double z, a, density;
+    G4String name, symbol;
+    G4int ncomponents, natoms;
+    //(C3H4O2)
+    a = 1.01*g/mole;
+    G4Element* elH  = new G4Element(name="Hydrogen",symbol="H" , z= 1., a);
+
+    a = 16.00*g/mole;
+    G4Element* elO  = new G4Element(name="Oxygen"  ,symbol="O" , z= 8., a);
+    a = 12.011*g/mole;
+    G4Element* elC  = new G4Element(name="Carbon",symbol="C" , z= 6., a);
+
+    density = 0.6579*g/cm3;
+    G4Material*  PLA = new G4Material(name="Polylactic acid",density,ncomponents=3);
+    PLA->AddElement(elH, natoms=4);
+    PLA->AddElement(elO, natoms=2);
+    PLA->AddElement(elC,natoms=3);
+    auto bunny_mesh = CADMesh::TessellatedMesh::FromSTL("../geom/plate_ascii.stl");
+
+    auto bunny_logical = new G4LogicalVolume( bunny_mesh->GetSolid() 
+                                                 , PLA
+                                                 , "logical"
+                                                 , 0, 0, 0
+        );
+
+    //
+    CreateSampleHolder();
+    G4double bunnyHalfHeight = -25*mm; // depends on your bunny volume
+    G4ThreeVector bunnyPosition(0, 0, bunnyHalfHeight);
+    auto bunnyRotation = new G4RotationMatrix();
+    bunnyRotation->rotateX(180.0 * deg);
+    new G4PVPlacement(bunnyRotation,
+                  bunnyPosition,
+                  bunny_logical,
+                  "physicalBunny",
+                  worldLogical,
+                  false, 0, true);
     return worldPhysical;
 }
 
@@ -177,16 +254,16 @@ void YourDetectorConstruction::CylinderSourceGeometryCreator(const G4String& Cyl
 
 void YourDetectorConstruction::ConstructSDandField()
 {   
-    if (!(G4SDManager::GetSDMpointer()->FindSensitiveDetector("Sensitive-Detector"))){
+    /* if (!(G4SDManager::GetSDMpointer()->FindSensitiveDetector("Sensitive-Detector"))){
         YourSensitiveDetector * sensDet = new YourSensitiveDetector("Sensitive-Detector");
         G4SDManager::GetSDMpointer()->AddNewDetector(sensDet);
         ftargetLogical->SetSensitiveDetector(sensDet);
     }
     else{ G4cout<<"SensDet has already been created"<<G4endl;}
-
+*/
     YourSensitiveDetector * sensDet = new YourSensitiveDetector("Sensitive-Detector");
     G4SDManager::GetSDMpointer()->AddNewDetector(sensDet);
-    ftargetLogical->SetSensitiveDetector(sensDet);
+    ftargetLogical->SetSensitiveDetector(sensDet); 
 }
 
 

@@ -21,9 +21,9 @@
 YourSensitiveDetector::YourSensitiveDetector(G4String name) 
 :G4VSensitiveDetector(name),fHitsCollection(nullptr),fHCID(-1)
 {
-    collectionName.insert("MyHitsCollection");
-    fEdep = 0.0;
-
+    /* collectionName.insert("MyHitsCollection");
+   */
+ fEdep = 0.0; 
 }
 YourSensitiveDetector::~YourSensitiveDetector(){
     
@@ -33,24 +33,24 @@ YourSensitiveDetector::~YourSensitiveDetector(){
 void YourSensitiveDetector::Initialize(G4HCofThisEvent * hce) 
 {
 
-    fHitsCollection = new YourHitCollection(SensitiveDetectorName,collectionName[0]);
+    /* fHitsCollection = new YourHitCollection(SensitiveDetectorName,collectionName[0]);
     
 
     if(fHCID<0){
         fHCID=G4SDManager::GetSDMpointer()->GetCollectionID(collectionName[0]);
 
     }
-    hce->AddHitsCollection(fHCID,fHitsCollection);
+    hce->AddHitsCollection(fHCID,fHitsCollection); */
 }
 
 void YourSensitiveDetector::EndOfEvent(G4HCofThisEvent*)
 {
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-    analysisManager->SetNtupleMerging(true);
+    //analysisManager->SetNtupleMerging(true); 
     
-    if(fEdep!=0){
+     if(fEdep!=0){
         analysisManager->FillH1(0, fEdep);
-    }
+    } 
     fEdep = 0.0;
 }
 
@@ -61,9 +61,9 @@ G4bool YourSensitiveDetector::ProcessHits(G4Step* aStep,G4TouchableHistory* )
     
 
 
-
     G4double EnergyDeposit = aStep->GetTotalEnergyDeposit();
-    fEdep+=EnergyDeposit;
+    
+	fEdep+=EnergyDeposit; 
     
 
     return true;
